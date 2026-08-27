@@ -1,4 +1,4 @@
-import { locationConfig } from '../../config/location.ts'
+import { locationConfig, type TravelTimeId } from '../../config/location.ts'
 import { siteConfig } from '../../config/site.ts'
 import type { LocationContent } from '../../i18n/types.ts'
 import { Button } from '../ui/Button.tsx'
@@ -37,46 +37,41 @@ function GoogleMapsLink({ className = '', content }: GoogleMapsLinkProps) {
   )
 }
 
-function LocationMap({ content }: Pick<LocationSectionProps, 'content'>) {
-  if (locationConfig.googleMapsEmbedUrl) {
-    return (
-      <div className="relative min-h-[22rem] overflow-hidden rounded-2xl border border-ink/15 bg-cream shadow-xl shadow-ink/15 sm:min-h-[28rem]">
-        <iframe
-          className="absolute inset-0 size-full border-0"
-          src={locationConfig.googleMapsEmbedUrl}
-          title={content.mapTitle}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
-        />
-      </div>
-    )
-  }
-
+function TravelTimeIcon({ id }: { id: TravelTimeId }) {
   return (
-    <figure className="relative flex min-h-[18rem] overflow-hidden rounded-2xl border border-ink/15 bg-olive p-5 text-paper shadow-xl shadow-ink/15 sm:min-h-[28rem] sm:p-9">
-      <div className="flex w-full flex-col justify-between border border-paper/20 p-4 sm:p-7">
-        <div>
-          <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-sand sm:text-xs">
-            Google Maps
-          </p>
-          <h3 className="mt-4 max-w-sm font-display text-3xl leading-[0.95] tracking-[-0.045em] text-paper sm:mt-5 sm:text-5xl">
-            {content.mapTitle}
-          </h3>
-        </div>
-        <figcaption className="max-w-sm border-t border-paper/20 pt-5 text-sm leading-7 text-paper/80 sm:text-base">
-          {content.mapFallbackDescription}
-        </figcaption>
-        <div className="mt-8 hidden border-t border-paper/20 pt-5 sm:block">
-          <p className="font-display text-2xl tracking-[-0.04em] text-paper">
-            {siteConfig.businessName}
-          </p>
-          <p className="mt-2 whitespace-pre-line text-xs leading-5 text-paper/75 sm:text-sm">
-            {content.address}
-          </p>
-        </div>
-      </div>
-    </figure>
+    <svg
+      className="size-5 shrink-0 text-olive sm:size-6"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {id === 'santaCruz' ? (
+        <>
+          <path d="M3 20h18M5 20v-8l7-5 7 5v8M9 20v-4h6v4" />
+          <path d="M8 12h.01M16 12h.01" />
+        </>
+      ) : null}
+      {id === 'tamarindo' ? (
+        <>
+          <path d="M12 21v-8" />
+          <path d="M12 13c-4-5-7-4-9-1M12 13c4-5 7-4 9-1M12 11c-3-5-6-5-8-3M12 11c3-5 6-5 8-3" />
+        </>
+      ) : null}
+      {id === 'haciendaPinilla' ? <path d="M5 21V4m0 1h11l-2 4 2 4H5" /> : null}
+      {id === 'avellanasBeach' ? (
+        <>
+          <path d="M3 10c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 7 0" />
+          <path d="M3 15c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 7 0" />
+        </>
+      ) : null}
+      {id === 'guanacasteAirport' ? (
+        <path d="m22 16-8-2-2 5-2-1 1-5-6-3 1.2-1.2 6 1 3-4 2 1-1 4 5 2Z" />
+      ) : null}
+    </svg>
   )
 }
 
@@ -100,8 +95,9 @@ function TravelTimes({ content }: Pick<LocationSectionProps, 'content'>) {
             <dt className="order-2 mt-2 text-xs font-semibold uppercase tracking-[0.13em] text-ink/65">
               {content.travelTimeLabels[travelTime.id]}
             </dt>
-            <dd className="order-1 font-display text-3xl tracking-[-0.045em] text-ink sm:text-4xl">
-              {content.formatTravelTime(travelTime.minutes)}
+            <dd className="order-1 flex items-center gap-2 font-display text-3xl tracking-[-0.045em] text-ink sm:text-4xl">
+              <TravelTimeIcon id={travelTime.id} />
+              <span>{content.formatTravelTime(travelTime.minutes)}</span>
             </dd>
           </div>
         ))}
@@ -116,7 +112,7 @@ export function LocationSection({ content }: LocationSectionProps) {
   return (
     <section
       id="ubicacion"
-      className="scroll-mt-24 bg-paper py-24 pb-36 text-ink sm:py-32 lg:py-40"
+      className="scroll-mt-24 bg-paper py-24 pb-24 text-ink sm:py-32 sm:pb-28 lg:py-40 lg:pb-28"
       aria-labelledby={titleId}
     >
       <Container>
@@ -137,11 +133,20 @@ export function LocationSection({ content }: LocationSectionProps) {
             <address className="mt-10 whitespace-pre-line border-l-2 border-gold pl-5 text-sm leading-7 text-ink not-italic sm:text-base">
               {content.address}
             </address>
-            <GoogleMapsLink content={content} className="mt-10 hidden self-start lg:inline-flex" />
+            <GoogleMapsLink content={content} className="mt-10 self-start" />
           </div>
-          <LocationMap content={content} />
+          <div className="overflow-hidden self-start rounded-2xl border border-ink/10 bg-cream shadow-sm shadow-ink/10">
+            <img
+              className="block h-auto w-full"
+              src="/images/brand/villa-penas-location-map.png"
+              width="1536"
+              height="1024"
+              alt={content.illustratedMapAlt}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
-        <GoogleMapsLink content={content} className="mt-8 lg:hidden" />
         <TravelTimes content={content} />
       </Container>
     </section>

@@ -42,9 +42,6 @@ export const en = {
         openMaps: 'Open in Google Maps',
         openMapsNewTab:
           'Open Villa Peñas location in Google Maps in a new tab',
-        mapTitle: 'Villa Peñas location in Google Maps',
-        mapFallbackDescription:
-          'View the exact location and current route in Google Maps.',
         travelTimesLabel: 'Approximate driving times',
         travelTimeLabels: {
           santaCruz: 'Santa Cruz',
@@ -54,6 +51,8 @@ export const en = {
           guanacasteAirport: 'Guanacaste Airport (LIR)',
         },
         formatTravelTime: (minutes) => `${minutes} min`,
+        illustratedMapAlt:
+          'Illustrated map of Villa Peñas in Chirco, Santa Cruz, showing its proximity to Santa Cruz, Tamarindo, Hacienda Pinilla, Avellanas Beach, and Guanacaste Airport.',
       },
       amenities: {
         eyebrow: 'Amenities',

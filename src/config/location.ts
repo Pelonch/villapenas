@@ -14,15 +14,10 @@ interface TravelTime {
 }
 
 interface LocationConfig {
-  googleMapsEmbedUrl: string | null
   travelTimes: readonly TravelTime[]
 }
 
-// Replace with Google's explicit Share > Embed a map URL once it is provided.
-const googleMapsEmbedUrl: string | null = null
-
 export const locationConfig = {
-  googleMapsEmbedUrl,
   travelTimes: [
     { id: 'santaCruz', minutes: 10 },
     { id: 'tamarindo', minutes: 30 },

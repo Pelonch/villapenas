@@ -41,11 +41,10 @@ export interface LocationContent {
   address: string
   openMaps: string
   openMapsNewTab: string
-  mapTitle: string
-  mapFallbackDescription: string
   travelTimesLabel: string
   travelTimeLabels: Record<TravelTimeId, string>
   formatTravelTime: (minutes: number) => string
+  illustratedMapAlt: string
 }
 
 export interface HomePageContent {
