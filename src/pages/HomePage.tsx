@@ -1,10 +1,11 @@
 import { FloatingQuoteCta } from '../components/home/FloatingQuoteCta.tsx'
 import { Hero } from '../components/home/Hero.tsx'
+import { LocationSection } from '../components/home/LocationSection.tsx'
 import {
   StructuralPlaceholderSection,
   type PlaceholderTone,
 } from '../components/home/StructuralPlaceholderSection.tsx'
-import type { HomePageContent } from '../i18n/types.ts'
+import type { HomePageContent, HomeSectionContent } from '../i18n/types.ts'
 
 interface HomePageProps {
   content: HomePageContent
@@ -24,15 +25,15 @@ export function HomePage({
   quoteLabel,
 }: HomePageProps) {
   const sections: ReadonlyArray<{
-    content: HomePageContent[keyof Omit<HomePageContent, 'hero'>]
+    content: HomeSectionContent
     id: string
+    index: number
     tone: PlaceholderTone
   }> = [
-    { content: content.location, id: 'ubicacion', tone: 'paper' },
-    { content: content.amenities, id: 'amenidades', tone: 'cream' },
-    { content: content.packages, id: 'paquetes', tone: 'ink' },
-    { content: content.instagram, id: 'instagram', tone: 'olive' },
-    { content: content.quote, id: 'cotizador', tone: 'sand' },
+    { content: content.amenities, id: 'amenidades', index: 2, tone: 'cream' },
+    { content: content.packages, id: 'paquetes', index: 3, tone: 'ink' },
+    { content: content.instagram, id: 'instagram', index: 4, tone: 'olive' },
+    { content: content.quote, id: 'cotizador', index: 5, tone: 'sand' },
   ]
 
   return (
@@ -44,12 +45,13 @@ export function HomePage({
         onMediaReady={onMediaReady}
         onMediaUnavailable={onMediaUnavailable}
       />
-      {sections.map((section, index) => (
+      <LocationSection content={content.location} />
+      {sections.map((section) => (
         <StructuralPlaceholderSection
           key={section.id}
           content={section.content}
           id={section.id}
-          index={index + 1}
+          index={section.index}
           tone={section.tone}
         />
       ))}

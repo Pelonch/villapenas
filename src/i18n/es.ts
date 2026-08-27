@@ -34,10 +34,26 @@ export const es = {
       },
       location: {
         eyebrow: 'Ubicación',
-        heading: 'Un lugar para reunirse',
-        placeholder:
-          'La composición de ubicación y el mapa se desarrollarán en esta sección.',
-        status: 'Sección en desarrollo',
+        heading: 'Cerca de todo,\nlejos de la rutina.',
+        description:
+          'Villa Peñas se encuentra en Chirco, Santa Cruz, Guanacaste, Costa Rica, en una ubicación de fácil acceso desde Santa Cruz y varios de los principales destinos de la zona.',
+        address:
+          '1 km sur de la entrada a Moya,\nChirco, Santa Cruz, Guanacaste, Costa Rica.',
+        openMaps: 'Abrir en Google Maps',
+        openMapsNewTab:
+          'Abrir la ubicación de Villa Peñas en Google Maps en una pestaña nueva',
+        mapTitle: 'Ubicación de Villa Peñas en Google Maps',
+        mapFallbackDescription:
+          'Consulta la ubicación exacta y la ruta actualizada en Google Maps.',
+        travelTimesLabel: 'Tiempos aproximados en vehículo',
+        travelTimeLabels: {
+          santaCruz: 'Santa Cruz',
+          tamarindo: 'Tamarindo',
+          haciendaPinilla: 'Hacienda Pinilla',
+          avellanasBeach: 'Playa Avellanas',
+          guanacasteAirport: 'Aeropuerto de Guanacaste (LIR)',
+        },
+        formatTravelTime: (minutes) => `${minutes} min`,
       },
       amenities: {
         eyebrow: 'Amenidades',

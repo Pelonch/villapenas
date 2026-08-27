@@ -1,4 +1,5 @@
 import type { PageId } from '../app/types.ts'
+import type { TravelTimeId } from '../config/location.ts'
 
 export const supportedLocales = ['es', 'en'] as const
 
@@ -33,9 +34,23 @@ export interface HeroContent {
   closeAerialDialog: string
 }
 
+export interface LocationContent {
+  eyebrow: string
+  heading: string
+  description: string
+  address: string
+  openMaps: string
+  openMapsNewTab: string
+  mapTitle: string
+  mapFallbackDescription: string
+  travelTimesLabel: string
+  travelTimeLabels: Record<TravelTimeId, string>
+  formatTravelTime: (minutes: number) => string
+}
+
 export interface HomePageContent {
   hero: HeroContent
-  location: HomeSectionContent
+  location: LocationContent
   amenities: HomeSectionContent
   packages: HomeSectionContent
   instagram: HomeSectionContent
