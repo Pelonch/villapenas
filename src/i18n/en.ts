@@ -1,6 +1,9 @@
 import type { TranslationCatalog } from './types.ts'
 
 export const en = {
+  loader: {
+    tagline: 'Your moment starts here',
+  },
   navigation: {
     label: 'Primary navigation',
     home: 'Home',
@@ -23,11 +26,11 @@ export const en = {
   pages: {
     home: {
       hero: {
-        eyebrow: 'Santa Cruz, Guanacaste',
         heading: 'Villa Peñas',
-        placeholder:
-          'The cinematic Hero will be developed in a future milestone.',
-        status: 'Structural foundation',
+        aerialPreviewLabel: 'Aerial view',
+        openAerialDialog: 'Open expanded aerial view',
+        aerialDialogTitle: 'Aerial view of Villa Peñas',
+        closeAerialDialog: 'Close aerial view',
       },
       location: {
         eyebrow: 'Location',

@@ -30,3 +30,24 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+## Hero Media
+
+Milestone 3 references final media through `src/config/homeExperience.ts`. Add optimized final assets at these exact public paths when they are ready:
+
+```text
+public/
+  videos/
+    hero/
+      hero-desktop.mp4
+      hero-mobile.mp4
+    aerial/
+      aerial.mp4
+  images/
+    hero/
+      hero-poster.webp
+    aerial/
+      aerial-poster.webp
+```
+
+The Hero and aerial preview intentionally render warm design-system fallback surfaces if any of these files are absent.

@@ -91,10 +91,14 @@ export function SiteHeader({
     >
       <Container className="relative flex min-h-20 items-center justify-between gap-6">
         <a
-          className="shrink-0 font-display text-xl tracking-[-0.045em] text-ink sm:text-2xl"
+          className="inline-flex shrink-0 items-center rounded-sm"
           href={homePath}
         >
-          {siteConfig.businessName}
+          <img
+            className="h-8 w-auto object-contain sm:h-10 lg:h-11"
+            src="/images/brand/villa-penas-logo.png"
+            alt={siteConfig.businessName}
+          />
         </a>
 
         <nav

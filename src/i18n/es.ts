@@ -1,6 +1,9 @@
 import type { TranslationCatalog } from './types.ts'
 
 export const es = {
+  loader: {
+    tagline: 'Tu momento comienza aquí',
+  },
   navigation: {
     label: 'Navegación principal',
     home: 'Inicio',
@@ -23,11 +26,11 @@ export const es = {
   pages: {
     home: {
       hero: {
-        eyebrow: 'Santa Cruz, Guanacaste',
         heading: 'Villa Peñas',
-        placeholder:
-          'El Hero cinematográfico se desarrollará en un próximo hito.',
-        status: 'Base estructural',
+        aerialPreviewLabel: 'Vista aérea',
+        openAerialDialog: 'Abrir vista aérea ampliada',
+        aerialDialogTitle: 'Vista aérea de Villa Peñas',
+        closeAerialDialog: 'Cerrar vista aérea',
       },
       location: {
         eyebrow: 'Ubicación',

@@ -1,4 +1,5 @@
-import { HeroPlaceholder } from '../components/home/HeroPlaceholder.tsx'
+import { FloatingQuoteCta } from '../components/home/FloatingQuoteCta.tsx'
+import { Hero } from '../components/home/Hero.tsx'
 import {
   StructuralPlaceholderSection,
   type PlaceholderTone,
@@ -7,9 +8,21 @@ import type { HomePageContent } from '../i18n/types.ts'
 
 interface HomePageProps {
   content: HomePageContent
+  isExperienceActive: boolean
+  onHeaderVisibilityChange: (isVisible: boolean) => void
+  onMediaReady: () => void
+  onMediaUnavailable: () => void
+  quoteLabel: string
 }
 
-export function HomePage({ content }: HomePageProps) {
+export function HomePage({
+  content,
+  isExperienceActive,
+  onHeaderVisibilityChange,
+  onMediaReady,
+  onMediaUnavailable,
+  quoteLabel,
+}: HomePageProps) {
   const sections: ReadonlyArray<{
     content: HomePageContent[keyof Omit<HomePageContent, 'hero'>]
     id: string
@@ -24,7 +37,13 @@ export function HomePage({ content }: HomePageProps) {
 
   return (
     <>
-      <HeroPlaceholder content={content.hero} />
+      <Hero
+        content={content.hero}
+        isExperienceActive={isExperienceActive}
+        onHeaderVisibilityChange={onHeaderVisibilityChange}
+        onMediaReady={onMediaReady}
+        onMediaUnavailable={onMediaUnavailable}
+      />
       {sections.map((section, index) => (
         <StructuralPlaceholderSection
           key={section.id}
@@ -34,6 +53,7 @@ export function HomePage({ content }: HomePageProps) {
           tone={section.tone}
         />
       ))}
+      <FloatingQuoteCta isVisible={isExperienceActive} label={quoteLabel} />
     </>
   )
 }

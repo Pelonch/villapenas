@@ -25,8 +25,16 @@ export interface HomeSectionContent {
   status: string
 }
 
+export interface HeroContent {
+  heading: string
+  aerialPreviewLabel: string
+  openAerialDialog: string
+  aerialDialogTitle: string
+  closeAerialDialog: string
+}
+
 export interface HomePageContent {
-  hero: HomeSectionContent
+  hero: HeroContent
   location: HomeSectionContent
   amenities: HomeSectionContent
   packages: HomeSectionContent
@@ -35,6 +43,9 @@ export interface HomePageContent {
 }
 
 export interface TranslationCatalog {
+  loader: {
+    tagline: string
+  }
   navigation: {
     label: string
     location: string
