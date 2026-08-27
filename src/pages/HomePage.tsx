@@ -1,5 +1,39 @@
-import { PagePlaceholder, type PlaceholderPageProps } from './PagePlaceholder.tsx'
+import { HeroPlaceholder } from '../components/home/HeroPlaceholder.tsx'
+import {
+  StructuralPlaceholderSection,
+  type PlaceholderTone,
+} from '../components/home/StructuralPlaceholderSection.tsx'
+import type { HomePageContent } from '../i18n/types.ts'
 
-export function HomePage(props: PlaceholderPageProps) {
-  return <PagePlaceholder {...props} />
+interface HomePageProps {
+  content: HomePageContent
+}
+
+export function HomePage({ content }: HomePageProps) {
+  const sections: ReadonlyArray<{
+    content: HomePageContent[keyof Omit<HomePageContent, 'hero'>]
+    id: string
+    tone: PlaceholderTone
+  }> = [
+    { content: content.location, id: 'ubicacion', tone: 'paper' },
+    { content: content.amenities, id: 'amenidades', tone: 'cream' },
+    { content: content.packages, id: 'paquetes', tone: 'ink' },
+    { content: content.instagram, id: 'instagram', tone: 'olive' },
+    { content: content.quote, id: 'cotizador', tone: 'sand' },
+  ]
+
+  return (
+    <>
+      <HeroPlaceholder content={content.hero} />
+      {sections.map((section, index) => (
+        <StructuralPlaceholderSection
+          key={section.id}
+          content={section.content}
+          id={section.id}
+          index={index + 1}
+          tone={section.tone}
+        />
+      ))}
+    </>
+  )
 }

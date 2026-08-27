@@ -9,14 +9,14 @@ interface RouteViewProps {
 }
 
 export function RouteView({ route }: RouteViewProps) {
-  const content = getTranslations(route.locale).pages[route.page]
+  const pages = getTranslations(route.locale).pages
 
   switch (route.page) {
     case 'home':
-      return <HomePage content={content} />
+      return <HomePage content={pages.home} />
     case 'policies':
-      return <PoliciesPage content={content} />
+      return <PoliciesPage content={pages.policies} />
     case 'contact':
-      return <ContactPage content={content} />
+      return <ContactPage content={pages.contact} />
   }
 }
