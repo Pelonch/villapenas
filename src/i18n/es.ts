@@ -1,4 +1,5 @@
 import type { TranslationCatalog } from './types.ts'
+import { amenityImageSources } from '../config/amenities.ts'
 
 export const es = {
   loader: {
@@ -56,10 +57,74 @@ export const es = {
       },
       amenities: {
         eyebrow: 'Amenidades',
-        heading: 'Espacios pensados para compartir',
-        placeholder:
-          'La presentación editorial de las amenidades se desarrollará en esta sección.',
-        status: 'Sección en desarrollo',
+        heading: 'Espacios para disfrutar juntos.',
+        description:
+          'Cada espacio de Villa Peñas está pensado para que tu evento se disfrute a tu manera.',
+        groups: [
+          {
+            id: 'rancho',
+            category: 'Rancho y cocina equipada',
+            title: 'Todo listo para compartir.',
+            description:
+              'Un espacio amplio y acogedor para reunirse, cocinar y disfrutar juntos, con una cocina equipada para que tengas todo a mano durante tu evento.',
+            images: [
+              {
+                src: amenityImageSources.rancho[0],
+                alt: 'Vista general del rancho de Villa Peñas',
+              },
+              {
+                src: amenityImageSources.rancho[1],
+                alt: 'Cocina equipada de Villa Peñas',
+              },
+              {
+                src: amenityImageSources.rancho[2],
+                alt: 'Área de comedor y reuniones de Villa Peñas',
+              },
+            ],
+          },
+          {
+            id: 'pool',
+            category: 'Piscina y playground',
+            title: 'Diversión para todos.',
+            description:
+              'Piscina, áreas al aire libre y playground para que grandes y pequeños encuentren su espacio para disfrutar.',
+            images: [
+              {
+                src: amenityImageSources.pool[0],
+                alt: 'Área de piscina de Villa Peñas',
+              },
+              {
+                src: amenityImageSources.pool[1],
+                alt: 'Playground de Villa Peñas',
+              },
+              {
+                src: amenityImageSources.pool[2],
+                alt: 'Terraza y área exterior junto a la piscina de Villa Peñas',
+              },
+            ],
+          },
+          {
+            id: 'bbq',
+            category: 'BBQ y entretenimiento',
+            title: 'Que empiece la celebración.',
+            description:
+              'Rancho BBQ, parrilla, karaoke, parlante y pantalla de 75 pulgadas para acompañar desde una tarde tranquila hasta una celebración con música.',
+            images: [
+              {
+                src: amenityImageSources.bbq[0],
+                alt: 'Rancho BBQ y parrilla de Villa Peñas',
+              },
+              {
+                src: amenityImageSources.bbq[1],
+                alt: 'Área de karaoke y parlante de Villa Peñas',
+              },
+              {
+                src: amenityImageSources.bbq[2],
+                alt: 'Pantalla de 75 pulgadas y área de entretenimiento de Villa Peñas',
+              },
+            ],
+          },
+        ],
       },
       packages: {
         eyebrow: 'Paquetes',

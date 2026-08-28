@@ -1,4 +1,5 @@
 import type { TranslationCatalog } from './types.ts'
+import { amenityImageSources } from '../config/amenities.ts'
 
 export const en = {
   loader: {
@@ -56,10 +57,74 @@ export const en = {
       },
       amenities: {
         eyebrow: 'Amenities',
-        heading: 'Spaces made for sharing',
-        placeholder:
-          'The editorial amenities presentation will be developed in this section.',
-        status: 'Section in development',
+        heading: 'Spaces to enjoy together.',
+        description:
+          'Every space at Villa Peñas is designed so you can enjoy your event your way.',
+        groups: [
+          {
+            id: 'rancho',
+            category: 'Rancho and equipped kitchen',
+            title: 'Everything ready to share.',
+            description:
+              'A spacious and welcoming place to gather, cook and enjoy together, with an equipped kitchen so everything you need is close at hand during your event.',
+            images: [
+              {
+                src: amenityImageSources.rancho[0],
+                alt: 'General view of the Villa Peñas rancho',
+              },
+              {
+                src: amenityImageSources.rancho[1],
+                alt: 'Villa Peñas equipped kitchen',
+              },
+              {
+                src: amenityImageSources.rancho[2],
+                alt: 'Villa Peñas dining and gathering area',
+              },
+            ],
+          },
+          {
+            id: 'pool',
+            category: 'Pool and playground',
+            title: 'Something for everyone.',
+            description:
+              'A pool, outdoor areas and playground so both adults and children can find their own space to enjoy.',
+            images: [
+              {
+                src: amenityImageSources.pool[0],
+                alt: 'Villa Peñas pool area',
+              },
+              {
+                src: amenityImageSources.pool[1],
+                alt: 'Villa Peñas playground',
+              },
+              {
+                src: amenityImageSources.pool[2],
+                alt: 'Villa Peñas pool deck and outdoor area',
+              },
+            ],
+          },
+          {
+            id: 'bbq',
+            category: 'BBQ and entertainment',
+            title: 'Let the celebration begin.',
+            description:
+              'BBQ area, grill, karaoke, speaker and a 75-inch screen for everything from a relaxed afternoon to a celebration with music.',
+            images: [
+              {
+                src: amenityImageSources.bbq[0],
+                alt: 'Villa Peñas BBQ rancho and grill',
+              },
+              {
+                src: amenityImageSources.bbq[1],
+                alt: 'Villa Peñas karaoke and speaker area',
+              },
+              {
+                src: amenityImageSources.bbq[2],
+                alt: 'Villa Peñas 75-inch screen and entertainment area',
+              },
+            ],
+          },
+        ],
       },
       packages: {
         eyebrow: 'Packages',

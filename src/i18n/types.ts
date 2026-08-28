@@ -26,6 +26,28 @@ export interface HomeSectionContent {
   status: string
 }
 
+export type AmenityGroupId = 'rancho' | 'pool' | 'bbq'
+
+export interface AmenityImage {
+  src: string
+  alt: string
+}
+
+export interface AmenityGroup {
+  id: AmenityGroupId
+  category: string
+  title: string
+  description: string
+  images: readonly [AmenityImage, AmenityImage, AmenityImage]
+}
+
+export interface AmenitiesContent {
+  eyebrow: string
+  heading: string
+  description: string
+  groups: readonly AmenityGroup[]
+}
+
 export interface HeroContent {
   heading: string
   aerialPreviewLabel: string
@@ -50,7 +72,7 @@ export interface LocationContent {
 export interface HomePageContent {
   hero: HeroContent
   location: LocationContent
-  amenities: HomeSectionContent
+  amenities: AmenitiesContent
   packages: HomeSectionContent
   instagram: HomeSectionContent
   quote: HomeSectionContent

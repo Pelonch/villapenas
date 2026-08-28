@@ -1,3 +1,4 @@
+import { AmenitiesSection } from '../components/home/AmenitiesSection.tsx'
 import { FloatingQuoteCta } from '../components/home/FloatingQuoteCta.tsx'
 import { Hero } from '../components/home/Hero.tsx'
 import { LocationSection } from '../components/home/LocationSection.tsx'
@@ -30,7 +31,6 @@ export function HomePage({
     index: number
     tone: PlaceholderTone
   }> = [
-    { content: content.amenities, id: 'amenidades', index: 2, tone: 'cream' },
     { content: content.packages, id: 'paquetes', index: 3, tone: 'ink' },
     { content: content.instagram, id: 'instagram', index: 4, tone: 'olive' },
     { content: content.quote, id: 'cotizador', index: 5, tone: 'sand' },
@@ -46,6 +46,7 @@ export function HomePage({
         onMediaUnavailable={onMediaUnavailable}
       />
       <LocationSection content={content.location} />
+      <AmenitiesSection content={content.amenities} />
       {sections.map((section) => (
         <StructuralPlaceholderSection
           key={section.id}
