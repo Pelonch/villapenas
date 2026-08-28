@@ -48,6 +48,23 @@ export interface AmenitiesContent {
   groups: readonly AmenityGroup[]
 }
 
+export interface PackagesContent {
+  eyebrow: string
+  heading: string
+  description: string
+  priceLabel: string
+  includedServices: string
+  showAllServices: string
+  showLessServices: string
+  selectPackage: string
+  loading: string
+  empty: string
+  error: string
+  retry: string
+  packageImageAlt: (packageName: string) => string
+  formatPrice: (priceColones: number) => string
+}
+
 export interface HeroContent {
   heading: string
   aerialPreviewLabel: string
@@ -73,7 +90,7 @@ export interface HomePageContent {
   hero: HeroContent
   location: LocationContent
   amenities: AmenitiesContent
-  packages: HomeSectionContent
+  packages: PackagesContent
   instagram: HomeSectionContent
   quote: HomeSectionContent
 }

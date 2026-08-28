@@ -128,10 +128,28 @@ export const es = {
       },
       packages: {
         eyebrow: 'Paquetes',
-        heading: 'Tu celebración, a tu manera',
-        placeholder:
-          'Los paquetes dinámicos y su información del backend se integrarán en esta sección.',
-        status: 'Sección en desarrollo',
+        heading: 'Elige cómo quieres disfrutar Villa Peñas.',
+        description:
+          'Cada paquete reúne una forma distinta de vivir tu evento. Explora qué incluye cada uno y encuentra el que mejor se adapta a tu celebración.',
+        priceLabel: 'Precio',
+        includedServices: 'Incluye',
+        showAllServices: 'Ver todo lo que incluye',
+        showLessServices: 'Ver menos',
+        selectPackage: 'Seleccionar paquete',
+        loading: 'Cargando paquetes',
+        empty: 'Nuestros paquetes estarán disponibles próximamente.',
+        error: 'No pudimos cargar los paquetes en este momento.',
+        retry: 'Intentar de nuevo',
+        packageImageAlt: (packageName) =>
+          `Vista provisional del paquete ${packageName}`,
+        formatPrice: (priceColones) =>
+          new Intl.NumberFormat('es-CR', {
+            currency: 'CRC',
+            currencyDisplay: 'narrowSymbol',
+            maximumFractionDigits: 0,
+            minimumFractionDigits: 0,
+            style: 'currency',
+          }).format(priceColones),
       },
       instagram: {
         eyebrow: 'Instagram',
