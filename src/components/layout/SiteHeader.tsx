@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react'
-import { getLocalizedPath, type BrowserLocation, type Route } from '../../app/routes.ts'
+import {
+  getHomeAnchorHref,
+  getLocalizedPath,
+  type BrowserLocation,
+  type HomeAnchorId,
+  type Route,
+} from '../../app/routes.ts'
 import { siteConfig } from '../../config/site.ts'
 import { getTranslations } from '../../i18n/translations.ts'
 import { Button } from '../ui/Button.tsx'
@@ -22,7 +28,7 @@ export function SiteHeader({
   const translations = getTranslations(route.locale)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const homePath = getLocalizedPath(route.locale, 'home')
-  const navigationItems = [
+  const navigationItems: Array<{ id: HomeAnchorId; label: string }> = [
     { id: 'ubicacion', label: translations.navigation.location },
     { id: 'amenidades', label: translations.navigation.amenities },
     { id: 'paquetes', label: translations.navigation.packages },
@@ -110,7 +116,7 @@ export function SiteHeader({
               <li key={item.id}>
                 <a
                   className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70 transition-colors hover:text-gold"
-                  href={`${homePath}#${item.id}`}
+                  href={getHomeAnchorHref(route.locale, item.id)}
                   aria-current={
                     route.page === 'home' && location.hash === `#${item.id}`
                       ? 'location'
@@ -122,7 +128,10 @@ export function SiteHeader({
               </li>
             ))}
           </ul>
-          <Button href={`${homePath}#cotizador`} className="shrink-0">
+          <Button
+            href={getHomeAnchorHref(route.locale, 'cotizador')}
+            className="shrink-0"
+          >
             {translations.navigation.quote}
           </Button>
           <LanguageSwitcher
@@ -180,7 +189,7 @@ export function SiteHeader({
                 <li key={item.id} className="border-b border-ink/15">
                   <a
                     className="flex min-h-14 items-center justify-between py-3 font-display text-2xl tracking-[-0.035em] text-ink"
-                    href={`${homePath}#${item.id}`}
+                    href={getHomeAnchorHref(route.locale, item.id)}
                     onClick={closeMobileMenu}
                   >
                     {item.label}
@@ -192,7 +201,7 @@ export function SiteHeader({
               ))}
             </ul>
             <Button
-              href={`${homePath}#cotizador`}
+              href={getHomeAnchorHref(route.locale, 'cotizador')}
               className="mt-7 w-full"
               onClick={closeMobileMenu}
             >

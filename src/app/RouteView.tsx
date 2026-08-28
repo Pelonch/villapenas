@@ -38,6 +38,6 @@ export function RouteView({
     case 'policies':
       return <PoliciesPage content={pages.policies} />
     case 'contact':
-      return <ContactPage content={pages.contact} />
+      return <ContactPage content={pages.contact} locale={route.locale} />
   }
 }

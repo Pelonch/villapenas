@@ -19,6 +19,53 @@ export interface PlaceholderPageContent {
   placeholder: string
 }
 
+export interface ContactPageContent {
+  heroEyebrow: string
+  heading: string
+  description: string
+  contactInformationEyebrow: string
+  whatsappLabel: string
+  whatsappCta: string
+  whatsappNewTab: string
+  whatsappMessage: string
+  locationEyebrow: string
+  locationHeading: string
+  locationDescription: string
+  address: string
+  openMaps: string
+  openMapsNewTab: string
+  quoteEyebrow: string
+  quoteHeading: string
+  quoteDescription: string
+  quoteCta: string
+}
+
+export interface HighlightedPolicyParagraph {
+  after: string
+  before: string
+  emphasis: string
+}
+
+export interface PolicyContent {
+  title: string
+  paragraphs: readonly string[]
+  highlightedParagraph?: HighlightedPolicyParagraph
+}
+
+export interface PoliciesPageContent {
+  heroEyebrow: string
+  heading: string
+  description: string
+  policies: readonly PolicyContent[]
+  acknowledgementHeading: string
+  acknowledgementDescription: string
+  contactHeading: string
+  contactDescription: string
+  contactCta: string
+  contactWhatsAppMessage: string
+  contactWhatsAppNewTab: string
+}
+
 export type AmenityGroupId = 'rancho' | 'pool' | 'bbq'
 
 export interface AmenityImage {
@@ -201,8 +248,8 @@ export interface TranslationCatalog {
   }
   pages: {
     home: HomePageContent
-    policies: PlaceholderPageContent
-    contact: PlaceholderPageContent
+    policies: PoliciesPageContent
+    contact: ContactPageContent
   }
   metadata: Record<PageId, PageMetadata>
 }

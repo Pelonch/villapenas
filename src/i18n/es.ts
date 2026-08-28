@@ -287,12 +287,90 @@ export const es = {
       },
     },
     policies: {
-      heading: 'Políticas',
-      placeholder: 'Las políticas de Villa Peñas se publicarán aquí.',
+      heroEyebrow: 'Políticas',
+      heading: 'Políticas de reserva\ny reembolso.',
+      description:
+        'Queremos que cada reserva sea clara desde el inicio. Aquí encontrarás las condiciones aplicables a la reserva, cancelación y reprogramación de tu evento en Villa Peñas.',
+      policies: [
+        {
+          title: 'Reserva',
+          paragraphs: [],
+          highlightedParagraph: {
+            before: 'La fecha se confirma únicamente con un adelanto de ',
+            emphasis: '₡20.000',
+            after: '.',
+          },
+        },
+        {
+          title: 'Cancelaciones',
+          paragraphs: [
+            'Si la cancelación se realiza con 7 días o más de anticipación, se reembolsa el 100% del adelanto.',
+            'Si la cancelación se realiza con menos de 7 días de anticipación, el adelanto no es reembolsable.',
+          ],
+        },
+        {
+          title: 'Cambio de fecha',
+          paragraphs: [
+            'Se permite un único cambio de fecha, siempre sujeto a disponibilidad y notificando con al menos 7 días de anticipación.',
+          ],
+        },
+        {
+          title: 'Inasistencia',
+          paragraphs: [
+            'Si el cliente no se presenta el día de la reserva, esta se dará por cancelada automáticamente y no habrá devolución del adelanto.',
+          ],
+        },
+        {
+          title: 'Pago restante',
+          paragraphs: ['El monto pendiente deberá cancelarse un día antes del evento.'],
+        },
+        {
+          title: 'Daños a las instalaciones',
+          paragraphs: [
+            'El cliente será responsable por cualquier daño ocasionado a las instalaciones, mobiliario o equipos durante el evento y deberá asumir el costo de su reparación o reposición.',
+          ],
+        },
+        {
+          title: 'Situaciones de fuerza mayor',
+          paragraphs: [
+            'En caso de que Villa Peñas deba cancelar la reservación por una situación imprevista o de fuerza mayor, el cliente podrá elegir entre el reembolso completo del adelanto o reprogramar la fecha sin costo adicional.',
+          ],
+        },
+      ],
+      acknowledgementHeading: 'Una reserva clara desde el inicio.',
+      acknowledgementDescription:
+        'Al confirmar una reserva en Villa Peñas, el cliente reconoce las políticas de reserva y reembolso indicadas en esta página.',
+      contactHeading: '¿Tienes alguna duda?',
+      contactDescription: 'Estamos para ayudarte antes de confirmar tu reserva.',
+      contactCta: 'Consultar por WhatsApp',
+      contactWhatsAppMessage:
+        'Hola, tengo una consulta sobre las políticas de reserva de Villa Peñas.',
+      contactWhatsAppNewTab:
+        'Abrir conversación de WhatsApp sobre las políticas de Villa Peñas en una pestaña nueva',
     },
     contact: {
-      heading: 'Contacto',
-      placeholder: 'La información de contacto de Villa Peñas estará disponible aquí.',
+      heroEyebrow: 'Contacto',
+      heading: 'Hablemos de tu próximo evento.',
+      description:
+        '¿Tienes una fecha en mente o quieres conocer más sobre Villa Peñas? Escríbenos y con gusto te ayudamos a planear tu evento.',
+      contactInformationEyebrow: 'Información de contacto',
+      whatsappLabel: 'WhatsApp / Teléfono',
+      whatsappCta: 'Escribir por WhatsApp',
+      whatsappNewTab: 'Abrir conversación de WhatsApp con Villa Peñas en una pestaña nueva',
+      whatsappMessage: 'Hola, quisiera solicitar información sobre Villa Peñas.',
+      locationEyebrow: 'Ubicación',
+      locationHeading: 'Cerca de tu próxima celebración.',
+      locationDescription:
+        'Villa Peñas está en Chirco, Santa Cruz, Guanacaste, en un entorno pensado para compartir y celebrar.',
+      address: 'Chirco, Santa Cruz,\nGuanacaste, Costa Rica',
+      openMaps: 'Abrir en Google Maps',
+      openMapsNewTab:
+        'Abrir la ubicación de Villa Peñas en Google Maps en una pestaña nueva',
+      quoteEyebrow: 'Cotización',
+      quoteHeading: '¿Ya tienes una idea para tu evento?',
+      quoteDescription:
+        'Arma una cotización estimada con nuestros paquetes y adicionales.',
+      quoteCta: 'Cotizar mi evento',
     },
   },
   metadata: {
@@ -307,12 +385,12 @@ export const es = {
       },
     },
     policies: {
-      title: 'Villa Peñas | Políticas',
+      title: 'Políticas de reserva y reembolso | Villa Peñas',
       description:
-        'Consulta las políticas de adelanto, cancelación y cambios de fecha de Villa Peñas.',
+        'Consulta las políticas de reserva, cancelación, reprogramación y reembolso de Villa Peñas.',
       openGraph: {
-        title: 'Villa Peñas | Políticas',
-        description: 'Consulta las políticas de Villa Peñas.',
+        title: 'Políticas de reserva y reembolso | Villa Peñas',
+        description: 'Consulta las políticas de reserva y reembolso de Villa Peñas.',
       },
     },
     contact: {

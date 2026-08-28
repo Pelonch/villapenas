@@ -1,4 +1,4 @@
-import { siteConfig } from '../config/site.ts'
+import { createWhatsAppUrl } from '../config/whatsapp.ts'
 import type { Locale, WhatsAppMessageContent } from '../i18n/types.ts'
 import type { QuoteCalculation } from './calculateQuote.ts'
 import { getGuestCapacityFromCalculation } from './capacity.ts'
@@ -23,10 +23,6 @@ interface CreateWhatsAppQuoteUrlOptions {
   event: QuoteEventDetails
   formatPrice: (priceColones: number) => string
   locale: Locale
-}
-
-function getWhatsAppNumber(): string {
-  return siteConfig.whatsappNumber.replace(/\D/g, '')
 }
 
 export function createWhatsAppQuoteUrl({
@@ -102,5 +98,5 @@ export function createWhatsAppQuoteUrl({
     `${content.estimatedTotalLabel}: ${formatPrice(calculation.estimatedTotal)}`,
   )
 
-  return `https://wa.me/${getWhatsAppNumber()}?text=${encodeURIComponent(lines.join('\n'))}`
+  return createWhatsAppUrl(lines.join('\n'))
 }

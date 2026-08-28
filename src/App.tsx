@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { RouteView } from './app/RouteView.tsx'
 import { useCurrentRoute } from './app/useCurrentRoute.ts'
+import { useHomeAnchorScroll } from './app/useHomeAnchorScroll.ts'
 import { homeExperienceConfig } from './config/homeExperience.ts'
 import { InitialLoader, type LoaderPhase } from './components/home/InitialLoader.tsx'
 import { SiteFooter } from './components/layout/SiteFooter.tsx'
@@ -25,6 +26,7 @@ function App() {
   const prefersReducedMotion = usePrefersReducedMotion()
 
   usePageMetadata(route)
+  useHomeAnchorScroll(route, location.hash, prefersReducedMotion)
 
   useEffect(() => {
     if (!isInitialHomeRoute) {

@@ -14,6 +14,15 @@ export interface BrowserLocation {
   hash: string
 }
 
+export const homeAnchorIds = [
+  'ubicacion',
+  'amenidades',
+  'paquetes',
+  'cotizador',
+] as const
+
+export type HomeAnchorId = (typeof homeAnchorIds)[number]
+
 const localizedPaths: Record<Locale, Record<PageId, string>> = {
   es: {
     home: '/es',
@@ -61,6 +70,22 @@ export function getRoute(pathname: string): Route {
 
 export function getLocalizedPath(locale: Locale, page: PageId): string {
   return localizedPaths[locale][page]
+}
+
+export function getHomeAnchorHref(locale: Locale, anchorId: HomeAnchorId): string {
+  return `${getLocalizedPath(locale, 'home')}#${anchorId}`
+}
+
+export function getHomeAnchorId(hash: string): HomeAnchorId | null {
+  const anchorId = hash.replace(/^#/, '')
+
+  for (const homeAnchorId of homeAnchorIds) {
+    if (homeAnchorId === anchorId) {
+      return homeAnchorId
+    }
+  }
+
+  return null
 }
 
 export function getLocalizedHref(

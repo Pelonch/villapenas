@@ -286,12 +286,91 @@ export const en = {
       },
     },
     policies: {
-      heading: 'Policies',
-      placeholder: 'Villa Peñas policies will be published here.',
+      heroEyebrow: 'Policies',
+      heading: 'Reservation and\nrefund policies.',
+      description:
+        'We want every reservation to be clear from the start. Here you’ll find the conditions that apply to booking, cancelling, and rescheduling your event at Villa Peñas.',
+      policies: [
+        {
+          title: 'Reservation',
+          paragraphs: [],
+          highlightedParagraph: {
+            before: 'The date is confirmed only after a ',
+            emphasis: '₡20,000',
+            after: ' deposit has been paid.',
+          },
+        },
+        {
+          title: 'Cancellations',
+          paragraphs: [
+            'If the reservation is cancelled 7 or more days in advance, 100% of the deposit will be refunded.',
+            'If the reservation is cancelled less than 7 days in advance, the deposit is non-refundable.',
+          ],
+        },
+        {
+          title: 'Date change',
+          paragraphs: [
+            'One date change is permitted, subject to availability and with at least 7 days’ notice.',
+          ],
+        },
+        {
+          title: 'No-show',
+          paragraphs: [
+            'If the client does not attend on the reserved date, the reservation will be considered automatically cancelled and the deposit will not be refunded.',
+          ],
+        },
+        {
+          title: 'Remaining balance',
+          paragraphs: ['The remaining balance must be paid one day before the event.'],
+        },
+        {
+          title: 'Damage to the property',
+          paragraphs: [
+            'The client is responsible for any damage caused to the facilities, furniture, or equipment during the event and must cover the cost of repair or replacement.',
+          ],
+        },
+        {
+          title: 'Force majeure',
+          paragraphs: [
+            'If Villa Peñas must cancel the reservation due to an unforeseen event or force majeure, the client may choose between a full refund of the deposit or rescheduling the event at no additional cost.',
+          ],
+        },
+      ],
+      acknowledgementHeading: 'Clear from the moment you book.',
+      acknowledgementDescription:
+        'By confirming a reservation at Villa Peñas, the client acknowledges the reservation and refund policies outlined on this page.',
+      contactHeading: 'Have a question?',
+      contactDescription:
+        'We’re here to help before you confirm your reservation.',
+      contactCta: 'Ask us on WhatsApp',
+      contactWhatsAppMessage:
+        'Hello, I have a question about Villa Peñas reservation policies.',
+      contactWhatsAppNewTab:
+        'Open a WhatsApp conversation about Villa Peñas policies in a new tab',
     },
     contact: {
-      heading: 'Contact',
-      placeholder: 'Villa Peñas contact information will be available here.',
+      heroEyebrow: 'Contact',
+      heading: 'Let’s talk about your next event.',
+      description:
+        'Have a date in mind or want to know more about Villa Peñas? Send us a message and we’ll be happy to help you plan your event.',
+      contactInformationEyebrow: 'Contact information',
+      whatsappLabel: 'WhatsApp / Phone',
+      whatsappCta: 'Message us on WhatsApp',
+      whatsappNewTab: 'Open a WhatsApp conversation with Villa Peñas in a new tab',
+      whatsappMessage: 'Hello, I would like more information about Villa Peñas.',
+      locationEyebrow: 'Location',
+      locationHeading: 'Close to your next celebration.',
+      locationDescription:
+        'Villa Peñas is in Chirco, Santa Cruz, Guanacaste, in a setting made for gathering and celebrating.',
+      address: 'Chirco, Santa Cruz,\nGuanacaste, Costa Rica',
+      openMaps: 'Open in Google Maps',
+      openMapsNewTab:
+        'Open the Villa Peñas location in Google Maps in a new tab',
+      quoteEyebrow: 'Quote',
+      quoteHeading: 'Already have an event in mind?',
+      quoteDescription:
+        'Build an estimated quotation with our packages and optional extras.',
+      quoteCta: 'Get a Quote',
     },
   },
   metadata: {
@@ -306,12 +385,12 @@ export const en = {
       },
     },
     policies: {
-      title: 'Villa Peñas | Policies',
+      title: 'Reservation & Refund Policies | Villa Peñas',
       description:
-        'Review Villa Peñas deposit, cancellation, and date-change policies.',
+        'Review Villa Peñas reservation, cancellation, rescheduling, and refund policies.',
       openGraph: {
-        title: 'Villa Peñas | Policies',
-        description: 'Review Villa Peñas policies.',
+        title: 'Reservation & Refund Policies | Villa Peñas',
+        description: 'Review Villa Peñas reservation and refund policies.',
       },
     },
     contact: {
