@@ -152,11 +152,42 @@ export const en = {
           }).format(priceColones),
       },
       instagram: {
-        eyebrow: 'Instagram',
-        heading: 'Moments at Villa Peñas',
-        placeholder:
-          'The curated Instagram visual selection will be added in this section.',
-        status: 'Section in development',
+        eyebrow: 'Moments',
+        heading: 'Villa Peñas, as it is lived.',
+        description:
+          'A glimpse into celebrations, details and shared moments at Villa Peñas.',
+        viewOnInstagram: 'View on Instagram',
+        openPost: (caption) =>
+          `Open ${caption} on Instagram in a new tab`,
+        profileCta: 'Follow on Instagram',
+        profileCtaNewTab:
+          'Open the Villa Peñas Instagram profile in a new tab',
+        items: {
+          'outdoor-celebration': {
+            alt: 'Temporary image for an outdoor celebration at Villa Peñas',
+            caption: 'Outdoor celebrations',
+          },
+          'shared-table': {
+            alt: 'Temporary image for a shared table at Villa Peñas',
+            caption: 'Moments to share',
+          },
+          'celebration-detail': {
+            alt: 'Temporary image for a celebration detail at Villa Peñas',
+            caption: 'Small details',
+          },
+          'afternoon-gathering': {
+            alt: 'Temporary image for an afternoon gathering at Villa Peñas',
+            caption: 'Afternoons to remember',
+          },
+          'special-moment': {
+            alt: 'Temporary image for a special moment at Villa Peñas',
+            caption: 'Every moment counts',
+          },
+          'villa-details': {
+            alt: 'Temporary image for Villa Peñas details',
+            caption: 'Villa Peñas details',
+          },
+        },
       },
       quote: {
         eyebrow: 'Quote',

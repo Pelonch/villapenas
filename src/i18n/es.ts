@@ -152,11 +152,42 @@ export const es = {
           }).format(priceColones),
       },
       instagram: {
-        eyebrow: 'Instagram',
-        heading: 'Momentos en Villa Peñas',
-        placeholder:
-          'La selección visual de Instagram se incorporará en esta sección.',
-        status: 'Sección en desarrollo',
+        eyebrow: 'Momentos',
+        heading: 'Villa Peñas, como se vive.',
+        description:
+          'Un vistazo a celebraciones, detalles y momentos compartidos en Villa Peñas.',
+        viewOnInstagram: 'Ver en Instagram',
+        openPost: (caption) =>
+          `Abrir ${caption} en Instagram en una pestaña nueva`,
+        profileCta: 'Seguir en Instagram',
+        profileCtaNewTab:
+          'Abrir el perfil de Instagram de Villa Peñas en una pestaña nueva',
+        items: {
+          'outdoor-celebration': {
+            alt: 'Imagen temporal para una celebración al aire libre en Villa Peñas',
+            caption: 'Celebraciones al aire libre',
+          },
+          'shared-table': {
+            alt: 'Imagen temporal para una mesa compartida en Villa Peñas',
+            caption: 'Momentos para compartir',
+          },
+          'celebration-detail': {
+            alt: 'Imagen temporal para un detalle de celebración en Villa Peñas',
+            caption: 'Pequeños detalles',
+          },
+          'afternoon-gathering': {
+            alt: 'Imagen temporal para una reunión de tarde en Villa Peñas',
+            caption: 'Tardes que se quedan',
+          },
+          'special-moment': {
+            alt: 'Imagen temporal para un momento especial en Villa Peñas',
+            caption: 'Cada momento cuenta',
+          },
+          'villa-details': {
+            alt: 'Imagen temporal para detalles de Villa Peñas',
+            caption: 'Detalles de Villa Peñas',
+          },
+        },
       },
       quote: {
         eyebrow: 'Cotización',

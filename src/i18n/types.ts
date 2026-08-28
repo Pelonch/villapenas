@@ -65,6 +65,22 @@ export interface PackagesContent {
   formatPrice: (priceColones: number) => string
 }
 
+export interface SocialItemContent {
+  alt: string
+  caption: string
+}
+
+export interface InstagramContent {
+  eyebrow: string
+  heading: string
+  description: string
+  viewOnInstagram: string
+  openPost: (caption: string) => string
+  profileCta: string
+  profileCtaNewTab: string
+  items: Readonly<Record<string, SocialItemContent | undefined>>
+}
+
 export interface HeroContent {
   heading: string
   aerialPreviewLabel: string
@@ -91,7 +107,7 @@ export interface HomePageContent {
   location: LocationContent
   amenities: AmenitiesContent
   packages: PackagesContent
-  instagram: HomeSectionContent
+  instagram: InstagramContent
   quote: HomeSectionContent
 }
 

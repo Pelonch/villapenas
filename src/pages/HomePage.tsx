@@ -2,12 +2,16 @@ import { AmenitiesSection } from '../components/home/AmenitiesSection.tsx'
 import { FloatingQuoteCta } from '../components/home/FloatingQuoteCta.tsx'
 import { Hero } from '../components/home/Hero.tsx'
 import { LocationSection } from '../components/home/LocationSection.tsx'
+import { MomentsSection } from '../components/home/MomentsSection.tsx'
 import { PackagesSection } from '../components/home/PackagesSection.tsx'
 import {
   StructuralPlaceholderSection,
   type PlaceholderTone,
 } from '../components/home/StructuralPlaceholderSection.tsx'
 import type { HomePageContent, HomeSectionContent } from '../i18n/types.ts'
+import { getSocialMediaItems } from '../services/social.ts'
+
+const socialMediaItems = getSocialMediaItems()
 
 interface HomePageProps {
   content: HomePageContent
@@ -32,7 +36,6 @@ export function HomePage({
     index: number
     tone: PlaceholderTone
   }> = [
-    { content: content.instagram, id: 'instagram', index: 4, tone: 'olive' },
     { content: content.quote, id: 'cotizador', index: 5, tone: 'sand' },
   ]
 
@@ -48,6 +51,7 @@ export function HomePage({
       <LocationSection content={content.location} />
       <AmenitiesSection content={content.amenities} />
       <PackagesSection content={content.packages} />
+      <MomentsSection content={content.instagram} items={socialMediaItems} />
       {sections.map((section) => (
         <StructuralPlaceholderSection
           key={section.id}
