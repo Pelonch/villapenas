@@ -360,7 +360,7 @@ The business data and amounts must remain identical across languages.
 
 The current Villa Peñas WhatsApp contact is:
 
-`+506 8850-7212`
+`+506 8850-7712`
 
 Keep the number centralized in configuration.
 

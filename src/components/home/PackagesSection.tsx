@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { getPackageImageSource } from '../../config/packages.ts'
-import { usePackages } from '../../hooks/usePackages.ts'
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.ts'
 import type { PackagesContent } from '../../i18n/types.ts'
+import { useQuoteContext } from '../../quote/context.ts'
 import type { PackageService, VenuePackage } from '../../types/packages.ts'
 import { Button } from '../ui/Button.tsx'
 import { Container } from '../ui/Container.tsx'
@@ -15,6 +16,7 @@ interface PackageCardProps {
   content: PackagesContent
   fillGridRow: boolean
   isExpanded: boolean
+  onSelectPackage: () => void
   onToggleServices: () => void
   venuePackage: VenuePackage
 }
@@ -45,6 +47,7 @@ function PackageCard({
   content,
   fillGridRow,
   isExpanded,
+  onSelectPackage,
   onToggleServices,
   venuePackage,
 }: PackageCardProps) {
@@ -126,9 +129,8 @@ function PackageCard({
           </section>
         ) : null}
 
-        {/* TODO: Connect this CTA to quote selection state when the calculator is implemented. */}
         <div className="mt-auto pt-8">
-          <Button href="#cotizador" className="w-full">
+          <Button className="w-full" onClick={onSelectPackage}>
             {content.selectPackage}
           </Button>
         </div>
@@ -183,11 +185,12 @@ function PackagesMessage({
 }
 
 export function PackagesSection({ content }: PackagesSectionProps) {
-  const { retry, state } = usePackages()
+  const { packagesState: state, retryPackages, selectPackage } = useQuoteContext()
   const [expandedPackageIds, setExpandedPackageIds] = useState<ReadonlySet<number>>(
     () => new Set(),
   )
   const titleId = 'packages-title'
+  const prefersReducedMotion = usePrefersReducedMotion()
 
   const togglePackageServices = (packageId: number) => {
     setExpandedPackageIds((packageIds) => {
@@ -204,6 +207,14 @@ export function PackagesSection({ content }: PackagesSectionProps) {
   }
 
   const hasExpandedPackage = expandedPackageIds.size > 0
+
+  const selectPackageAndScroll = (packageId: number) => {
+    selectPackage(packageId)
+    document.getElementById('cotizador')?.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    })
+  }
 
   return (
     <section
@@ -226,7 +237,7 @@ export function PackagesSection({ content }: PackagesSectionProps) {
             <PackagesMessage
               message={content.error}
               actionLabel={content.retry}
-              onAction={retry}
+              onAction={retryPackages}
             />
           ) : null}
           {state.status === 'success' && state.packages.length === 0 ? (
@@ -242,6 +253,7 @@ export function PackagesSection({ content }: PackagesSectionProps) {
                   content={content}
                   fillGridRow={!hasExpandedPackage}
                   isExpanded={expandedPackageIds.has(venuePackage.id)}
+                  onSelectPackage={() => selectPackageAndScroll(venuePackage.id)}
                   onToggleServices={() => togglePackageServices(venuePackage.id)}
                   venuePackage={venuePackage}
                 />

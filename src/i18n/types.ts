@@ -19,13 +19,6 @@ export interface PlaceholderPageContent {
   placeholder: string
 }
 
-export interface HomeSectionContent {
-  eyebrow: string
-  heading: string
-  placeholder: string
-  status: string
-}
-
 export type AmenityGroupId = 'rancho' | 'pool' | 'bbq'
 
 export interface AmenityImage {
@@ -81,6 +74,81 @@ export interface InstagramContent {
   items: Readonly<Record<string, SocialItemContent | undefined>>
 }
 
+export interface WhatsAppMessageContent {
+  durationLabel: string
+  eventDateLabel: string
+  formatDuration: (durationHours: number) => string
+  formatEndDayOffset: (dayOffset: number) => string
+  greeting: string
+  guestCountLabel: string
+  packageLabel: string
+  scheduleLabel: string
+  extrasLabel: string
+  estimatedTotalLabel: string
+}
+
+export interface QuoteContent {
+  eyebrow: string
+  heading: string
+  description: string
+  eventLegend: string
+  eventDateLabel: string
+  guestCountLabel: string
+  decreaseGuestCount: string
+  increaseGuestCount: string
+  formatGuestCount: (guestCount: number) => string
+  guestCountUnit: (guestCount: number) => string
+  guestCountRequiresCapacityExtra: string
+  guestCountMaximumReached: (maximumGuests: number) => string
+  addCapacityExtra: string
+  startTimeLabel: string
+  endTimeLabel: string
+  endTimePlaceholder: string
+  includedDuration: (durationHours: number) => string
+  eventDetailsRequired: string
+  pastDateValidation: string
+  packageLegend: string
+  packagePriceLabel: string
+  packagesLoading: string
+  packagesEmpty: string
+  packagesError: string
+  retry: string
+  extrasLegend: string
+  extrasLoading: string
+  extrasUnavailable: string
+  chooseOption: (productName: string) => string
+  optionRequired: (productName: string) => string
+  pendingOption: string
+  selectedOptionSummary: (optionName: string, price: string) => string
+  viewDetails: string
+  hideDetails: string
+  formatPeopleQuantity: (quantity: number) => string
+  formatIncludedQuantity: (quantity: number, unitOfMeasure: string | null) => string
+  toggleProductDetails: (productName: string, isExpanded: boolean) => string
+  toggleOptionDetails: (optionName: string, isExpanded: boolean) => string
+  toggleOptions: (productName: string, isExpanded: boolean) => string
+  selectPackageFirst: string
+  summaryEyebrow: string
+  summaryEmpty: string
+  summaryEventLabel: string
+  summaryEventStartTimeLabel: string
+  summaryEventEndTimeLabel: string
+  summaryEventDurationLabel: string
+  summaryGuestCountLabel: string
+  summaryPackageLabel: string
+  summaryExtrasLabel: string
+  summarySubtotalLabel: string
+  estimatedTotalLabel: string
+  estimateDisclaimer: string
+  completeExtrasBeforeSending: string
+  selectPackageBeforeSending: string
+  whatsappCta: string
+  formatDuration: (durationHours: number) => string
+  formatEndDayOffset: (dayOffset: number) => string
+  formatPrice: (priceColones: number) => string
+  whatsappMessage: WhatsAppMessageContent
+}
+
 export interface HeroContent {
   heading: string
   aerialPreviewLabel: string
@@ -108,7 +176,7 @@ export interface HomePageContent {
   amenities: AmenitiesContent
   packages: PackagesContent
   instagram: InstagramContent
-  quote: HomeSectionContent
+  quote: QuoteContent
 }
 
 export interface TranslationCatalog {

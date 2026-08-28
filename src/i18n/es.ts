@@ -191,10 +191,99 @@ export const es = {
       },
       quote: {
         eyebrow: 'Cotización',
-        heading: 'Cotiza tu evento',
-        placeholder:
-          'El cotizador informativo se desarrollará aquí sin crear reservas ni confirmar disponibilidad.',
-        status: 'Sección en desarrollo',
+        heading: 'Cotiza tu evento.',
+        description:
+          'Arma una cotización estimada para tu evento. La disponibilidad y los detalles finales se confirman directamente con Villa Peñas.',
+        eventLegend: '1. Fecha y horario',
+        eventDateLabel: 'Fecha del evento',
+        guestCountLabel: 'Cantidad de personas',
+        decreaseGuestCount: 'Reducir cantidad de personas',
+        increaseGuestCount: 'Aumentar cantidad de personas',
+        formatGuestCount: (guestCount) =>
+          `${guestCount} ${guestCount === 1 ? 'persona' : 'personas'}`,
+        guestCountUnit: (guestCount) =>
+          guestCount === 1 ? 'persona' : 'personas',
+        guestCountRequiresCapacityExtra:
+          'Para eventos de más de 30 personas debes agregar el adicional de personas.',
+        guestCountMaximumReached: (maximumGuests) =>
+          `Para eventos de más de ${maximumGuests} personas, consulta directamente con Villa Peñas.`,
+        addCapacityExtra: 'Agregar adicional',
+        startTimeLabel: 'Hora de entrada',
+        endTimeLabel: 'Hora de salida',
+        endTimePlaceholder: 'Selecciona la hora de entrada',
+        includedDuration: (durationHours) => `Incluye ${durationHours} horas`,
+        eventDetailsRequired:
+          'Completa la fecha, la cantidad de personas y el horario de tu evento para continuar.',
+        pastDateValidation: 'Elige una fecha de hoy en adelante.',
+        packageLegend: '2. Elige un paquete',
+        packagePriceLabel: 'Precio del paquete',
+        packagesLoading: 'Cargando paquetes',
+        packagesEmpty: 'Los paquetes estarán disponibles próximamente.',
+        packagesError: 'No pudimos cargar los paquetes en este momento.',
+        retry: 'Intentar de nuevo',
+        extrasLegend: '3. Agrega extras opcionales',
+        extrasLoading: 'Cargando adicionales',
+        extrasUnavailable:
+          'Los adicionales no están disponibles en este momento. Aún puedes consultar por un paquete.',
+        chooseOption: (productName) => `Elige una opción para ${productName}`,
+        optionRequired: (productName) => `Elige una opción para ${productName}.`,
+        pendingOption: 'Falta elegir una opción',
+        selectedOptionSummary: (optionName, price) => `${optionName} · ${price}`,
+        viewDetails: 'Ver detalles',
+        hideDetails: 'Ocultar detalles',
+        formatPeopleQuantity: (quantity) => `${quantity} personas`,
+        formatIncludedQuantity: (quantity, unitOfMeasure) =>
+          unitOfMeasure ? `${quantity} ${unitOfMeasure}` : `Incluye ${quantity}`,
+        toggleProductDetails: (productName, isExpanded) =>
+          `${isExpanded ? 'Ocultar' : 'Ver'} detalles de ${productName}`,
+        toggleOptionDetails: (optionName, isExpanded) =>
+          `${isExpanded ? 'Ocultar' : 'Ver'} detalles de ${optionName}`,
+        toggleOptions: (productName, isExpanded) =>
+          `${isExpanded ? 'Ocultar' : 'Mostrar'} opciones de ${productName}`,
+        selectPackageFirst: 'Elige un paquete para agregar adicionales.',
+        summaryEyebrow: 'Resumen',
+        summaryEmpty:
+          'Elige un paquete para ver el total estimado de tu evento.',
+        summaryEventLabel: 'Fecha y horario',
+        summaryEventStartTimeLabel: 'Entrada',
+        summaryEventEndTimeLabel: 'Salida',
+        summaryEventDurationLabel: 'Duración',
+        summaryGuestCountLabel: 'Personas',
+        summaryPackageLabel: 'Paquete',
+        summaryExtrasLabel: 'Adicionales',
+        summarySubtotalLabel: 'Subtotal',
+        estimatedTotalLabel: 'Total estimado',
+        estimateDisclaimer:
+          'Precio estimado. Sujeto a disponibilidad y confirmación.',
+        completeExtrasBeforeSending:
+          'Completa las opciones de tus adicionales para continuar.',
+        selectPackageBeforeSending:
+          'Elige un paquete antes de consultar por WhatsApp.',
+        whatsappCta: 'Consultar por WhatsApp',
+        formatDuration: (durationHours) => `${durationHours} horas`,
+        formatEndDayOffset: (dayOffset) =>
+          dayOffset === 1 ? 'día siguiente' : `${dayOffset} días después`,
+        formatPrice: (priceColones) =>
+          new Intl.NumberFormat('es-CR', {
+            currency: 'CRC',
+            currencyDisplay: 'narrowSymbol',
+            maximumFractionDigits: 0,
+            minimumFractionDigits: 0,
+            style: 'currency',
+          }).format(priceColones),
+        whatsappMessage: {
+          durationLabel: 'Duración',
+          eventDateLabel: 'Fecha',
+          formatDuration: (durationHours) => `${durationHours} horas`,
+          formatEndDayOffset: (dayOffset) =>
+            dayOffset === 1 ? 'día siguiente' : `${dayOffset} días después`,
+          greeting: 'Hola, quisiera consultar disponibilidad para Villa Peñas.',
+          guestCountLabel: 'Personas',
+          packageLabel: 'Paquete',
+          scheduleLabel: 'Horario',
+          extrasLabel: 'Adicionales:',
+          estimatedTotalLabel: 'Total estimado',
+        },
       },
     },
     policies: {

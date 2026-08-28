@@ -174,6 +174,22 @@ select {
   transition: transform 160ms ease-out;
 }
 
+@keyframes vp-quote-options-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vp-quote-options-reveal {
+  animation: vp-quote-options-reveal 180ms ease-out both;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .vp-floating-quote:hover {
     border-color: var(--color-gold);
@@ -224,8 +240,13 @@ select {
   }
 
   .vp-floating-quote,
-  .vp-floating-quote-arrow {
+  .vp-floating-quote-arrow,
+  .vp-quote-options-reveal {
     transition: none;
+  }
+
+  .vp-quote-options-reveal {
+    animation: none;
   }
 
   .vp-floating-quote:hover,

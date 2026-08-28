@@ -1005,7 +1005,7 @@ Unless future backend rules specify otherwise, event type does not affect price.
 
 Current contact:
 
-**+506 8850-7212**
+**+506 8850-7712**
 
 CTA:
 
@@ -1326,7 +1326,7 @@ Use appropriate structured data where beneficial.
 Potential business information:
 
 * Villa Peñas.
-* Telephone: +506 8850-7212.
+* Telephone: +506 8850-7712.
 * Santa Cruz, Guanacaste, Costa Rica.
 * Google Maps location.
 * Website.

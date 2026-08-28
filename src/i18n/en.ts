@@ -191,10 +191,98 @@ export const en = {
       },
       quote: {
         eyebrow: 'Quote',
-        heading: 'Get a Quote',
-        placeholder:
-          'The informational quote calculator will be developed here without creating reservations or confirming availability.',
-        status: 'Section in development',
+        heading: 'Build your event quote.',
+        description:
+          'Create an estimated quote for your event. Availability and final details are confirmed directly with Villa Peñas.',
+        eventLegend: '1. Date and time',
+        eventDateLabel: 'Event date',
+        guestCountLabel: 'Number of guests',
+        decreaseGuestCount: 'Decrease guest count',
+        increaseGuestCount: 'Increase guest count',
+        formatGuestCount: (guestCount) =>
+          `${guestCount} ${guestCount === 1 ? 'guest' : 'guests'}`,
+        guestCountUnit: (guestCount) =>
+          guestCount === 1 ? 'guest' : 'guests',
+        guestCountRequiresCapacityExtra:
+          'For events with more than 30 guests, you must add the additional guest option.',
+        guestCountMaximumReached: (maximumGuests) =>
+          `For events with more than ${maximumGuests} guests, please contact Villa Peñas directly.`,
+        addCapacityExtra: 'Add extra',
+        startTimeLabel: 'Start time',
+        endTimeLabel: 'End time',
+        endTimePlaceholder: 'Select a start time',
+        includedDuration: (durationHours) => `Includes ${durationHours} hours`,
+        eventDetailsRequired:
+          'Complete your event date, guest count, and time to continue.',
+        pastDateValidation: 'Choose today or a future date.',
+        packageLegend: '2. Choose a package',
+        packagePriceLabel: 'Package price',
+        packagesLoading: 'Loading packages',
+        packagesEmpty: 'Packages will be available soon.',
+        packagesError: "We couldn't load packages right now.",
+        retry: 'Try again',
+        extrasLegend: '3. Add optional extras',
+        extrasLoading: 'Loading extras',
+        extrasUnavailable:
+          'Extras are temporarily unavailable. You can still ask about a package.',
+        chooseOption: (productName) => `Choose an option for ${productName}`,
+        optionRequired: (productName) => `Choose an option for ${productName}.`,
+        pendingOption: 'Choose an option to continue',
+        selectedOptionSummary: (optionName, price) => `${optionName} · ${price}`,
+        viewDetails: 'View details',
+        hideDetails: 'Hide details',
+        formatPeopleQuantity: (quantity) => `${quantity} guests`,
+        formatIncludedQuantity: (quantity, unitOfMeasure) =>
+          unitOfMeasure ? `${quantity} ${unitOfMeasure}` : `Includes ${quantity}`,
+        toggleProductDetails: (productName, isExpanded) =>
+          `${isExpanded ? 'Hide' : 'View'} details for ${productName}`,
+        toggleOptionDetails: (optionName, isExpanded) =>
+          `${isExpanded ? 'Hide' : 'View'} details for ${optionName}`,
+        toggleOptions: (productName, isExpanded) =>
+          `${isExpanded ? 'Hide' : 'Show'} options for ${productName}`,
+        selectPackageFirst: 'Choose a package before adding extras.',
+        summaryEyebrow: 'Summary',
+        summaryEmpty: 'Choose a package to see your event’s estimated total.',
+        summaryEventLabel: 'Date and time',
+        summaryEventStartTimeLabel: 'Start',
+        summaryEventEndTimeLabel: 'End',
+        summaryEventDurationLabel: 'Duration',
+        summaryGuestCountLabel: 'Guests',
+        summaryPackageLabel: 'Package',
+        summaryExtrasLabel: 'Extras',
+        summarySubtotalLabel: 'Subtotal',
+        estimatedTotalLabel: 'Estimated total',
+        estimateDisclaimer:
+          'Estimated price. Subject to availability and confirmation.',
+        completeExtrasBeforeSending:
+          'Complete your extra options to continue.',
+        selectPackageBeforeSending:
+          'Choose a package before asking on WhatsApp.',
+        whatsappCta: 'Ask on WhatsApp',
+        formatDuration: (durationHours) => `${durationHours} hours`,
+        formatEndDayOffset: (dayOffset) =>
+          dayOffset === 1 ? 'next day' : `${dayOffset} days later`,
+        formatPrice: (priceColones) =>
+          new Intl.NumberFormat('en-CR', {
+            currency: 'CRC',
+            currencyDisplay: 'narrowSymbol',
+            maximumFractionDigits: 0,
+            minimumFractionDigits: 0,
+            style: 'currency',
+          }).format(priceColones),
+        whatsappMessage: {
+          durationLabel: 'Duration',
+          eventDateLabel: 'Event date',
+          formatDuration: (durationHours) => `${durationHours} hours`,
+          formatEndDayOffset: (dayOffset) =>
+            dayOffset === 1 ? 'next day' : `${dayOffset} days later`,
+          greeting: 'Hello, I would like to ask about availability at Villa Peñas.',
+          guestCountLabel: 'Guests',
+          packageLabel: 'Package',
+          scheduleLabel: 'Schedule',
+          extrasLabel: 'Extras:',
+          estimatedTotalLabel: 'Estimated total',
+        },
       },
     },
     policies: {

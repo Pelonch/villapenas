@@ -1,20 +1,20 @@
+import { useState } from 'react'
 import { AmenitiesSection } from '../components/home/AmenitiesSection.tsx'
 import { FloatingQuoteCta } from '../components/home/FloatingQuoteCta.tsx'
 import { Hero } from '../components/home/Hero.tsx'
 import { LocationSection } from '../components/home/LocationSection.tsx'
 import { MomentsSection } from '../components/home/MomentsSection.tsx'
 import { PackagesSection } from '../components/home/PackagesSection.tsx'
-import {
-  StructuralPlaceholderSection,
-  type PlaceholderTone,
-} from '../components/home/StructuralPlaceholderSection.tsx'
-import type { HomePageContent, HomeSectionContent } from '../i18n/types.ts'
+import { QuoteCalculator } from '../components/home/QuoteCalculator.tsx'
+import type { HomePageContent, Locale } from '../i18n/types.ts'
+import { QuoteProvider } from '../quote/QuoteProvider.tsx'
 import { getSocialMediaItems } from '../services/social.ts'
 
 const socialMediaItems = getSocialMediaItems()
 
 interface HomePageProps {
   content: HomePageContent
+  locale: Locale
   isExperienceActive: boolean
   onHeaderVisibilityChange: (isVisible: boolean) => void
   onMediaReady: () => void
@@ -24,23 +24,17 @@ interface HomePageProps {
 
 export function HomePage({
   content,
+  locale,
   isExperienceActive,
   onHeaderVisibilityChange,
   onMediaReady,
   onMediaUnavailable,
   quoteLabel,
 }: HomePageProps) {
-  const sections: ReadonlyArray<{
-    content: HomeSectionContent
-    id: string
-    index: number
-    tone: PlaceholderTone
-  }> = [
-    { content: content.quote, id: 'cotizador', index: 5, tone: 'sand' },
-  ]
+  const [isQuoteVisibleOnMobile, setIsQuoteVisibleOnMobile] = useState(false)
 
   return (
-    <>
+    <QuoteProvider>
       <Hero
         content={content.hero}
         isExperienceActive={isExperienceActive}
@@ -52,16 +46,16 @@ export function HomePage({
       <AmenitiesSection content={content.amenities} />
       <PackagesSection content={content.packages} />
       <MomentsSection content={content.instagram} items={socialMediaItems} />
-      {sections.map((section) => (
-        <StructuralPlaceholderSection
-          key={section.id}
-          content={section.content}
-          id={section.id}
-          index={section.index}
-          tone={section.tone}
-        />
-      ))}
-      <FloatingQuoteCta isVisible={isExperienceActive} label={quoteLabel} />
-    </>
+      <QuoteCalculator
+        content={content.quote}
+        locale={locale}
+        onMobileVisibilityChange={setIsQuoteVisibleOnMobile}
+      />
+      <FloatingQuoteCta
+        isHiddenOnMobile={isQuoteVisibleOnMobile}
+        isVisible={isExperienceActive}
+        label={quoteLabel}
+      />
+    </QuoteProvider>
   )
 }

@@ -27,6 +27,7 @@ export function RouteView({
       return (
         <HomePage
           content={pages.home}
+          locale={route.locale}
           isExperienceActive={isHomeExperienceActive}
           onHeaderVisibilityChange={onHeroHeaderVisibilityChange}
           onMediaReady={onHeroMediaReady}
