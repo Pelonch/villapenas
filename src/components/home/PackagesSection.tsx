@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { provisionalVenueImageSrc } from '../../config/images.ts'
 import { getPackageImageSource } from '../../config/packages.ts'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.ts'
 import type { PackagesContent } from '../../i18n/types.ts'
@@ -6,6 +7,7 @@ import { useQuoteContext } from '../../quote/context.ts'
 import type { PackageService, VenuePackage } from '../../types/packages.ts'
 import { Button } from '../ui/Button.tsx'
 import { Container } from '../ui/Container.tsx'
+import { ImageWithFallback } from '../ui/ImageWithFallback.tsx'
 import { SectionHeading } from '../ui/SectionHeading.tsx'
 
 interface PackagesSectionProps {
@@ -65,9 +67,10 @@ function PackageCard({
       aria-labelledby={headingId}
     >
       <div className="aspect-[4/3] overflow-hidden bg-bark">
-        <img
+        <ImageWithFallback
           className="size-full object-cover"
           src={getPackageImageSource(venuePackage.id)}
+          fallbackSrc={provisionalVenueImageSrc}
           width="1254"
           height="1254"
           alt={content.packageImageAlt(venuePackage.name)}

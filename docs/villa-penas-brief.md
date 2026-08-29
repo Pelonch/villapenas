@@ -1244,6 +1244,12 @@ Prefer:
 
 Media can normally be shared between languages.
 
+### Replacing Amenities and Package Images
+
+Amenity photos live in `public/images/amenity/`; update only the explicit image path in `src/config/amenities.ts` to replace a collage image, for example `/images/amenity/Rancho-final.jpg`.
+
+Package photos live in `public/images/packages/`; update only `packageImageSources` in `src/config/packages.ts`. The map uses the stable backend package `id` because the current API does not expose a slug or code. Package existence and content remain backend-driven. An unconfigured, missing, or failed local image uses `/images/brand/amenity-placeholder.png` without requiring layout changes.
+
 ---
 
 # 50. Accessibility

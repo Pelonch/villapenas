@@ -1,7 +1,12 @@
-const packagePlaceholderImageSrc = '/images/brand/amenity-placeholder.png'
+import { provisionalVenueImageSrc } from './images.ts'
 
-export const packageImageSources: Readonly<Record<number, string>> = {}
+// Backend package IDs are the only stable package identifiers currently available.
+export const packageImageSources: Readonly<Record<number, string>> = {
+  1: '/images/packages/essentials.jpg',
+  2: '/images/packages/premium.jpg',
+  3: '/images/packages/courtesy.jpg',
+}
 
 export function getPackageImageSource(packageId: number): string {
-  return packageImageSources[packageId] ?? packagePlaceholderImageSrc
+  return packageImageSources[packageId] ?? provisionalVenueImageSrc
 }

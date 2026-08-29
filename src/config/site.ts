@@ -18,7 +18,7 @@ function getProductionUrl(): string | null {
 
 export const siteConfig = {
   businessName: 'Villa Peñas',
-  whatsappNumber: '+506 8850-7212',
+  whatsappNumber: '+506 8850-7712',
   googleMapsUrl: 'https://maps.app.goo.gl/HP9MBJkZyfovstMv9',
   depositColones: 20_000,
   defaultLocale: 'es',
