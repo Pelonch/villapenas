@@ -82,7 +82,7 @@ function TravelTimes({ content }: Pick<LocationSectionProps, 'content'>) {
     <aside className="mt-16 border-t border-ink/15 pt-7 sm:mt-20 sm:pt-8" aria-labelledby={titleId}>
       <p
         id={titleId}
-        className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gold sm:text-xs"
+        className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gold-dark sm:text-xs"
       >
         {content.travelTimesLabel}
       </p>
@@ -118,7 +118,7 @@ export function LocationSection({ content }: LocationSectionProps) {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-stretch lg:gap-20">
           <div className="flex flex-col lg:py-5">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
               {content.eyebrow}
             </p>
             <h2

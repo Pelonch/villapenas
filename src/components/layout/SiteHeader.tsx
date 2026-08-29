@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   getHomeAnchorHref,
   getLocalizedPath,
@@ -14,6 +14,21 @@ import { LanguageSwitcher } from './LanguageSwitcher.tsx'
 
 export type HeaderVisibility = 'visible' | 'hidden'
 
+const focusableSelector = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])',
+].join(', ')
+
+function getFocusableElements(container: HTMLElement): HTMLElement[] {
+  return Array.from(container.querySelectorAll<HTMLElement>(focusableSelector)).filter(
+    (element) => element.getClientRects().length > 0,
+  )
+}
+
 interface SiteHeaderProps {
   route: Route
   location: BrowserLocation
@@ -27,6 +42,8 @@ export function SiteHeader({
 }: SiteHeaderProps) {
   const translations = getTranslations(route.locale)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const mobileMenuTriggerRef = useRef<HTMLButtonElement>(null)
   const homePath = getLocalizedPath(route.locale, 'home')
   const navigationItems: Array<{ id: HomeAnchorId; label: string }> = [
     { id: 'ubicacion', label: translations.navigation.location },
@@ -34,8 +51,14 @@ export function SiteHeader({
     { id: 'paquetes', label: translations.navigation.packages },
   ]
 
-  function closeMobileMenu() {
+  function closeMobileMenu(restoreFocus = false) {
     setIsMobileMenuOpen(false)
+
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => {
+        mobileMenuTriggerRef.current?.focus()
+      })
+    }
   }
 
   useEffect(() => {
@@ -56,9 +79,83 @@ export function SiteHeader({
       return
     }
 
+    const backgroundElements = Array.from(
+      document.querySelectorAll<HTMLElement>('main, footer'),
+    )
+    const previousInertStates = backgroundElements.map((element) => element.inert)
+
+    backgroundElements.forEach((element) => {
+      element.inert = true
+    })
+
+    const focusFrame = window.requestAnimationFrame(() => {
+      const menu = mobileMenuRef.current
+
+      if (menu) {
+        getFocusableElements(menu)[0]?.focus()
+      }
+    })
+
+    return () => {
+      window.cancelAnimationFrame(focusFrame)
+      backgroundElements.forEach((element, index) => {
+        element.inert = previousInertStates[index] ?? false
+      })
+    }
+  }, [isMobileMenuOpen])
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      return
+    }
+
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        closeMobileMenu()
+        event.preventDefault()
+        closeMobileMenu(true)
+
+        return
+      }
+
+      if (event.key !== 'Tab') {
+        return
+      }
+
+      const menu = mobileMenuRef.current
+
+      if (!menu) {
+        return
+      }
+
+      const focusableElements = getFocusableElements(menu)
+
+      if (focusableElements.length === 0) {
+        event.preventDefault()
+
+        return
+      }
+
+      const firstElement = focusableElements[0]
+      const lastElement = focusableElements[focusableElements.length - 1]
+
+      if (!firstElement || !lastElement) {
+        return
+      }
+
+      const activeElement = document.activeElement
+
+      if (event.shiftKey) {
+        if (activeElement === firstElement || !menu.contains(activeElement)) {
+          event.preventDefault()
+          lastElement.focus()
+        }
+
+        return
+      }
+
+      if (activeElement === lastElement || !menu.contains(activeElement)) {
+        event.preventDefault()
+        firstElement.focus()
       }
     }
 
@@ -95,7 +192,12 @@ export function SiteHeader({
       aria-hidden={visibility === 'hidden' ? true : undefined}
       inert={visibility === 'hidden'}
     >
-      <Container className="relative flex min-h-20 items-center justify-between gap-6">
+      <Container
+        className="relative flex min-h-20 items-center justify-between gap-6"
+        role={isMobileMenuOpen ? 'dialog' : undefined}
+        aria-label={isMobileMenuOpen ? translations.navigation.label : undefined}
+        aria-modal={isMobileMenuOpen || undefined}
+      >
         <a
           className="inline-flex shrink-0 items-center rounded-sm"
           href={homePath}
@@ -115,7 +217,7 @@ export function SiteHeader({
             {navigationItems.map((item) => (
               <li key={item.id}>
                 <a
-                  className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70 transition-colors hover:text-gold"
+                  className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70 transition-colors hover:text-gold-dark"
                   href={getHomeAnchorHref(route.locale, item.id)}
                   aria-current={
                     route.page === 'home' && location.hash === `#${item.id}`
@@ -136,6 +238,7 @@ export function SiteHeader({
           </Button>
           <LanguageSwitcher
             className="border-l border-ink/15 pl-5 text-ink/70"
+            activeClassName="text-gold-dark"
             locale={route.locale}
             page={route.page}
             location={location}
@@ -143,6 +246,7 @@ export function SiteHeader({
         </nav>
 
         <button
+          ref={mobileMenuTriggerRef}
           className="inline-flex size-11 items-center justify-center border border-ink/20 text-ink transition-colors hover:border-ink hover:bg-cream lg:hidden"
           type="button"
           aria-controls="mobile-site-navigation"
@@ -176,21 +280,19 @@ export function SiteHeader({
         </button>
 
         <div
+          ref={mobileMenuRef}
           id="mobile-site-navigation"
           className="absolute inset-x-0 top-full max-h-[calc(100svh-5rem)] overflow-y-auto border-b border-ink/10 bg-paper shadow-lg lg:hidden"
           hidden={!isMobileMenuOpen}
         >
-          <nav
-            className="px-5 py-7 sm:px-8"
-            aria-label={translations.navigation.label}
-          >
+          <nav className="px-5 py-7 sm:px-8">
             <ul className="border-t border-ink/15">
               {navigationItems.map((item) => (
                 <li key={item.id} className="border-b border-ink/15">
                   <a
                     className="flex min-h-14 items-center justify-between py-3 font-display text-2xl tracking-[-0.035em] text-ink"
                     href={getHomeAnchorHref(route.locale, item.id)}
-                    onClick={closeMobileMenu}
+                    onClick={() => closeMobileMenu()}
                   >
                     {item.label}
                     <span aria-hidden="true" className="font-sans text-gold">
@@ -203,16 +305,17 @@ export function SiteHeader({
             <Button
               href={getHomeAnchorHref(route.locale, 'cotizador')}
               className="mt-7 w-full"
-              onClick={closeMobileMenu}
+              onClick={() => closeMobileMenu()}
             >
               {translations.navigation.quote}
             </Button>
             <LanguageSwitcher
               className="mt-7 text-ink/70"
+              activeClassName="text-gold-dark"
               locale={route.locale}
               page={route.page}
               location={location}
-              onNavigate={closeMobileMenu}
+              onNavigate={() => closeMobileMenu()}
             />
           </nav>
         </div>

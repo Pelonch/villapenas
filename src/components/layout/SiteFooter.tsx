@@ -28,7 +28,7 @@ export function SiteFooter({ location, route }: SiteFooterProps) {
               <ul className="flex flex-wrap gap-x-6 gap-y-3">
                 <li>
                   <a
-                    className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-paper/75 transition-colors hover:text-sand"
+                    className="inline-flex min-h-11 items-center font-sans text-xs font-semibold uppercase tracking-[0.14em] text-paper/75 transition-colors hover:text-sand sm:min-h-0"
                     href={getLocalizedPath(route.locale, 'policies')}
                     aria-current={route.page === 'policies' ? 'page' : undefined}
                   >
@@ -37,7 +37,7 @@ export function SiteFooter({ location, route }: SiteFooterProps) {
                 </li>
                 <li>
                   <a
-                    className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-paper/75 transition-colors hover:text-sand"
+                    className="inline-flex min-h-11 items-center font-sans text-xs font-semibold uppercase tracking-[0.14em] text-paper/75 transition-colors hover:text-sand sm:min-h-0"
                     href={getLocalizedPath(route.locale, 'contact')}
                     aria-current={route.page === 'contact' ? 'page' : undefined}
                   >
@@ -48,6 +48,8 @@ export function SiteFooter({ location, route }: SiteFooterProps) {
             </nav>
             <LanguageSwitcher
               className="text-paper/75"
+              activeClassName="text-gold-light"
+              linkClassName="inline-flex min-h-11 min-w-11 items-center justify-center sm:min-h-0 sm:min-w-0"
               locale={route.locale}
               page={route.page}
               location={location}

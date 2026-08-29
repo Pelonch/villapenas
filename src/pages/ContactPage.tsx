@@ -34,7 +34,7 @@ export function ContactPage({ content, locale }: ContactPageProps) {
       <section className="pt-36 pb-20 sm:pt-44 sm:pb-28 lg:pt-52 lg:pb-36" aria-labelledby="contact-title">
         <Container>
           <div className="w-full max-w-4xl border-l-2 border-gold pl-5 sm:pl-7">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
               {content.heroEyebrow}
             </p>
             <h1
@@ -56,7 +56,7 @@ export function ContactPage({ content, locale }: ContactPageProps) {
             <div>
               <p
                 id="contact-information-title"
-                className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold"
+                className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark"
               >
                 {content.contactInformationEyebrow}
               </p>
@@ -85,7 +85,7 @@ export function ContactPage({ content, locale }: ContactPageProps) {
             </div>
 
             <aside className="border-t border-ink/15 pt-8 lg:mt-10 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0" aria-labelledby="contact-location-title">
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
                 {content.locationEyebrow}
               </p>
               <h2
@@ -120,7 +120,7 @@ export function ContactPage({ content, locale }: ContactPageProps) {
         <Container>
           <div className="flex max-w-5xl flex-col gap-9 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
             <div className="max-w-2xl">
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">
                 {content.quoteEyebrow}
               </p>
               <h2

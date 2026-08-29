@@ -91,7 +91,7 @@ function PackageCard({
           >
             {venuePackage.name}
           </h3>
-          <p className="mt-7 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+          <p className="mt-7 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold-light">
             {content.priceLabel}
           </p>
           <data
@@ -114,7 +114,7 @@ function PackageCard({
           >
             <h4
               id={`${headingId}-services`}
-              className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold"
+              className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold-light"
             >
               {content.includedServices}
             </h4>
@@ -126,7 +126,7 @@ function PackageCard({
               ))}
             </ul>
             <button
-              className="mt-5 min-h-11 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold underline-offset-4 transition-colors hover:text-paper hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold"
+              className="mt-5 min-h-11 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-light underline-offset-4 transition-colors hover:text-paper hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold"
               type="button"
               aria-controls={serviceListId}
               aria-expanded={isExpanded}

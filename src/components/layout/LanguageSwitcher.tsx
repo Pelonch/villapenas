@@ -9,7 +9,9 @@ import type { PageId } from '../../app/types.ts'
 import type { MouseEvent } from 'react'
 
 interface LanguageSwitcherProps {
+  activeClassName?: string
   className?: string
+  linkClassName?: string
   locale: Locale
   page: PageId
   location: Pick<BrowserLocation, 'search' | 'hash'>
@@ -17,7 +19,9 @@ interface LanguageSwitcherProps {
 }
 
 export function LanguageSwitcher({
+  activeClassName = 'text-gold-dark',
   className = '',
+  linkClassName = '',
   locale,
   page,
   location,
@@ -57,8 +61,8 @@ export function LanguageSwitcher({
         <div key={targetLocale} className="flex items-center gap-1.5">
           {index > 0 ? <span aria-hidden="true">/</span> : null}
           <a
-            className={`rounded-sm px-1 py-2 transition-colors hover:text-gold ${
-              targetLocale === locale ? 'text-gold' : ''
+            className={`rounded-sm px-1 py-2 transition-colors hover:text-gold-dark ${linkClassName} ${
+              targetLocale === locale ? activeClassName : ''
             }`}
             href={getLocalizedHref(targetLocale, page, location)}
             aria-current={targetLocale === locale ? 'true' : undefined}

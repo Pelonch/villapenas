@@ -105,7 +105,7 @@ function AmenityFeature({
       <div
         className={`lg:absolute lg:top-1/2 lg:z-40 lg:w-[29vw] lg:-translate-y-1/2 ${textDesktopPosition}`}
       >
-        <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+        <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
           {`${String(index + 1).padStart(2, '0')} / ${group.category}`}
         </p>
         <h3 className="mt-6 max-w-md font-display text-4xl leading-[0.98] tracking-[-0.045em] text-ink sm:text-5xl">

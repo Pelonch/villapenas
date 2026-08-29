@@ -48,7 +48,7 @@ export function PoliciesPage({ content }: PoliciesPageProps) {
       <section className="pt-36 pb-20 sm:pt-44 sm:pb-24 lg:pt-48 lg:pb-28" aria-labelledby="policies-title">
         <Container>
           <div className="max-w-4xl border-l-2 border-gold pl-5 sm:pl-7">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
               {content.heroEyebrow}
             </p>
             <h1

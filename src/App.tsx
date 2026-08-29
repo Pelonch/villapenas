@@ -13,11 +13,28 @@ import { getTranslations } from './i18n/translations.ts'
 type InitialLoaderPhase = LoaderPhase | 'complete'
 type HeroMediaState = 'loading' | 'ready' | 'unavailable'
 
+const initialEntrySessionKey = 'villa-penas-initial-entry'
+
+function claimInitialEntry(): boolean {
+  try {
+    const hasEntered = window.sessionStorage.getItem(initialEntrySessionKey) === 'true'
+
+    window.sessionStorage.setItem(initialEntrySessionKey, 'true')
+
+    return !hasEntered
+  } catch {
+    return true
+  }
+}
+
 function App() {
   const { location, route } = useCurrentRoute()
-  const [isInitialHomeRoute] = useState(() => route.page === 'home')
+  const [isInitialEntry] = useState(claimInitialEntry)
+  const [shouldShowInitialLoader] = useState(
+    () => isInitialEntry && route.page === 'home',
+  )
   const [loaderPhase, setLoaderPhase] = useState<InitialLoaderPhase>(
-    isInitialHomeRoute ? 'visible' : 'complete',
+    shouldShowInitialLoader ? 'visible' : 'complete',
   )
   const [heroMediaState, setHeroMediaState] = useState<HeroMediaState>('loading')
   const [minimumLoaderDurationElapsed, setMinimumLoaderDurationElapsed] = useState(false)
@@ -29,7 +46,7 @@ function App() {
   useHomeAnchorScroll(route, location.hash, prefersReducedMotion)
 
   useEffect(() => {
-    if (!isInitialHomeRoute) {
+    if (!shouldShowInitialLoader) {
       return
     }
 
@@ -44,7 +61,7 @@ function App() {
       window.clearTimeout(minimumDurationTimer)
       window.clearTimeout(maximumWaitTimer)
     }
-  }, [isInitialHomeRoute])
+  }, [shouldShowInitialLoader])
 
   useEffect(() => {
     if (
@@ -112,7 +129,7 @@ function App() {
         />
       </main>
       <SiteFooter location={location} route={route} />
-      {isInitialHomeRoute && loaderPhase !== 'complete' ? (
+      {shouldShowInitialLoader && loaderPhase !== 'complete' ? (
         <InitialLoader phase={loaderPhase} tagline={loaderContent.tagline} />
       ) : null}
     </div>

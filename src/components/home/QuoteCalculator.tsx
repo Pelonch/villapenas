@@ -246,7 +246,7 @@ function EventDetailsFields({
 
   return (
     <fieldset className="border-b border-ink/15 pb-10">
-      <legend className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+      <legend className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
         {content.eventLegend}
       </legend>
       <div className="mt-6 grid gap-5">
@@ -406,7 +406,7 @@ function PackageSelector({
 }: PackageSelectorProps) {
   return (
     <fieldset>
-      <legend className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+      <legend className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
         {content.packageLegend}
       </legend>
       <div className="mt-6 grid gap-3">
@@ -542,7 +542,7 @@ function ExtrasSelector({
       disabled={isDisabled}
       aria-describedby={isDisabled ? guidanceId : undefined}
     >
-      <legend className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+      <legend className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
         {content.extrasLegend}
       </legend>
       {isDisabled ? (
@@ -817,7 +817,7 @@ function MobileQuoteSummaryBar({
           </p>
         </div>
         <button
-          className="inline-flex min-h-11 shrink-0 items-center gap-2 border-l border-paper/20 pl-4 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-gold transition-colors hover:text-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
+          className="inline-flex min-h-11 shrink-0 items-center gap-2 border-l border-paper/20 pl-4 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-gold-light transition-colors hover:text-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
           type="button"
           aria-label={content.summaryEyebrow}
           tabIndex={isSummaryVisible ? -1 : undefined}
@@ -889,7 +889,7 @@ function QuoteSummary({
       className="self-start bg-bark p-6 text-paper sm:p-8 lg:sticky lg:top-28"
       aria-labelledby="quote-summary-title"
     >
-      <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+      <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold-light">
         {content.summaryEyebrow}
       </p>
       <h3

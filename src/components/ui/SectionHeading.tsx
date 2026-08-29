@@ -15,10 +15,11 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const textColor = tone === 'light' ? 'text-paper' : 'text-ink'
   const descriptionColor = tone === 'light' ? 'text-paper/75' : 'text-ink/70'
+  const eyebrowColor = tone === 'light' ? 'text-gold-light' : 'text-gold-dark'
 
   return (
     <header>
-      <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+      <p className={`font-sans text-xs font-semibold uppercase tracking-[0.2em] ${eyebrowColor}`}>
         {eyebrow}
       </p>
       <h2

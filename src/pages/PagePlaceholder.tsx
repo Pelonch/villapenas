@@ -10,7 +10,7 @@ export function PagePlaceholder({ content }: PlaceholderPageProps) {
   return (
     <section className="min-h-[70svh] bg-paper py-32 sm:py-40" aria-labelledby="page-title">
       <Container className="max-w-3xl">
-        <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+        <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
           {siteConfig.businessName}
         </p>
         <h1
