@@ -7,7 +7,7 @@ export function useHomeAnchorScroll(
   prefersReducedMotion: boolean,
 ): void {
   useEffect(() => {
-    if (route.page !== 'home') {
+    if (route.isNotFound || route.page !== 'home') {
       return
     }
 
@@ -67,5 +67,5 @@ export function useHomeAnchorScroll(
       observer.disconnect()
       window.cancelAnimationFrame(animationFrame)
     }
-  }, [hash, prefersReducedMotion, route.page])
+  }, [hash, prefersReducedMotion, route.isNotFound, route.page])
 }

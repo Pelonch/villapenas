@@ -6,8 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/generate-seo.mjs",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node scripts/serve-dist.mjs"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

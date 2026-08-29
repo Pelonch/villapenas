@@ -31,7 +31,7 @@ function App() {
   const { location, route } = useCurrentRoute()
   const [isInitialEntry] = useState(claimInitialEntry)
   const [shouldShowInitialLoader] = useState(
-    () => isInitialEntry && route.page === 'home',
+    () => isInitialEntry && !route.isNotFound && route.page === 'home',
   )
   const [loaderPhase, setLoaderPhase] = useState<InitialLoaderPhase>(
     shouldShowInitialLoader ? 'visible' : 'complete',
@@ -105,9 +105,9 @@ function App() {
   }, [loaderPhase, prefersReducedMotion])
 
   const isHomeExperienceActive =
-    route.page === 'home' && loaderPhase === 'complete'
+    !route.isNotFound && route.page === 'home' && loaderPhase === 'complete'
   const headerVisibility =
-    route.page !== 'home' || (isHomeExperienceActive && isHeroHeaderVisible)
+    route.isNotFound || route.page !== 'home' || (isHomeExperienceActive && isHeroHeaderVisible)
       ? 'visible'
       : 'hidden'
   const loaderContent = getTranslations(route.locale).loader

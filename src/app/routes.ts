@@ -6,6 +6,7 @@ export interface Route {
   locale: Locale
   page: PageId
   isRoot: boolean
+  isNotFound: boolean
 }
 
 export interface BrowserLocation {
@@ -65,21 +66,29 @@ export function getRoute(pathname: string): Route {
       locale: siteConfig.defaultLocale,
       page: 'home',
       isRoot: true,
+      isNotFound: false,
     }
   }
 
   for (const locale of siteConfig.supportedLocales) {
     for (const page of pageIds) {
       if (localizedPaths[locale][page] === normalizedPathname) {
-        return { locale, page, isRoot: false }
+        return { locale, page, isRoot: false, isNotFound: false }
       }
     }
   }
 
+  const locale = siteConfig.supportedLocales.find(
+    (supportedLocale) =>
+      normalizedPathname === `/${supportedLocale}` ||
+      normalizedPathname.startsWith(`/${supportedLocale}/`),
+  )
+
   return {
-    locale: siteConfig.defaultLocale,
+    locale: locale ?? siteConfig.defaultLocale,
     page: 'home',
     isRoot: false,
+    isNotFound: true,
   }
 }
 

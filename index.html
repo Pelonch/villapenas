@@ -2,16 +2,42 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2b2018" />
+    <meta name="robots" content="index, follow" />
     <meta
       name="description"
-      content="Villa Peñas es un espacio privado para celebraciones y eventos en Santa Cruz, Guanacaste."
+      content="Villa Peñas es un espacio privado para celebraciones y eventos en Santa Cruz, Guanacaste, con piscina, rancho, cocina equipada, área BBQ y más."
     />
+    <meta property="og:site_name" content="Villa Peñas" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CR" />
+    <meta property="og:title" content="Villa Peñas | Espacio para eventos en Santa Cruz, Guanacaste" />
+    <meta property="og:description" content="Villa Peñas es un espacio privado para celebraciones y eventos en Santa Cruz, Guanacaste." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Villa Peñas | Espacio para eventos en Santa Cruz, Guanacaste" />
+    <meta name="twitter:description" content="Villa Peñas es un espacio privado para celebraciones y eventos en Santa Cruz, Guanacaste." />
     <title>Villa Peñas | Espacio para eventos en Santa Cruz, Guanacaste</title>
   </head>
   <body>
     <div id="root"></div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "EventVenue",
+        "name": "Villa Peñas",
+        "telephone": "+50688507712",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Santa Cruz",
+          "addressRegion": "Guanacaste",
+          "addressCountry": "CR"
+        },
+        "hasMap": "https://maps.app.goo.gl/HP9MBJkZyfovstMv9"
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

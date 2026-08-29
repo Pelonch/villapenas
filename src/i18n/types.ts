@@ -19,6 +19,14 @@ export interface PlaceholderPageContent {
   placeholder: string
 }
 
+export interface NotFoundPageContent {
+  eyebrow: string
+  heading: string
+  description: string
+  homeCta: string
+  contactCta: string
+}
+
 export interface ContactPageContent {
   heroEyebrow: string
   heading: string
@@ -250,6 +258,7 @@ export interface TranslationCatalog {
     home: HomePageContent
     policies: PoliciesPageContent
     contact: ContactPageContent
+    notFound: NotFoundPageContent
   }
-  metadata: Record<PageId, PageMetadata>
+  metadata: Record<PageId | 'notFound', PageMetadata>
 }

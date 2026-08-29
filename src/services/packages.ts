@@ -196,7 +196,7 @@ function toVenuePackage(packageDto: PackageDto): VenuePackage {
 export async function fetchPackages(
   signal?: AbortSignal,
 ): Promise<readonly VenuePackage[]> {
-  const url = new URL(`${apiConfig.baseUrl}/paquetes`, window.location.origin)
+  const url = apiConfig.getUrl('paquetes')
   url.searchParams.set('activo', 'true')
   url.searchParams.set('limite', '100')
 

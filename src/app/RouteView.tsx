@@ -1,6 +1,7 @@
 import { getTranslations } from '../i18n/translations.ts'
 import { ContactPage } from '../pages/ContactPage.tsx'
 import { HomePage } from '../pages/HomePage.tsx'
+import { NotFoundPage } from '../pages/NotFoundPage.tsx'
 import { PoliciesPage } from '../pages/PoliciesPage.tsx'
 import type { Route } from './routes.ts'
 
@@ -21,6 +22,10 @@ export function RouteView({
 }: RouteViewProps) {
   const translations = getTranslations(route.locale)
   const pages = translations.pages
+
+  if (route.isNotFound) {
+    return <NotFoundPage content={pages.notFound} locale={route.locale} />
+  }
 
   switch (route.page) {
     case 'home':

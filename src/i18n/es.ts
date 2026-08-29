@@ -372,6 +372,14 @@ export const es = {
         'Arma una cotización estimada con nuestros paquetes y adicionales.',
       quoteCta: 'Cotizar mi evento',
     },
+    notFound: {
+      eyebrow: '404',
+      heading: 'Esta página no está disponible.',
+      description:
+        'El enlace que abriste no existe o ya no está disponible. Puedes volver al inicio para seguir explorando Villa Peñas.',
+      homeCta: 'Volver al inicio',
+      contactCta: 'Ir a contacto',
+    },
   },
   metadata: {
     home: {
@@ -400,6 +408,14 @@ export const es = {
       openGraph: {
         title: 'Villa Peñas | Contacto',
         description: 'Encuentra la información de contacto de Villa Peñas.',
+      },
+    },
+    notFound: {
+      title: 'Página no encontrada | Villa Peñas',
+      description: 'La página solicitada no está disponible en Villa Peñas.',
+      openGraph: {
+        title: 'Página no encontrada | Villa Peñas',
+        description: 'La página solicitada no está disponible en Villa Peñas.',
       },
     },
   },

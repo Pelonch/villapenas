@@ -372,6 +372,14 @@ export const en = {
         'Build an estimated quotation with our packages and optional extras.',
       quoteCta: 'Get a Quote',
     },
+    notFound: {
+      eyebrow: '404',
+      heading: 'This page is not available.',
+      description:
+        'The link you opened does not exist or is no longer available. Return home to continue exploring Villa Peñas.',
+      homeCta: 'Return home',
+      contactCta: 'Go to contact',
+    },
   },
   metadata: {
     home: {
@@ -400,6 +408,14 @@ export const en = {
       openGraph: {
         title: 'Villa Peñas | Contact',
         description: 'Find Villa Peñas contact information.',
+      },
+    },
+    notFound: {
+      title: 'Page not found | Villa Peñas',
+      description: 'The requested Villa Peñas page is not available.',
+      openGraph: {
+        title: 'Page not found | Villa Peñas',
+        description: 'The requested Villa Peñas page is not available.',
       },
     },
   },

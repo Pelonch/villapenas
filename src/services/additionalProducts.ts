@@ -201,10 +201,7 @@ function toAdditionalProducts(
 export async function fetchAdditionalProducts(
   signal?: AbortSignal,
 ): Promise<readonly AdditionalProduct[]> {
-  const url = new URL(
-    `${apiConfig.baseUrl}/opciones-productos-adicionales`,
-    window.location.origin,
-  )
+  const url = apiConfig.getUrl('opciones-productos-adicionales')
   url.searchParams.set('activo', 'true')
   url.searchParams.set('limite', '100')
 

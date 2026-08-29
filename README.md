@@ -1,39 +1,33 @@
-# React + TypeScript + Vite
+# Villa Peñas Landing
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Public bilingual React + Vite landing page for Villa Peñas.
 
-Currently, two official plugins are available:
+## Production Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```text
+npm ci
+npm run build
+npm start
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`npm start` serves `dist/` with a document-only SPA fallback. Existing static files are served directly and missing static assets return `404` rather than the application shell.
+
+The server reads Railway's `PORT` environment variable and otherwise uses port `4173` locally.
+
+## Public Environment
+
+Copy `.env.example` for local configuration. Every `VITE_` variable is embedded in the browser bundle and must never contain secrets.
+
+| Variable | Purpose |
+| --- | --- |
+| `VITE_API_BASE_URL` | Public NestJS API origin. It is optional only because the existing Railway API is an intentional fallback. |
+| `VITE_SITE_URL` | Public frontend origin for canonical URLs and generated `sitemap.xml`. Use the temporary Railway URL for a test deployment, then update it to the final custom domain. |
+
+When `VITE_SITE_URL` is unset, the build emits `robots.txt` without a sitemap and runtime metadata uses the current browser origin. Set it before an indexable production launch.
 
 ## Hero Media
 
-Milestone 3 references final media through `src/config/homeExperience.ts`. Add optimized final assets at these exact public paths when they are ready:
+The final assets referenced by `src/config/homeExperience.ts` belong at these public paths:
 
 ```text
 public/
@@ -50,4 +44,4 @@ public/
       aerial-poster.webp
 ```
 
-The Hero and aerial preview intentionally render warm design-system fallback surfaces if any of these files are absent.
+The Hero and aerial preview render warm design-system fallback surfaces if any of these files are absent.

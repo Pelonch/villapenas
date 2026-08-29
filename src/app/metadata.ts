@@ -53,27 +53,62 @@ function upsertLink(
   linkElement.href = href
 }
 
+function removeMeta(attribute: 'name' | 'property', key: string): void {
+  document.head.querySelector(`meta[${attribute}="${key}"]`)?.remove()
+}
+
+function removeLink(rel: string, hreflang?: string): void {
+  const selector = hreflang
+    ? `link[rel="${rel}"][hreflang="${hreflang}"]`
+    : `link[rel="${rel}"]:not([hreflang])`
+
+  document.head.querySelector(selector)?.remove()
+}
+
 function getOpenGraphLocale(locale: Locale): string {
   return locale === 'es' ? 'es_CR' : 'en_CR'
 }
 
 export function usePageMetadata(route: Route): void {
-  const metadata = getTranslations(route.locale).metadata[route.page]
-  const canonicalPath = getLocalizedPath(route.locale, route.page)
+  const translations = getTranslations(route.locale)
+  const metadata = route.isNotFound
+    ? translations.metadata.notFound
+    : translations.metadata[route.page]
+  const canonicalPath = route.isNotFound
+    ? null
+    : getLocalizedPath(route.locale, route.page)
 
   useEffect(() => {
-    const canonicalUrl = getAbsoluteUrl(canonicalPath)
-
     document.documentElement.lang = route.locale
     document.title = metadata.title
     upsertMeta('name', 'description', metadata.description)
-    upsertLink('canonical', canonicalUrl)
+    upsertMeta('name', 'twitter:card', 'summary')
+    upsertMeta('name', 'twitter:title', metadata.openGraph.title)
+    upsertMeta('name', 'twitter:description', metadata.openGraph.description)
     upsertMeta('property', 'og:site_name', siteConfig.businessName)
     upsertMeta('property', 'og:type', 'website')
     upsertMeta('property', 'og:title', metadata.openGraph.title)
     upsertMeta('property', 'og:description', metadata.openGraph.description)
-    upsertMeta('property', 'og:url', canonicalUrl)
     upsertMeta('property', 'og:locale', getOpenGraphLocale(route.locale))
+
+    if (route.isNotFound || !canonicalPath) {
+      upsertMeta('name', 'robots', 'noindex, nofollow')
+      removeMeta('property', 'og:url')
+      removeLink('canonical')
+
+      for (const locale of siteConfig.supportedLocales) {
+        removeLink('alternate', locale)
+      }
+
+      removeLink('alternate', 'x-default')
+      return
+    }
+
+    const canonicalUrl = getAbsoluteUrl(canonicalPath)
+
+    upsertMeta('name', 'robots', 'index, follow')
+    upsertLink('canonical', canonicalUrl)
+    upsertMeta('property', 'og:url', canonicalUrl)
 
     for (const locale of siteConfig.supportedLocales) {
       upsertLink('alternate', getAbsoluteUrl(getLocalizedPath(locale, route.page)), locale)
@@ -84,5 +119,5 @@ export function usePageMetadata(route: Route): void {
       getAbsoluteUrl(getLocalizedPath(siteConfig.defaultLocale, route.page)),
       'x-default',
     )
-  }, [canonicalPath, metadata, route.locale, route.page])
+  }, [canonicalPath, metadata, route.isNotFound, route.locale, route.page])
 }

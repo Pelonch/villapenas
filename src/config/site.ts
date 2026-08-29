@@ -13,7 +13,17 @@ interface SiteConfig {
 function getProductionUrl(): string | null {
   const configuredUrl = import.meta.env.VITE_SITE_URL?.trim()
 
-  return configuredUrl ? configuredUrl.replace(/\/+$/, '') : null
+  if (!configuredUrl) {
+    return null
+  }
+
+  const url = new URL(configuredUrl)
+
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+    throw new Error('VITE_SITE_URL must use http or https.')
+  }
+
+  return url.origin
 }
 
 export const siteConfig = {
