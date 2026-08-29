@@ -23,6 +23,21 @@ export const homeAnchorIds = [
 
 export type HomeAnchorId = (typeof homeAnchorIds)[number]
 
+const localizedHomeAnchorIds: Record<Locale, Record<HomeAnchorId, string>> = {
+  es: {
+    ubicacion: 'ubicacion',
+    amenidades: 'amenidades',
+    paquetes: 'paquetes',
+    cotizador: 'cotizador',
+  },
+  en: {
+    ubicacion: 'ubicacion',
+    amenidades: 'amenidades',
+    paquetes: 'paquetes',
+    cotizador: 'quote',
+  },
+}
+
 const localizedPaths: Record<Locale, Record<PageId, string>> = {
   es: {
     home: '/es',
@@ -72,16 +87,22 @@ export function getLocalizedPath(locale: Locale, page: PageId): string {
   return localizedPaths[locale][page]
 }
 
+export function getHomeAnchorHash(locale: Locale, anchorId: HomeAnchorId): string {
+  return localizedHomeAnchorIds[locale][anchorId]
+}
+
 export function getHomeAnchorHref(locale: Locale, anchorId: HomeAnchorId): string {
-  return `${getLocalizedPath(locale, 'home')}#${anchorId}`
+  return `${getLocalizedPath(locale, 'home')}#${getHomeAnchorHash(locale, anchorId)}`
 }
 
 export function getHomeAnchorId(hash: string): HomeAnchorId | null {
-  const anchorId = hash.replace(/^#/, '')
+  const hashId = hash.replace(/^#/, '')
 
-  for (const homeAnchorId of homeAnchorIds) {
-    if (homeAnchorId === anchorId) {
-      return homeAnchorId
+  for (const locale of siteConfig.supportedLocales) {
+    for (const homeAnchorId of homeAnchorIds) {
+      if (localizedHomeAnchorIds[locale][homeAnchorId] === hashId) {
+        return homeAnchorId
+      }
     }
   }
 
@@ -93,5 +114,10 @@ export function getLocalizedHref(
   page: PageId,
   location: Pick<BrowserLocation, 'search' | 'hash'>,
 ): string {
-  return `${getLocalizedPath(locale, page)}${location.search}${location.hash}`
+  const homeAnchorId = page === 'home' ? getHomeAnchorId(location.hash) : null
+  const hash = homeAnchorId
+    ? `#${getHomeAnchorHash(locale, homeAnchorId)}`
+    : location.hash
+
+  return `${getLocalizedPath(locale, page)}${location.search}${hash}`
 }

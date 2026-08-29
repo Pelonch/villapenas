@@ -10,6 +10,7 @@ interface QuoteEntityTranslations {
   additionalOptions: Readonly<Partial<Record<number, QuoteEntityTranslation>>>
   additionalProducts: Readonly<Partial<Record<number, QuoteEntityTranslation>>>
   packages: Readonly<Partial<Record<number, QuoteEntityTranslation>>>
+  services: Readonly<Partial<Record<number, QuoteEntityTranslation>>>
 }
 
 export const quoteEntityTranslations: Readonly<
@@ -19,6 +20,7 @@ export const quoteEntityTranslations: Readonly<
     additionalOptions: {},
     additionalProducts: {},
     packages: {},
+    services: {},
   },
   en: {
     packages: {
@@ -37,6 +39,18 @@ export const quoteEntityTranslations: Readonly<
         description:
           'A complimentary package approved for family, friends, or special activities. Services are selected according to the event.',
       },
+    },
+    services: {
+      1: { name: 'Rancho' },
+      2: { name: 'Equipped kitchen' },
+      3: { name: 'Pool' },
+      4: { name: 'Premium gas grill' },
+      5: { name: 'JBL PartyBox 720 sound system' },
+      6: { name: 'Wireless microphones' },
+      7: { name: '75-inch Smart TV' },
+      8: { name: 'Playground' },
+      9: { name: 'Trampoline' },
+      10: { name: 'Wi-Fi' },
     },
     additionalProducts: {
       1: {

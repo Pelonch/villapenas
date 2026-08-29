@@ -6,6 +6,7 @@ import { LocationSection } from '../components/home/LocationSection.tsx'
 import { MomentsSection } from '../components/home/MomentsSection.tsx'
 import { PackagesSection } from '../components/home/PackagesSection.tsx'
 import { QuoteCalculator } from '../components/home/QuoteCalculator.tsx'
+import { getHomeAnchorHref } from '../app/routes.ts'
 import type { HomePageContent, Locale } from '../i18n/types.ts'
 import { QuoteProvider } from '../quote/QuoteProvider.tsx'
 import { getSocialMediaItems } from '../services/social.ts'
@@ -44,7 +45,7 @@ export function HomePage({
       />
       <LocationSection content={content.location} />
       <AmenitiesSection content={content.amenities} />
-      <PackagesSection content={content.packages} />
+      <PackagesSection content={content.packages} locale={locale} />
       <MomentsSection content={content.instagram} items={socialMediaItems} />
       <QuoteCalculator
         content={content.quote}
@@ -55,6 +56,7 @@ export function HomePage({
         isHiddenOnMobile={isQuoteVisibleOnMobile}
         isVisible={isExperienceActive}
         label={quoteLabel}
+        href={getHomeAnchorHref(locale, 'cotizador')}
       />
     </QuoteProvider>
   )

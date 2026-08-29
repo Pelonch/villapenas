@@ -2,9 +2,13 @@ import { useState } from 'react'
 import { provisionalVenueImageSrc } from '../../config/images.ts'
 import { getPackageImageSource } from '../../config/packages.ts'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.ts'
-import type { PackagesContent } from '../../i18n/types.ts'
+import type { Locale, PackagesContent } from '../../i18n/types.ts'
 import { useQuoteContext } from '../../quote/context.ts'
-import type { PackageService, VenuePackage } from '../../types/packages.ts'
+import {
+  getQuoteCatalogDisplay,
+  type QuotePackageDisplay,
+  type QuotePackageServiceDisplay,
+} from '../../quote/display.ts'
 import { Button } from '../ui/Button.tsx'
 import { Container } from '../ui/Container.tsx'
 import { ImageWithFallback } from '../ui/ImageWithFallback.tsx'
@@ -12,6 +16,7 @@ import { SectionHeading } from '../ui/SectionHeading.tsx'
 
 interface PackagesSectionProps {
   content: PackagesContent
+  locale: Locale
 }
 
 interface PackageCardProps {
@@ -20,7 +25,7 @@ interface PackageCardProps {
   isExpanded: boolean
   onSelectPackage: () => void
   onToggleServices: () => void
-  venuePackage: VenuePackage
+  venuePackage: QuotePackageDisplay
 }
 
 const servicePreviewLimit = 3
@@ -37,7 +42,7 @@ function getPackageGridClasses(packageCount: number): string {
   return 'md:grid-cols-2 xl:grid-cols-3'
 }
 
-function getServiceLabel(service: PackageService): string {
+function getServiceLabel(service: QuotePackageServiceDisplay): string {
   const quantityPrefix = service.quantity === null ? '' : `${service.quantity} `
   const detail = service.detail?.trim()
   const baseLabel = `${quantityPrefix}${service.name}`
@@ -187,7 +192,7 @@ function PackagesMessage({
   )
 }
 
-export function PackagesSection({ content }: PackagesSectionProps) {
+export function PackagesSection({ content, locale }: PackagesSectionProps) {
   const { packagesState: state, retryPackages, selectPackage } = useQuoteContext()
   const [expandedPackageIds, setExpandedPackageIds] = useState<ReadonlySet<number>>(
     () => new Set(),
@@ -210,6 +215,10 @@ export function PackagesSection({ content }: PackagesSectionProps) {
   }
 
   const hasExpandedPackage = expandedPackageIds.size > 0
+  const packages =
+    state.status === 'success'
+      ? getQuoteCatalogDisplay(locale, state.packages, []).packages
+      : []
 
   const selectPackageAndScroll = (packageId: number) => {
     selectPackage(packageId)
@@ -243,14 +252,14 @@ export function PackagesSection({ content }: PackagesSectionProps) {
               onAction={retryPackages}
             />
           ) : null}
-          {state.status === 'success' && state.packages.length === 0 ? (
+          {state.status === 'success' && packages.length === 0 ? (
             <PackagesMessage message={content.empty} />
           ) : null}
-          {state.status === 'success' && state.packages.length > 0 ? (
+          {state.status === 'success' && packages.length > 0 ? (
             <div
-              className={`grid w-full gap-6 lg:gap-8 ${getPackageGridClasses(state.packages.length)} ${hasExpandedPackage ? 'items-start' : ''}`}
+              className={`grid w-full gap-6 lg:gap-8 ${getPackageGridClasses(packages.length)} ${hasExpandedPackage ? 'items-start' : ''}`}
             >
-              {state.packages.map((venuePackage) => (
+              {packages.map((venuePackage) => (
                 <PackageCard
                   key={venuePackage.id}
                   content={content}

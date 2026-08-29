@@ -1,8 +1,12 @@
-import { getLocalizedHref, type BrowserLocation } from '../../app/routes.ts'
+import {
+  getLocalizedHref,
+  type BrowserLocation,
+} from '../../app/routes.ts'
 import { siteConfig } from '../../config/site.ts'
 import { getTranslations } from '../../i18n/translations.ts'
 import type { Locale } from '../../i18n/types.ts'
 import type { PageId } from '../../app/types.ts'
+import type { MouseEvent } from 'react'
 
 interface LanguageSwitcherProps {
   className?: string
@@ -21,6 +25,28 @@ export function LanguageSwitcher({
 }: LanguageSwitcherProps) {
   const translations = getTranslations(locale)
 
+  const handleNavigate = (
+    event: MouseEvent<HTMLAnchorElement>,
+    targetLocale: Locale,
+  ) => {
+    onNavigate?.()
+
+    if (
+      targetLocale === locale ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.altKey ||
+      event.ctrlKey ||
+      event.shiftKey
+    ) {
+      return
+    }
+
+    event.preventDefault()
+    window.history.pushState(null, '', event.currentTarget.href)
+    window.dispatchEvent(new PopStateEvent('popstate'))
+  }
+
   return (
     <div
       className={`flex items-center gap-1.5 font-sans text-xs font-semibold uppercase tracking-[0.16em] ${className}`}
@@ -36,7 +62,7 @@ export function LanguageSwitcher({
             }`}
             href={getLocalizedHref(targetLocale, page, location)}
             aria-current={targetLocale === locale ? 'true' : undefined}
-            onClick={onNavigate}
+            onClick={(event) => handleNavigate(event, targetLocale)}
           >
             {targetLocale.toUpperCase()}
           </a>

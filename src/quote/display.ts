@@ -6,11 +6,20 @@ import type {
 } from '../types/additionalProducts.ts'
 import type { VenuePackage } from '../types/packages.ts'
 
+export interface QuotePackageServiceDisplay {
+  detail: string | null
+  id: number
+  name: string
+  quantity: number | null
+  serviceId: number
+}
+
 export interface QuotePackageDisplay {
   description: string | null
   id: number
   name: string
   priceColones: number
+  services: readonly QuotePackageServiceDisplay[]
 }
 
 export interface QuoteAdditionalProductOptionDisplay {
@@ -54,6 +63,17 @@ function toPackageDisplay(
     name: localizeText(venuePackage.name, translation?.name) ?? venuePackage.name,
     description: localizeText(venuePackage.description, translation?.description),
     priceColones: venuePackage.priceColones,
+    services: venuePackage.services.map((service) => {
+      const serviceTranslation = quoteEntityTranslations[locale].services[service.serviceId]
+
+      return {
+        id: service.id,
+        serviceId: service.serviceId,
+        name: localizeText(service.name, serviceTranslation?.name) ?? service.name,
+        quantity: service.quantity,
+        detail: service.detail,
+      }
+    }),
   }
 }
 
