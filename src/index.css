@@ -176,6 +176,15 @@ select {
   transition: transform 160ms ease-out;
 }
 
+.vp-instagram-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.vp-instagram-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes vp-quote-options-reveal {
   from {
     opacity: 0;

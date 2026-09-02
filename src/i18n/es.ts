@@ -152,40 +152,45 @@ export const es = {
           }).format(priceColones),
       },
       instagram: {
-        eyebrow: 'Momentos',
-        heading: 'Villa Peñas, como se vive.',
-        description:
-          'Un vistazo a celebraciones, detalles y momentos compartidos en Villa Peñas.',
+        eyebrow: 'INSTAGRAM',
+        heading: 'Momentos en Villa Peñas',
+        description: 'Un vistazo a lo que se vive por aquí.',
+        loading: 'Cargando momentos de Villa Peñas',
+        empty: 'Pronto compartiremos más momentos de Villa Peñas.',
+        error: 'No pudimos cargar los momentos en este momento.',
+        retry: 'Intentar de nuevo',
         viewOnInstagram: 'Ver en Instagram',
+        videoLabel: 'VIDEO',
+        carouselLabel: 'CARRUSEL',
         openPost: (caption) =>
           `Abrir ${caption} en Instagram en una pestaña nueva`,
-        profileCta: 'Seguir en Instagram',
+        profileCta: 'Síguenos en Instagram',
         profileCtaNewTab:
           'Abrir el perfil de Instagram de Villa Peñas en una pestaña nueva',
-        items: {
-          'outdoor-celebration': {
-            alt: 'Imagen temporal para una celebración al aire libre en Villa Peñas',
-            caption: 'Celebraciones al aire libre',
+        posts: {
+          'pool-at-dusk': {
+            alt: 'Piscina iluminada de Villa Peñas al atardecer',
+            caption: 'Atardeceres junto a la piscina',
           },
-          'shared-table': {
-            alt: 'Imagen temporal para una mesa compartida en Villa Peñas',
-            caption: 'Momentos para compartir',
+          'rancho-gathering': {
+            alt: 'Rancho preparado para una celebración en Villa Peñas',
+            caption: 'Espacios para compartir',
           },
-          'celebration-detail': {
-            alt: 'Imagen temporal para un detalle de celebración en Villa Peñas',
-            caption: 'Pequeños detalles',
+          'bbq-after-dark': {
+            alt: 'Área de parrilla iluminada de Villa Peñas durante la noche',
+            caption: 'Noches alrededor del BBQ',
           },
-          'afternoon-gathering': {
-            alt: 'Imagen temporal para una reunión de tarde en Villa Peñas',
-            caption: 'Tardes que se quedan',
+          'pool-and-gardens': {
+            alt: 'Piscina, rancho y jardines de Villa Peñas',
+            caption: 'Un lugar para disfrutar',
           },
-          'special-moment': {
-            alt: 'Imagen temporal para un momento especial en Villa Peñas',
-            caption: 'Cada momento cuenta',
+          'playground-afternoon': {
+            alt: 'Playground rodeado de naturaleza en Villa Peñas',
+            caption: 'Diversión al aire libre',
           },
-          'villa-details': {
-            alt: 'Imagen temporal para detalles de Villa Peñas',
-            caption: 'Detalles de Villa Peñas',
+          'open-air-rancho': {
+            alt: 'Vista exterior del rancho y áreas sociales de Villa Peñas',
+            caption: 'Villa Peñas al aire libre',
           },
         },
       },

@@ -152,40 +152,45 @@ export const en = {
           }).format(priceColones),
       },
       instagram: {
-        eyebrow: 'Moments',
-        heading: 'Villa Peñas, as it is lived.',
-        description:
-          'A glimpse into celebrations, details and shared moments at Villa Peñas.',
+        eyebrow: 'INSTAGRAM',
+        heading: 'Moments at Villa Peñas',
+        description: 'A glimpse of life at Villa Peñas.',
+        loading: 'Loading moments from Villa Peñas',
+        empty: 'More moments from Villa Peñas will be shared soon.',
+        error: "We couldn't load the moments right now.",
+        retry: 'Try again',
         viewOnInstagram: 'View on Instagram',
+        videoLabel: 'VIDEO',
+        carouselLabel: 'CAROUSEL',
         openPost: (caption) =>
           `Open ${caption} on Instagram in a new tab`,
-        profileCta: 'Follow on Instagram',
+        profileCta: 'Follow us on Instagram',
         profileCtaNewTab:
           'Open the Villa Peñas Instagram profile in a new tab',
-        items: {
-          'outdoor-celebration': {
-            alt: 'Temporary image for an outdoor celebration at Villa Peñas',
-            caption: 'Outdoor celebrations',
+        posts: {
+          'pool-at-dusk': {
+            alt: 'Villa Peñas pool lit at dusk',
+            caption: 'Dusk by the pool',
           },
-          'shared-table': {
-            alt: 'Temporary image for a shared table at Villa Peñas',
-            caption: 'Moments to share',
+          'rancho-gathering': {
+            alt: 'Rancho prepared for a celebration at Villa Peñas',
+            caption: 'Spaces to share',
           },
-          'celebration-detail': {
-            alt: 'Temporary image for a celebration detail at Villa Peñas',
-            caption: 'Small details',
+          'bbq-after-dark': {
+            alt: 'Villa Peñas illuminated BBQ area at night',
+            caption: 'Nights around the BBQ',
           },
-          'afternoon-gathering': {
-            alt: 'Temporary image for an afternoon gathering at Villa Peñas',
-            caption: 'Afternoons to remember',
+          'pool-and-gardens': {
+            alt: 'Villa Peñas pool, rancho and gardens',
+            caption: 'A place to enjoy',
           },
-          'special-moment': {
-            alt: 'Temporary image for a special moment at Villa Peñas',
-            caption: 'Every moment counts',
+          'playground-afternoon': {
+            alt: 'Playground surrounded by nature at Villa Peñas',
+            caption: 'Outdoor fun',
           },
-          'villa-details': {
-            alt: 'Temporary image for Villa Peñas details',
-            caption: 'Villa Peñas details',
+          'open-air-rancho': {
+            alt: 'Outdoor view of the Villa Peñas rancho and social areas',
+            caption: 'Villa Peñas outdoors',
           },
         },
       },

@@ -2,16 +2,13 @@ import { useState } from 'react'
 import { AmenitiesSection } from '../components/home/AmenitiesSection.tsx'
 import { FloatingQuoteCta } from '../components/home/FloatingQuoteCta.tsx'
 import { Hero } from '../components/home/Hero.tsx'
+import { InstagramSection } from '../components/home/InstagramSection.tsx'
 import { LocationSection } from '../components/home/LocationSection.tsx'
-import { MomentsSection } from '../components/home/MomentsSection.tsx'
 import { PackagesSection } from '../components/home/PackagesSection.tsx'
 import { QuoteCalculator } from '../components/home/QuoteCalculator.tsx'
 import { getHomeAnchorHref } from '../app/routes.ts'
 import type { HomePageContent, Locale } from '../i18n/types.ts'
 import { QuoteProvider } from '../quote/QuoteProvider.tsx'
-import { getSocialMediaItems } from '../services/social.ts'
-
-const socialMediaItems = getSocialMediaItems()
 
 interface HomePageProps {
   content: HomePageContent
@@ -46,7 +43,7 @@ export function HomePage({
       <LocationSection content={content.location} />
       <AmenitiesSection content={content.amenities} />
       <PackagesSection content={content.packages} locale={locale} />
-      <MomentsSection content={content.instagram} items={socialMediaItems} />
+      <InstagramSection content={content.instagram} />
       <QuoteCalculator
         content={content.quote}
         locale={locale}
