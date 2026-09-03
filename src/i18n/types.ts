@@ -109,7 +109,6 @@ export interface PackagesContent {
   empty: string
   error: string
   retry: string
-  packageImageAlt: (packageName: string) => string
   formatPrice: (priceColones: number) => string
 }
 

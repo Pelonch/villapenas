@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { provisionalVenueImageSrc } from '../../config/images.ts'
-import { getPackageImageSource } from '../../config/packages.ts'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.ts'
 import type { Locale, PackagesContent } from '../../i18n/types.ts'
 import { useQuoteContext } from '../../quote/context.ts'
@@ -11,7 +9,6 @@ import {
 } from '../../quote/display.ts'
 import { Button } from '../ui/Button.tsx'
 import { Container } from '../ui/Container.tsx'
-import { ImageWithFallback } from '../ui/ImageWithFallback.tsx'
 import { SectionHeading } from '../ui/SectionHeading.tsx'
 
 interface PackagesSectionProps {
@@ -71,18 +68,6 @@ function PackageCard({
       className={`flex flex-col border border-paper/20 bg-bark/30 ${fillGridRow ? 'h-full' : 'self-start'}`}
       aria-labelledby={headingId}
     >
-      <div className="aspect-[4/3] overflow-hidden bg-bark">
-        <ImageWithFallback
-          className="size-full object-cover"
-          src={getPackageImageSource(venuePackage.id)}
-          fallbackSrc={provisionalVenueImageSrc}
-          width="1254"
-          height="1254"
-          alt={content.packageImageAlt(venuePackage.name)}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
       <div className="flex flex-1 flex-col p-6 sm:p-8">
         <header>
           <h3
@@ -157,8 +142,7 @@ function PackagesSkeleton({ content }: Pick<PackagesSectionProps, 'content'>) {
           className="animate-pulse border border-paper/20 bg-bark/30 p-6 sm:p-8"
           aria-hidden="true"
         >
-          <div className="aspect-[4/3] bg-paper/10" />
-          <div className="mt-8 h-9 w-2/3 bg-paper/10" />
+          <div className="h-9 w-2/3 bg-paper/10" />
           <div className="mt-5 h-12 w-1/2 bg-paper/10" />
           <div className="mt-9 space-y-3">
             <div className="h-4 w-full bg-paper/10" />

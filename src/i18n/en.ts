@@ -140,8 +140,6 @@ export const en = {
         empty: 'Our packages will be available soon.',
         error: "We couldn't load the packages right now.",
         retry: 'Try again',
-        packageImageAlt: (packageName) =>
-          `Temporary image for the ${packageName} package`,
         formatPrice: (priceColones) =>
           new Intl.NumberFormat('en-CR', {
             currency: 'CRC',

@@ -28,10 +28,6 @@ interface PackageDto {
   paquetesServicios: readonly PackageServiceDto[]
 }
 
-interface PackagesResponseDto {
-  datos: readonly PackageDto[]
-}
-
 type JsonRecord = Record<string, unknown>
 
 function isRecord(value: unknown): value is JsonRecord {
@@ -142,14 +138,14 @@ function parsePackage(value: unknown): PackageDto | null {
   }
 }
 
-function parsePackagesResponse(value: unknown): PackagesResponseDto {
-  if (!isRecord(value) || !Array.isArray(value.datos)) {
+function parsePackagesResponse(value: unknown): readonly PackageDto[] {
+  if (!Array.isArray(value)) {
     throw new Error('Invalid packages response.')
   }
 
   const packages: PackageDto[] = []
 
-  for (const packageValue of value.datos) {
+  for (const packageValue of value) {
     const venuePackage = parsePackage(packageValue)
 
     if (venuePackage === null) {
@@ -159,7 +155,7 @@ function parsePackagesResponse(value: unknown): PackagesResponseDto {
     packages.push(venuePackage)
   }
 
-  return { datos: packages }
+  return packages
 }
 
 function toPackageService(packageService: PackageServiceDto): PackageService {
@@ -196,9 +192,7 @@ function toVenuePackage(packageDto: PackageDto): VenuePackage {
 export async function fetchPackages(
   signal?: AbortSignal,
 ): Promise<readonly VenuePackage[]> {
-  const url = apiConfig.getUrl('paquetes')
-  url.searchParams.set('activo', 'true')
-  url.searchParams.set('limite', '100')
+  const url = apiConfig.getUrl('public/paquetes')
 
   const request: RequestInit = { headers: { Accept: 'application/json' } }
 
@@ -214,7 +208,7 @@ export async function fetchPackages(
 
   const packagesResponse = parsePackagesResponse(await response.json())
 
-  return packagesResponse.datos
+  return packagesResponse
     .filter((venuePackage) => venuePackage.activo)
     .map(toVenuePackage)
 }

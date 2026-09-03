@@ -140,8 +140,6 @@ export const es = {
         empty: 'Nuestros paquetes estarán disponibles próximamente.',
         error: 'No pudimos cargar los paquetes en este momento.',
         retry: 'Intentar de nuevo',
-        packageImageAlt: (packageName) =>
-          `Vista provisional del paquete ${packageName}`,
         formatPrice: (priceColones) =>
           new Intl.NumberFormat('es-CR', {
             currency: 'CRC',

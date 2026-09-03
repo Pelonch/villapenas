@@ -9,26 +9,18 @@ interface AdditionalProductDto {
   nombre: string
   descripcion: string | null
   imagenUrl: string | null
-  activo: boolean
 }
 
 interface AdditionalProductOptionDto {
   id: number
   productoAdicionalId: number
-  extraHours: number | null
   nombre: string
   descripcion: string | null
   unidadMedida: string | null
   cantidadIncluida: number | null
   cantidadPersonas: number | null
   precioVentaColones: number
-  activo: boolean
-  orden: number
   productoAdicional: AdditionalProductDto
-}
-
-interface AdditionalProductOptionsResponseDto {
-  datos: readonly AdditionalProductOptionDto[]
 }
 
 type JsonRecord = Record<string, unknown>
@@ -41,18 +33,8 @@ function readFiniteNumber(value: unknown): number | null {
   return typeof value === 'number' && Number.isFinite(value) ? value : null
 }
 
-function readNonNegativeWholeNumber(value: unknown): number | null {
-  const number = readFiniteNumber(value)
-
-  return number !== null && number >= 0 && Number.isInteger(number) ? number : null
-}
-
 function readString(value: unknown): string | null {
   return typeof value === 'string' ? value : null
-}
-
-function readBoolean(value: unknown): boolean | null {
-  return typeof value === 'boolean' ? value : null
 }
 
 function parseAdditionalProduct(value: unknown): AdditionalProductDto | null {
@@ -62,9 +44,8 @@ function parseAdditionalProduct(value: unknown): AdditionalProductDto | null {
 
   const id = readFiniteNumber(value.id)
   const nombre = readString(value.nombre)
-  const activo = readBoolean(value.activo)
 
-  if (id === null || nombre === null || activo === null) {
+  if (id === null || nombre === null) {
     return null
   }
 
@@ -73,7 +54,6 @@ function parseAdditionalProduct(value: unknown): AdditionalProductDto | null {
     nombre,
     descripcion: readString(value.descripcion),
     imagenUrl: readString(value.imagenUrl),
-    activo,
   }
 }
 
@@ -88,8 +68,6 @@ function parseAdditionalProductOption(
   const productoAdicionalId = readFiniteNumber(value.productoAdicionalId)
   const nombre = readString(value.nombre)
   const precioVentaColones = readFiniteNumber(value.precioVentaColones)
-  const activo = readBoolean(value.activo)
-  const orden = readFiniteNumber(value.orden)
   const productoAdicional = parseAdditionalProduct(value.productoAdicional)
 
   if (
@@ -97,8 +75,6 @@ function parseAdditionalProductOption(
     productoAdicionalId === null ||
     nombre === null ||
     precioVentaColones === null ||
-    activo === null ||
-    orden === null ||
     productoAdicional === null ||
     productoAdicional.id !== productoAdicionalId
   ) {
@@ -108,29 +84,26 @@ function parseAdditionalProductOption(
   return {
     id,
     productoAdicionalId,
-    extraHours: readNonNegativeWholeNumber(value.extraHours),
     nombre,
     descripcion: readString(value.descripcion),
     unidadMedida: readString(value.unidadMedida),
     cantidadIncluida: readFiniteNumber(value.cantidadIncluida),
     cantidadPersonas: readFiniteNumber(value.cantidadPersonas),
     precioVentaColones,
-    activo,
-    orden,
     productoAdicional,
   }
 }
 
 function parseAdditionalProductOptionsResponse(
   value: unknown,
-): AdditionalProductOptionsResponseDto {
-  if (!isRecord(value) || !Array.isArray(value.datos)) {
+): readonly AdditionalProductOptionDto[] {
+  if (!Array.isArray(value)) {
     throw new Error('Invalid additional product options response.')
   }
 
   const options: AdditionalProductOptionDto[] = []
 
-  for (const optionValue of value.datos) {
+  for (const optionValue of value) {
     const option = parseAdditionalProductOption(optionValue)
 
     if (option === null) {
@@ -140,24 +113,25 @@ function parseAdditionalProductOptionsResponse(
     options.push(option)
   }
 
-  return { datos: options }
+  return options
 }
 
 function toAdditionalProductOption(
   option: AdditionalProductOptionDto,
+  order: number,
 ): AdditionalProductOption {
   return {
     id: option.id,
     productId: option.productoAdicionalId,
+    // The public response has no duration metadata, so selected options add no time.
+    extraHours: null,
     name: option.nombre,
     description: option.descripcion,
-    // Future duration-bearing options must provide this numeric field explicitly.
-    extraHours: readNonNegativeWholeNumber(option.extraHours),
     includedQuantity: option.cantidadIncluida,
     peopleQuantity: option.cantidadPersonas,
     unitOfMeasure: option.unidadMedida,
     priceColones: option.precioVentaColones,
-    order: option.orden,
+    order,
   }
 }
 
@@ -169,15 +143,11 @@ function toAdditionalProducts(
     Omit<AdditionalProduct, 'options'> & { options: AdditionalProductOption[] }
   >()
 
-  for (const option of options) {
-    if (!option.activo || !option.productoAdicional.activo) {
-      continue
-    }
-
+  for (const [order, option] of options.entries()) {
     const product = products.get(option.productoAdicionalId)
 
     if (product) {
-      product.options.push(toAdditionalProductOption(option))
+      product.options.push(toAdditionalProductOption(option, order))
       continue
     }
 
@@ -186,7 +156,7 @@ function toAdditionalProducts(
       name: option.productoAdicional.nombre,
       description: option.productoAdicional.descripcion,
       imageUrl: option.productoAdicional.imagenUrl,
-      options: [toAdditionalProductOption(option)],
+      options: [toAdditionalProductOption(option, order)],
     })
   }
 
@@ -201,9 +171,7 @@ function toAdditionalProducts(
 export async function fetchAdditionalProducts(
   signal?: AbortSignal,
 ): Promise<readonly AdditionalProduct[]> {
-  const url = apiConfig.getUrl('opciones-productos-adicionales')
-  url.searchParams.set('activo', 'true')
-  url.searchParams.set('limite', '100')
+  const url = apiConfig.getUrl('public/opciones-productos-adicionales')
 
   const request: RequestInit = { headers: { Accept: 'application/json' } }
 
@@ -219,5 +187,5 @@ export async function fetchAdditionalProducts(
 
   const optionsResponse = parseAdditionalProductOptionsResponse(await response.json())
 
-  return toAdditionalProducts(optionsResponse.datos)
+  return toAdditionalProducts(optionsResponse)
 }
