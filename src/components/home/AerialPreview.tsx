@@ -19,7 +19,8 @@ export function AerialPreview({
   const [previewFailed, setPreviewFailed] = useState(false)
   const [dialogFailed, setDialogFailed] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
-  const shouldLoadPreview = isExperienceActive && !prefersReducedMotion && !previewFailed
+  const shouldLoadPreview =
+    isExperienceActive && !isDialogOpen && !prefersReducedMotion && !previewFailed
   const shouldLoadDialog = isDialogOpen && !prefersReducedMotion && !dialogFailed
   const titleId = 'aerial-view-dialog-title'
 

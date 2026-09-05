@@ -56,12 +56,74 @@ function getCacheControl(filePath) {
     : 'no-cache'
 }
 
-function sendFile(response, filePath, fileStats, method) {
-  const contentType = mimeTypes[extname(filePath).toLowerCase()] ?? 'application/octet-stream'
+function getByteRange(rangeHeader, size) {
+  if (!rangeHeader) {
+    return null
+  }
 
-  response.writeHead(200, {
+  const match = /^bytes=(\d*)-(\d*)$/.exec(rangeHeader)
+
+  if (!match || size === 0) {
+    return undefined
+  }
+
+  const [, startValue, endValue] = match
+
+  if (!startValue && !endValue) {
+    return undefined
+  }
+
+  if (!startValue) {
+    const suffixLength = Number(endValue)
+
+    if (!Number.isInteger(suffixLength) || suffixLength <= 0) {
+      return undefined
+    }
+
+    return {
+      start: Math.max(size - suffixLength, 0),
+      end: size - 1,
+    }
+  }
+
+  const start = Number(startValue)
+  const end = endValue ? Number(endValue) : size - 1
+
+  if (
+    !Number.isInteger(start) ||
+    !Number.isInteger(end) ||
+    start < 0 ||
+    start >= size ||
+    end < start
+  ) {
+    return undefined
+  }
+
+  return { start, end: Math.min(end, size - 1) }
+}
+
+function sendFile(response, filePath, fileStats, method, rangeHeader) {
+  const contentType = mimeTypes[extname(filePath).toLowerCase()] ?? 'application/octet-stream'
+  const byteRange = getByteRange(rangeHeader, fileStats.size)
+
+  if (byteRange === undefined) {
+    response.writeHead(416, {
+      'Content-Range': `bytes */${fileStats.size}`,
+      'X-Content-Type-Options': 'nosniff',
+    })
+    response.end()
+    return
+  }
+
+  const contentLength = byteRange ? byteRange.end - byteRange.start + 1 : fileStats.size
+
+  response.writeHead(byteRange ? 206 : 200, {
+    'Accept-Ranges': 'bytes',
     'Cache-Control': getCacheControl(filePath),
-    'Content-Length': fileStats.size,
+    'Content-Length': contentLength,
+    ...(byteRange
+      ? { 'Content-Range': `bytes ${byteRange.start}-${byteRange.end}/${fileStats.size}` }
+      : {}),
     'Content-Type': contentType,
     'X-Content-Type-Options': 'nosniff',
   })
@@ -71,7 +133,7 @@ function sendFile(response, filePath, fileStats, method) {
     return
   }
 
-  createReadStream(filePath).pipe(response)
+  createReadStream(filePath, byteRange ?? undefined).pipe(response)
 }
 
 async function getFileStats(filePath) {
@@ -114,7 +176,7 @@ const server = createServer(async (request, response) => {
   const requestedFileStats = await getFileStats(requestedFilePath)
 
   if (requestedFileStats) {
-    sendFile(response, requestedFilePath, requestedFileStats, request.method)
+    sendFile(response, requestedFilePath, requestedFileStats, request.method, request.headers.range)
     return
   }
 
@@ -123,7 +185,7 @@ const server = createServer(async (request, response) => {
     const indexStats = await getFileStats(indexPath)
 
     if (indexStats) {
-      sendFile(response, indexPath, indexStats, request.method)
+      sendFile(response, indexPath, indexStats, request.method, request.headers.range)
       return
     }
   }

@@ -193,6 +193,7 @@ function EventDetailsFields({
   const [guestCountGuidance, setGuestCountGuidance] = useState<GuestCountGuidance | null>(
     null,
   )
+  const [isDateInputFocused, setIsDateInputFocused] = useState(false)
   const validationMessage = getEventValidationMessage(content, validation)
   const showValidation = validation.hasValues && validationMessage !== null
   const hasDateError = validation.issue === 'past-date'
@@ -268,12 +269,14 @@ function EventDetailsFields({
                 onChange={(inputEvent) =>
                   onChange('eventDate', inputEvent.currentTarget.value)
                 }
+                onFocus={() => setIsDateInputFocused(true)}
+                onBlur={() => setIsDateInputFocused(false)}
               />
-              {event.eventDate ? null : (
+              {!event.eventDate && !isDateInputFocused ? (
                 <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center font-sans text-base text-ink/60">
                   {content.eventDatePlaceholder}
                 </span>
-              )}
+              ) : null}
             </span>
           </label>
           <div>

@@ -136,15 +136,23 @@ export function LocationSection({ content }: LocationSectionProps) {
             <GoogleMapsLink content={content} className="mt-10 self-start" />
           </div>
           <div className="overflow-hidden self-start rounded-2xl border border-ink/10 bg-cream shadow-sm shadow-ink/10">
-            <img
-              className="block h-auto w-full"
-              src="/images/brand/villa-penas-location-map.png"
-              width="1536"
-              height="1024"
-              alt={content.illustratedMapAlt}
-              loading="lazy"
-              decoding="async"
-            />
+            <a
+              className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-inset"
+              href={siteConfig.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={content.openMapsNewTab}
+            >
+              <img
+                className="block h-auto w-full"
+                src="/images/brand/villa-penas-location-map.png"
+                width="1536"
+                height="1024"
+                alt={content.illustratedMapAlt}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
           </div>
         </div>
         <TravelTimes content={content} />

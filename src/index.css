@@ -213,7 +213,8 @@ select {
   text-align: left;
 }
 
-.vp-quote-date-input--empty::-webkit-date-and-time-value {
+.vp-quote-date-input--empty:not(:focus)::-webkit-datetime-edit,
+.vp-quote-date-input--empty:not(:focus)::-webkit-date-and-time-value {
   color: transparent;
   -webkit-text-fill-color: transparent;
 }

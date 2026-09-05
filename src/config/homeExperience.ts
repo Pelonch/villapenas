@@ -19,11 +19,11 @@ export const homeExperienceConfig = {
     hero: {
       desktopVideo: '/videos/hero.mp4',
       mobileVideo: '/videos/hero.mp4',
-      poster: '/images/hero/hero-poster.webp',
+      poster: undefined,
     },
     aerial: {
       video: '/videos/air.mp4',
-      poster: '/images/aerial/aerial-poster.webp',
+      poster: undefined,
     },
   },
 } as const

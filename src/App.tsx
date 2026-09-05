@@ -106,6 +106,7 @@ function App() {
 
   const isHomeExperienceActive =
     !route.isNotFound && route.page === 'home' && loaderPhase === 'complete'
+  const isInitialLoaderActive = shouldShowInitialLoader && loaderPhase !== 'complete'
   const headerVisibility =
     route.isNotFound || route.page !== 'home' || (isHomeExperienceActive && isHeroHeaderVisible)
       ? 'visible'
@@ -114,22 +115,27 @@ function App() {
 
   return (
     <div>
-      <SiteHeader
-        location={location}
-        route={route}
-        visibility={headerVisibility}
-      />
-      <main>
-        <RouteView
+      <div
+        aria-hidden={isInitialLoaderActive || undefined}
+        inert={isInitialLoaderActive}
+      >
+        <SiteHeader
+          location={location}
           route={route}
-          isHomeExperienceActive={isHomeExperienceActive}
-          onHeroHeaderVisibilityChange={setIsHeroHeaderVisible}
-          onHeroMediaReady={() => setHeroMediaState('ready')}
-          onHeroMediaUnavailable={() => setHeroMediaState('unavailable')}
+          visibility={headerVisibility}
         />
-      </main>
-      <SiteFooter location={location} route={route} />
-      {shouldShowInitialLoader && loaderPhase !== 'complete' ? (
+        <main>
+          <RouteView
+            route={route}
+            isHomeExperienceActive={isHomeExperienceActive}
+            onHeroHeaderVisibilityChange={setIsHeroHeaderVisible}
+            onHeroMediaReady={() => setHeroMediaState('ready')}
+            onHeroMediaUnavailable={() => setHeroMediaState('unavailable')}
+          />
+        </main>
+        <SiteFooter location={location} route={route} />
+      </div>
+      {isInitialLoaderActive ? (
         <InitialLoader phase={loaderPhase} tagline={loaderContent.tagline} />
       ) : null}
     </div>

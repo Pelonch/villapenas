@@ -38,6 +38,19 @@ function isHttpUrl(value: string): boolean {
   }
 }
 
+function isInstagramPermalink(value: string): boolean {
+  try {
+    const url = new URL(value)
+
+    return (
+      (url.protocol === 'http:' || url.protocol === 'https:') &&
+      (url.hostname === 'instagram.com' || url.hostname.endsWith('.instagram.com'))
+    )
+  } catch {
+    return false
+  }
+}
+
 function readMediaUrl(value: unknown): string | null {
   const url = readNullableString(value)
 
@@ -58,7 +71,7 @@ function parseInstagramPost(value: unknown): InstagramPost | null {
     id === null ||
     mediaType === null ||
     permalink === null ||
-    !isHttpUrl(permalink) ||
+    !isInstagramPermalink(permalink) ||
     timestamp === null
   ) {
     return null
