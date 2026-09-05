@@ -160,37 +160,12 @@ export const es = {
         viewOnInstagram: 'Ver en Instagram',
         videoLabel: 'VIDEO',
         carouselLabel: 'CARRUSEL',
+        postAlt: 'Publicación de Instagram de Villa Peñas',
         openPost: (caption) =>
           `Abrir ${caption} en Instagram en una pestaña nueva`,
         profileCta: 'Síguenos en Instagram',
         profileCtaNewTab:
           'Abrir el perfil de Instagram de Villa Peñas en una pestaña nueva',
-        posts: {
-          'pool-at-dusk': {
-            alt: 'Piscina iluminada de Villa Peñas al atardecer',
-            caption: 'Atardeceres junto a la piscina',
-          },
-          'rancho-gathering': {
-            alt: 'Rancho preparado para una celebración en Villa Peñas',
-            caption: 'Espacios para compartir',
-          },
-          'bbq-after-dark': {
-            alt: 'Área de parrilla iluminada de Villa Peñas durante la noche',
-            caption: 'Noches alrededor del BBQ',
-          },
-          'pool-and-gardens': {
-            alt: 'Piscina, rancho y jardines de Villa Peñas',
-            caption: 'Un lugar para disfrutar',
-          },
-          'playground-afternoon': {
-            alt: 'Playground rodeado de naturaleza en Villa Peñas',
-            caption: 'Diversión al aire libre',
-          },
-          'open-air-rancho': {
-            alt: 'Vista exterior del rancho y áreas sociales de Villa Peñas',
-            caption: 'Villa Peñas al aire libre',
-          },
-        },
       },
       quote: {
         eyebrow: 'Cotización',

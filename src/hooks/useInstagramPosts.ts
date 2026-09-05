@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { getInstagramPosts } from '../services/instagram.ts'
-import type { InstagramPost } from '../types/instagram.ts'
+import type { InstagramPostWithPreview } from '../types/instagram.ts'
 
 export type InstagramPostsLoadState =
   | { status: 'loading' }
-  | { status: 'success'; posts: readonly InstagramPost[] }
+  | { status: 'success'; posts: readonly InstagramPostWithPreview[] }
   | { status: 'error' }
 
 interface UseInstagramPostsResult {

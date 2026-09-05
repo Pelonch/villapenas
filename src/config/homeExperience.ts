@@ -17,12 +17,12 @@ export const homeExperienceConfig = {
   },
   media: {
     hero: {
-      desktopVideo: '/videos/hero/hero-desktop.mp4',
-      mobileVideo: '/videos/hero/hero-mobile.mp4',
+      desktopVideo: '/videos/hero.mp4',
+      mobileVideo: '/videos/hero.mp4',
       poster: '/images/hero/hero-poster.webp',
     },
     aerial: {
-      video: '/videos/aerial/aerial.mp4',
+      video: '/videos/air.mp4',
       poster: '/images/aerial/aerial-poster.webp',
     },
   },

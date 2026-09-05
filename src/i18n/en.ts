@@ -160,37 +160,12 @@ export const en = {
         viewOnInstagram: 'View on Instagram',
         videoLabel: 'VIDEO',
         carouselLabel: 'CAROUSEL',
+        postAlt: 'Instagram post from Villa Peñas',
         openPost: (caption) =>
           `Open ${caption} on Instagram in a new tab`,
         profileCta: 'Follow us on Instagram',
         profileCtaNewTab:
           'Open the Villa Peñas Instagram profile in a new tab',
-        posts: {
-          'pool-at-dusk': {
-            alt: 'Villa Peñas pool lit at dusk',
-            caption: 'Dusk by the pool',
-          },
-          'rancho-gathering': {
-            alt: 'Rancho prepared for a celebration at Villa Peñas',
-            caption: 'Spaces to share',
-          },
-          'bbq-after-dark': {
-            alt: 'Villa Peñas illuminated BBQ area at night',
-            caption: 'Nights around the BBQ',
-          },
-          'pool-and-gardens': {
-            alt: 'Villa Peñas pool, rancho and gardens',
-            caption: 'A place to enjoy',
-          },
-          'playground-afternoon': {
-            alt: 'Playground surrounded by nature at Villa Peñas',
-            caption: 'Outdoor fun',
-          },
-          'open-air-rancho': {
-            alt: 'Outdoor view of the Villa Peñas rancho and social areas',
-            caption: 'Villa Peñas outdoors',
-          },
-        },
       },
       quote: {
         eyebrow: 'Quote',

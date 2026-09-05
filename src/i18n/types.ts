@@ -112,11 +112,6 @@ export interface PackagesContent {
   formatPrice: (priceColones: number) => string
 }
 
-export interface InstagramPostContent {
-  alt: string
-  caption: string
-}
-
 export interface InstagramContent {
   eyebrow: string
   heading: string
@@ -128,10 +123,10 @@ export interface InstagramContent {
   viewOnInstagram: string
   videoLabel: string
   carouselLabel: string
+  postAlt: string
   openPost: (caption: string) => string
   profileCta: string
   profileCtaNewTab: string
-  posts: Readonly<Record<string, InstagramPostContent | undefined>>
 }
 
 export interface WhatsAppMessageContent {

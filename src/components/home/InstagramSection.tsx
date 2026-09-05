@@ -2,7 +2,7 @@ import { socialConfig } from '../../config/social.ts'
 import { provisionalVenueImageSrc } from '../../config/images.ts'
 import { useInstagramPosts } from '../../hooks/useInstagramPosts.ts'
 import type { InstagramContent } from '../../i18n/types.ts'
-import type { InstagramPost } from '../../types/instagram.ts'
+import type { InstagramPostWithPreview } from '../../types/instagram.ts'
 import { Button } from '../ui/Button.tsx'
 import { Container } from '../ui/Container.tsx'
 import { ImageWithFallback } from '../ui/ImageWithFallback.tsx'
@@ -14,17 +14,17 @@ interface InstagramSectionProps {
 
 interface InstagramPostTileProps {
   content: InstagramContent
-  post: InstagramPost
+  post: InstagramPostWithPreview
   layoutClassName?: string
 }
 
 const desktopLayoutClasses = [
-  'lg:col-span-5 lg:row-span-5',
-  'lg:col-span-4 lg:row-span-3',
-  'lg:col-span-3 lg:row-span-4',
-  'lg:col-span-4 lg:row-span-2',
-  'lg:col-span-5 lg:row-span-3',
-  'lg:col-span-7 lg:row-span-3',
+  'lg:order-1 lg:col-span-5 lg:row-span-5',
+  'lg:order-2 lg:col-span-4 lg:row-span-3',
+  'lg:order-4 lg:col-span-4 lg:row-span-2',
+  'lg:order-3 lg:col-span-3 lg:row-span-5',
+  'lg:order-5 lg:col-span-6 lg:row-span-3',
+  'lg:order-6 lg:col-span-6 lg:row-span-3',
 ] as const
 
 function ExternalArrowIcon() {
@@ -50,7 +50,7 @@ function MediaIndicator({
   mediaType,
 }: {
   label: string
-  mediaType: Extract<InstagramPost['mediaType'], 'VIDEO' | 'CAROUSEL_ALBUM'>
+  mediaType: 'VIDEO' | 'CAROUSEL_ALBUM'
 }) {
   const icon =
     mediaType === 'VIDEO' ? (
@@ -91,36 +91,39 @@ function InstagramPostTile({
   post,
   layoutClassName = '',
 }: InstagramPostTileProps) {
-  const localizedPost = content.posts[post.id]
-  const caption = localizedPost?.caption ?? post.caption
-  const mediaSource = post.thumbnailUrl ?? post.mediaUrl
+  const caption = post.caption
+  const accessibleLabel =
+    caption !== null && caption.length > 0 && caption.length <= 160
+      ? caption
+      : content.postAlt
   const isInteractive = isValidPermalink(post.permalink)
+  const imagePositionClassName = post.permalink.includes('/DaalzXSkXZH')
+    ? 'object-[50%_60%]'
+    : ''
   const className = `group relative block h-full overflow-hidden bg-moss ${layoutClassName}`
-  const mediaTypeLabel =
+  const mediaIndicator =
     post.mediaType === 'VIDEO'
-      ? content.videoLabel
+      ? <MediaIndicator label={content.videoLabel} mediaType="VIDEO" />
       : post.mediaType === 'CAROUSEL_ALBUM'
-        ? content.carouselLabel
+        ? <MediaIndicator label={content.carouselLabel} mediaType="CAROUSEL_ALBUM" />
         : null
   const tileContent = (
     <>
       <ImageWithFallback
-        className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] group-focus-visible:scale-[1.02] motion-reduce:transition-none"
-        src={mediaSource}
+        className={`size-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02] group-focus-visible:scale-[1.02] motion-reduce:transition-none ${imagePositionClassName}`}
+        src={post.previewUrl}
         fallbackSrc={provisionalVenueImageSrc}
-        alt={localizedPost?.alt ?? post.caption ?? ''}
+        alt={accessibleLabel}
         loading="lazy"
         decoding="async"
         draggable={false}
       />
       {caption ? (
-        <span className="absolute inset-x-0 bottom-0 bg-linear-to-t from-ink/75 to-transparent px-4 pb-4 pt-12 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-paper lg:opacity-0 lg:transition-opacity lg:duration-300 lg:group-hover:opacity-100 lg:group-focus-visible:opacity-100 motion-reduce:transition-none">
+        <span className="line-clamp-3 absolute inset-x-0 bottom-0 bg-linear-to-t from-ink/75 to-transparent px-4 pb-4 pt-12 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-paper lg:opacity-0 lg:transition-opacity lg:duration-300 lg:group-hover:opacity-100 lg:group-focus-visible:opacity-100 motion-reduce:transition-none">
           {caption}
         </span>
       ) : null}
-      {post.mediaType !== 'IMAGE' && mediaTypeLabel ? (
-        <MediaIndicator label={mediaTypeLabel} mediaType={post.mediaType} />
-      ) : null}
+      {mediaIndicator}
       {isInteractive ? (
         <span className="absolute inset-0 flex items-center justify-center bg-ink/0 text-center opacity-0 transition-all duration-300 group-hover:bg-ink/35 group-hover:opacity-100 group-focus-visible:bg-ink/35 group-focus-visible:opacity-100 motion-reduce:transition-none">
           <span className="inline-flex items-center gap-2 border border-paper/60 px-4 py-3 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-paper">
@@ -139,7 +142,7 @@ function InstagramPostTile({
         href={post.permalink}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={content.openPost(caption ?? post.id)}
+        aria-label={content.openPost(accessibleLabel)}
       >
         {tileContent}
       </a>
@@ -170,7 +173,9 @@ function InstagramGallerySkeleton({ content }: Pick<InstagramSectionProps, 'cont
 function InstagramGallery({
   content,
   posts,
-}: Pick<InstagramSectionProps, 'content'> & { posts: readonly InstagramPost[] }) {
+}: Pick<InstagramSectionProps, 'content'> & {
+  posts: readonly InstagramPostWithPreview[]
+}) {
   return (
     <>
       <div
