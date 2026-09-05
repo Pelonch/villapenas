@@ -3,7 +3,7 @@ import { quoteCapacityConfig } from '../../config/quoteCapacity.ts'
 import type { Locale, QuoteContent } from '../../i18n/types.ts'
 import { calculateQuote, type QuoteCalculation } from '../../quote/calculateQuote.ts'
 import { useQuoteContext } from '../../quote/context.ts'
-import { getGuestCapacity } from '../../quote/capacity.ts'
+import { getCapacityOptions, getGuestCapacity } from '../../quote/capacity.ts'
 import {
   getQuoteCatalogDisplay,
   getQuoteExtraDisplayNames,
@@ -1090,12 +1090,11 @@ export function QuoteCalculator({
   const calculation = calculateQuote(quoteSelection, packages, additionalProducts)
   const displayCatalog = getQuoteCatalogDisplay(locale, packages, additionalProducts)
   const guestCapacity = getGuestCapacity(quoteSelection, additionalProducts)
+  const capacityOptions = getCapacityOptions(additionalProducts)
   const guestCountLimit = guestCapacity.maximumGuests
   const canAddCapacityExtra =
     calculation.selectedPackage !== null &&
-    additionalProducts.some(
-      (product) => product.id === quoteCapacityConfig.capacityExtraProductId,
-    )
+    capacityOptions.length > 0
   const eventSchedule = calculateQuoteEventSchedule(
     quoteSelection.startTime,
     calculation.selectedExtraHours,
@@ -1119,8 +1118,19 @@ export function QuoteCalculator({
       return
     }
 
-    toggleProduct(quoteCapacityConfig.capacityExtraProductId, true)
-    setExpandedProductId(quoteCapacityConfig.capacityExtraProductId)
+    const [capacityOption] = capacityOptions
+
+    if (!capacityOption) {
+      return
+    }
+
+    if (capacityOptions.length === 1) {
+      selectOption(capacityOption.productId, capacityOption.id)
+    } else {
+      toggleProduct(capacityOption.productId, true)
+    }
+
+    setExpandedProductId(capacityOption.productId)
   }
 
   useEffect(() => {

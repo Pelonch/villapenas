@@ -24,13 +24,29 @@ function getMaximumGuests(additionalGuestCapacity: number | null): number {
     : quoteCapacityConfig.includedGuestLimit + additionalGuestCapacity
 }
 
+function getCapacityProduct(
+  additionalProducts: readonly AdditionalProduct[],
+): AdditionalProduct | undefined {
+  return additionalProducts.find(
+    (product) => product.id === quoteCapacityConfig.capacityExtraProductId,
+  )
+}
+
+export function getCapacityOptions(
+  additionalProducts: readonly AdditionalProduct[],
+): readonly AdditionalProduct['options'][number][] {
+  return (
+    getCapacityProduct(additionalProducts)?.options.filter(
+      (option) => getAdditionalGuestCapacity(option.peopleQuantity) !== null,
+    ) ?? []
+  )
+}
+
 function getSelectedCapacityExtra(
   selection: QuoteSelection,
   additionalProducts: readonly AdditionalProduct[],
 ): AdditionalProduct['options'][number] | null {
-  const capacityProduct = additionalProducts.find(
-    (product) => product.id === quoteCapacityConfig.capacityExtraProductId,
-  )
+  const capacityProduct = getCapacityProduct(additionalProducts)
   const selectedOptionId = selection.selectedOptionIdsByProduct.get(
     quoteCapacityConfig.capacityExtraProductId,
   )
