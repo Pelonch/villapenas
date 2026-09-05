@@ -174,6 +174,7 @@ export const en = {
           'Create an estimated quote for your event. Availability and final details are confirmed directly with Villa Peñas.',
         eventLegend: '1. Date and time',
         eventDateLabel: 'Event date',
+        eventDatePlaceholder: 'Select a date',
         guestCountLabel: 'Number of guests',
         decreaseGuestCount: 'Decrease guest count',
         increaseGuestCount: 'Increase guest count',

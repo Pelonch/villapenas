@@ -255,19 +255,26 @@ function EventDetailsFields({
             <span className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70">
               {content.eventDateLabel}
             </span>
-            <input
-              id="quote-event-date"
-              className="mt-3 min-h-12 w-full border border-ink/20 bg-paper px-3 font-sans text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
-              type="date"
-              min={minDate}
-              value={event.eventDate}
-              required
-              aria-describedby={showValidation ? validationId : undefined}
-              aria-invalid={hasDateError || undefined}
-              onChange={(inputEvent) =>
-                onChange('eventDate', inputEvent.currentTarget.value)
-              }
-            />
+            <span className="relative mt-3 block">
+              <input
+                id="quote-event-date"
+                className={`vp-quote-date-input min-h-12 w-full border border-ink/20 bg-paper px-3 font-sans text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none ${event.eventDate ? '' : 'vp-quote-date-input--empty'}`}
+                type="date"
+                min={minDate}
+                value={event.eventDate}
+                required
+                aria-describedby={showValidation ? validationId : undefined}
+                aria-invalid={hasDateError || undefined}
+                onChange={(inputEvent) =>
+                  onChange('eventDate', inputEvent.currentTarget.value)
+                }
+              />
+              {event.eventDate ? null : (
+                <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center font-sans text-base text-ink/60">
+                  {content.eventDatePlaceholder}
+                </span>
+              )}
+            </span>
           </label>
           <div>
             <label
@@ -290,7 +297,7 @@ function EventDetailsFields({
               </button>
               <input
                 id="quote-guest-count"
-                className="min-h-11 w-12 appearance-none bg-transparent text-right text-base text-ink outline-none"
+                className="vp-quote-guest-count-input min-h-11 w-12 appearance-none bg-transparent text-center text-base text-ink outline-none sm:text-right"
                 type="number"
                 inputMode="numeric"
                 min="1"

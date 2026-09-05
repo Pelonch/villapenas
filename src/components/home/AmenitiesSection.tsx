@@ -26,6 +26,7 @@ interface AmenityCollageProps
     AmenityFeatureProps,
     'group' | 'onCollageRef' | 'onLayerRef'
   > {
+  isLargeDesktopGrid: boolean
   isOnRight: boolean
 }
 
@@ -52,8 +53,15 @@ const collageLayerClasses: Record<
 
 const layerMotionRanges = [16, 34, 52] as const
 
+const largeDesktopGridLayerClasses = [
+  'min-[1600px]:left-[1.82%] min-[1600px]:top-[8.33%] min-[1600px]:h-[72.22%] min-[1600px]:w-[49.09%]',
+  'min-[1600px]:left-[36.36%] min-[1600px]:top-0 min-[1600px]:h-[52.78%] min-[1600px]:w-[54.55%]',
+  'min-[1600px]:left-[60%] min-[1600px]:top-[56.94%] min-[1600px]:h-[43.06%] min-[1600px]:w-[40%]',
+] as const
+
 function AmenityCollage({
   group,
+  isLargeDesktopGrid,
   onCollageRef,
   onLayerRef,
   isOnRight,
@@ -64,13 +72,13 @@ function AmenityCollage({
   return (
     <div
       ref={onCollageRef}
-      className={`relative isolate mx-auto h-[22rem] w-full max-w-[36rem] sm:h-[31rem] lg:absolute lg:inset-y-0 lg:mx-0 lg:h-full lg:w-[55vw] lg:max-w-none lg:shrink-0 ${desktopPosition}`}
+      className={`relative isolate mx-auto h-[22rem] w-full max-w-[36rem] sm:h-[31rem] lg:absolute lg:inset-y-0 lg:mx-0 lg:h-full lg:w-[55vw] lg:max-w-none lg:shrink-0 ${desktopPosition} ${isLargeDesktopGrid ? 'min-[1600px]:relative min-[1600px]:inset-auto min-[1600px]:left-auto min-[1600px]:h-[72vh] min-[1600px]:w-full' : ''}`}
     >
       {group.images.map((image, index) => (
         <div
           key={`${group.id}-${index}`}
           ref={(element) => onLayerRef(index, element)}
-          className={`absolute overflow-hidden bg-cream p-3 will-change-transform sm:p-4 lg:p-5 ${layerClasses[index] ?? ''}`}
+          className={`absolute overflow-hidden bg-cream p-3 will-change-transform sm:p-4 lg:p-5 ${layerClasses[index] ?? ''} ${isLargeDesktopGrid ? (largeDesktopGridLayerClasses[index] ?? '') : ''}`}
         >
           <ImageWithFallback
             className="size-full object-cover"
@@ -95,15 +103,18 @@ function AmenityFeature({
   onCollageRef,
   onLayerRef,
 }: AmenityFeatureProps) {
+  const isFirstFeature = index === 0
   const isCollageOnRight = index % 2 === 1
   const textDesktopPosition = isCollageOnRight
-    ? 'lg:left-[12vw]'
-    : 'lg:left-[59vw]'
+    ? 'lg:left-[12vw] min-[1600px]:left-[18vw]'
+    : 'lg:left-[59vw] min-[1600px]:left-[53vw]'
 
   return (
-    <article className="grid gap-14 lg:relative lg:ml-[-4vw] lg:block lg:min-h-[72vh] lg:w-[calc(100%+8vw)] lg:gap-0">
+    <article
+      className={`grid gap-14 lg:relative lg:ml-[-4vw] lg:block lg:min-h-[72vh] lg:w-[calc(100%+8vw)] lg:gap-0 ${isFirstFeature ? 'min-[1600px]:mx-auto min-[1600px]:grid min-[1600px]:w-full min-[1600px]:max-w-[90rem] min-[1600px]:grid-cols-[minmax(0,1.65fr)_minmax(18.75rem,0.65fr)] min-[1600px]:gap-20' : ''}`}
+    >
       <div
-        className={`lg:absolute lg:top-1/2 lg:z-40 lg:w-[29vw] lg:-translate-y-1/2 ${textDesktopPosition}`}
+        className={`lg:absolute lg:top-1/2 lg:z-40 lg:w-[29vw] lg:-translate-y-1/2 ${isFirstFeature ? 'min-[1600px]:static min-[1600px]:col-start-2 min-[1600px]:row-start-1 min-[1600px]:w-auto min-[1600px]:translate-y-0 min-[1600px]:self-center' : ''} ${textDesktopPosition}`}
       >
         <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark">
           {`${String(index + 1).padStart(2, '0')} / ${group.category}`}
@@ -115,9 +126,10 @@ function AmenityFeature({
           {group.description}
         </p>
       </div>
-      <div>
+      <div className={isFirstFeature ? 'min-[1600px]:col-start-1 min-[1600px]:row-start-1' : ''}>
         <AmenityCollage
           group={group}
+          isLargeDesktopGrid={isFirstFeature}
           onCollageRef={onCollageRef}
           onLayerRef={onLayerRef}
           isOnRight={isCollageOnRight}
@@ -258,7 +270,7 @@ export function AmenitiesSection({ content }: AmenitiesSectionProps) {
           description={content.description}
         />
       </Container>
-      <div className="mx-auto mt-20 w-full max-w-7xl px-5 sm:mt-28 sm:px-8 lg:mt-36 lg:max-w-none lg:px-[4vw]">
+      <div className="mx-auto mt-20 w-full max-w-7xl px-5 sm:mt-28 sm:px-8 lg:mt-36 lg:max-w-none lg:px-[4vw] min-[1600px]:mt-24">
         {content.groups.map((group, index) => (
           <div
             key={group.id}

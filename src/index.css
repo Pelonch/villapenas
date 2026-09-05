@@ -201,6 +201,23 @@ select {
   animation: vp-quote-options-reveal 180ms ease-out both;
 }
 
+.vp-quote-date-input,
+.vp-quote-guest-count-input {
+  color: var(--color-ink);
+  -webkit-text-fill-color: var(--color-ink);
+  opacity: 1;
+  font-family: inherit;
+}
+
+.vp-quote-date-input::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+.vp-quote-date-input--empty::-webkit-date-and-time-value {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .vp-floating-quote:hover {
     border-color: var(--color-gold);

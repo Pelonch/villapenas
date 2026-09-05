@@ -174,6 +174,7 @@ export const es = {
           'Arma una cotización estimada para tu evento. La disponibilidad y los detalles finales se confirman directamente con Villa Peñas.',
         eventLegend: '1. Fecha y horario',
         eventDateLabel: 'Fecha del evento',
+        eventDatePlaceholder: 'Selecciona una fecha',
         guestCountLabel: 'Cantidad de personas',
         decreaseGuestCount: 'Reducir cantidad de personas',
         increaseGuestCount: 'Aumentar cantidad de personas',

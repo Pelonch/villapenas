@@ -148,6 +148,7 @@ export interface QuoteContent {
   description: string
   eventLegend: string
   eventDateLabel: string
+  eventDatePlaceholder: string
   guestCountLabel: string
   decreaseGuestCount: string
   increaseGuestCount: string
