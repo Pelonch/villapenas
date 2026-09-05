@@ -65,7 +65,7 @@ function removeLink(rel: string, hreflang?: string): void {
   document.head.querySelector(selector)?.remove()
 }
 
-function getOpenGraphLocale(locale: Locale): string {
+export function getOpenGraphLocale(locale: Locale): string {
   return locale === 'es' ? 'es_CR' : 'en_CR'
 }
 

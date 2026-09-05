@@ -23,7 +23,7 @@ Copy `.env.example` for local configuration. Every `VITE_` variable is embedded 
 | `VITE_API_BASE_URL` | Public NestJS API origin. It is optional only because the existing Railway API is an intentional fallback. |
 | `VITE_SITE_URL` | Public frontend origin for canonical URLs and generated `sitemap.xml`. Use the temporary Railway URL for a test deployment, then update it to the final custom domain. |
 
-When `VITE_SITE_URL` is unset, the build emits `robots.txt` without a sitemap and runtime metadata uses the current browser origin. Set it before an indexable production launch.
+`VITE_SITE_URL` is required for production builds because it generates localized HTML, canonical URLs, hreflang links, `sitemap.xml`, and the robots sitemap directive. The build fails clearly when it is unset.
 
 ## Hero Media
 

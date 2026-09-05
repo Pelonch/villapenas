@@ -38,14 +38,18 @@ function isSafePath(filePath) {
   return !pathFromDist.startsWith(`..${sep}`) && pathFromDist !== '..'
 }
 
-function shouldServeApplication(pathname) {
-  if (extname(pathname)) {
-    return false
-  }
+function getCanonicalPathname(pathname) {
+  const pathWithoutTrailingSlash = pathname.replace(/\/+$/, '')
 
-  return !['/assets', '/images', '/videos'].some(
-    (directory) => pathname === directory || pathname.startsWith(`${directory}/`),
-  )
+  return pathWithoutTrailingSlash || '/'
+}
+
+function redirect(response, location) {
+  response.writeHead(308, {
+    'Cache-Control': 'no-cache',
+    Location: location,
+  })
+  response.end()
 }
 
 function getCacheControl(filePath) {
@@ -146,6 +150,18 @@ async function getFileStats(filePath) {
   }
 }
 
+async function getRouteIndex(pathname) {
+  const routeIndexPath = resolve(distDirectory, `.${pathname}`, 'index.html')
+
+  if (!isSafePath(routeIndexPath)) {
+    return null
+  }
+
+  const routeIndexStats = await getFileStats(routeIndexPath)
+
+  return routeIndexStats ? { filePath: routeIndexPath, stats: routeIndexStats } : null
+}
+
 await access(indexPath)
 
 const server = createServer(async (request, response) => {
@@ -155,13 +171,43 @@ const server = createServer(async (request, response) => {
     return
   }
 
+  let requestUrl
   let pathname
 
   try {
-    pathname = decodeURIComponent(new URL(request.url ?? '/', 'http://localhost').pathname)
+    requestUrl = new URL(request.url ?? '/', 'http://localhost')
+    pathname = decodeURIComponent(requestUrl.pathname)
   } catch {
     response.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' })
     response.end('Bad request')
+    return
+  }
+
+  if (pathname === '/' || pathname === '/index.html') {
+    redirect(response, `/es${requestUrl.search}`)
+    return
+  }
+
+  if (pathname.endsWith('/index.html')) {
+    const routePathname = getCanonicalPathname(pathname.slice(0, -'/index.html'.length))
+    const routeIndexForFile = await getRouteIndex(routePathname)
+
+    if (routeIndexForFile) {
+      redirect(response, `${routePathname}${requestUrl.search}`)
+      return
+    }
+  }
+
+  const canonicalPathname = getCanonicalPathname(pathname)
+  const routeIndex = await getRouteIndex(canonicalPathname)
+
+  if (routeIndex) {
+    if (canonicalPathname !== pathname) {
+      redirect(response, `${canonicalPathname}${requestUrl.search}`)
+      return
+    }
+
+    sendFile(response, routeIndex.filePath, routeIndex.stats, request.method, request.headers.range)
     return
   }
 
@@ -178,16 +224,6 @@ const server = createServer(async (request, response) => {
   if (requestedFileStats) {
     sendFile(response, requestedFilePath, requestedFileStats, request.method, request.headers.range)
     return
-  }
-
-  // Only document-like paths receive the SPA shell; missing assets retain a real 404.
-  if (shouldServeApplication(pathname)) {
-    const indexStats = await getFileStats(indexPath)
-
-    if (indexStats) {
-      sendFile(response, indexPath, indexStats, request.method, request.headers.range)
-      return
-    }
   }
 
   response.writeHead(404, {
