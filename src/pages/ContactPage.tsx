@@ -11,6 +11,14 @@ interface ContactPageProps {
   locale: Locale
 }
 
+interface ContactMethodProps {
+  label: string
+  phoneNumber: string
+  whatsappCta: string
+  whatsappMessage: string
+  whatsappNewTab: string
+}
+
 function ExternalArrow() {
   return (
     <svg
@@ -23,6 +31,41 @@ function ExternalArrow() {
     >
       <path d="M3 13 13 3M6 3h7v7" />
     </svg>
+  )
+}
+
+function ContactMethod({
+  label,
+  phoneNumber,
+  whatsappCta,
+  whatsappMessage,
+  whatsappNewTab,
+}: ContactMethodProps) {
+  return (
+    <div className="flex flex-col gap-8 py-8 sm:py-10">
+      <div>
+        <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-ink/60">
+          {label}
+        </p>
+        <a
+          className="mt-4 inline-flex font-display text-4xl tracking-[-0.05em] text-ink underline decoration-gold/70 decoration-1 underline-offset-8 transition-colors hover:text-clay focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold sm:text-5xl"
+          href={`tel:${phoneNumber.replace(/\s/g, '')}`}
+        >
+          {phoneNumber}
+        </a>
+      </div>
+      <Button
+        href={createWhatsAppUrl(whatsappMessage, phoneNumber)}
+        className="w-full gap-2 sm:w-72"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${whatsappNewTab}: ${phoneNumber}`}
+      >
+        <WhatsAppIcon />
+        <span>{whatsappCta}</span>
+        <ExternalArrow />
+      </Button>
+    </div>
   )
 }
 
@@ -60,37 +103,24 @@ export function ContactPage({ content, locale }: ContactPageProps) {
               >
                 {content.contactInformationEyebrow}
               </p>
-              <div className="mt-8 border-y border-ink/15 py-8 sm:mt-10 sm:py-10">
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-ink/60">
-                  {content.whatsappLabel}
-                </p>
-                <a
-                  className="mt-4 inline-flex font-display text-4xl tracking-[-0.05em] text-ink underline decoration-gold/70 decoration-1 underline-offset-8 transition-colors hover:text-clay focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold sm:text-5xl"
-                  href={`tel:${siteConfig.whatsappNumber.replace(/\s/g, '')}`}
-                >
-                  {siteConfig.whatsappNumber}
-                </a>
-                <p className="mt-9 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-ink/60">
-                  {content.alternatePhoneLabel}
-                </p>
-                <a
-                  className="mt-3 inline-flex font-display text-2xl tracking-[-0.04em] text-ink underline decoration-gold/70 decoration-1 underline-offset-6 transition-colors hover:text-clay focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold sm:text-3xl"
-                  href={`tel:${siteConfig.alternatePhoneNumber.replace(/\s/g, '')}`}
-                >
-                  {siteConfig.alternatePhoneNumber}
-                </a>
+              <div className="mt-8 border-y border-ink/15 sm:mt-10">
+                <ContactMethod
+                  label={content.whatsappLabel}
+                  phoneNumber={siteConfig.whatsappNumber}
+                  whatsappCta={content.whatsappCta}
+                  whatsappMessage={content.whatsappMessage}
+                  whatsappNewTab={content.whatsappNewTab}
+                />
+                <div className="border-t border-ink/15">
+                  <ContactMethod
+                    label={content.alternatePhoneLabel}
+                    phoneNumber={siteConfig.alternatePhoneNumber}
+                    whatsappCta={content.whatsappCta}
+                    whatsappMessage={content.whatsappMessage}
+                    whatsappNewTab={content.whatsappNewTab}
+                  />
+                </div>
               </div>
-              <Button
-                href={createWhatsAppUrl(content.whatsappMessage)}
-                className="mt-8 gap-2 sm:mt-10"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={content.whatsappNewTab}
-              >
-                <WhatsAppIcon />
-                <span>{content.whatsappCta}</span>
-                <ExternalArrow />
-              </Button>
             </div>
 
             <aside className="border-t border-ink/15 pt-8 lg:mt-10 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0" aria-labelledby="contact-location-title">
