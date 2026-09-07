@@ -1,6 +1,9 @@
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { socialConfig } from '../../config/social.ts'
 import { provisionalVenueImageSrc } from '../../config/images.ts'
+import { useFinePointer } from '../../hooks/useFinePointer.ts'
 import { useInstagramPosts } from '../../hooks/useInstagramPosts.ts'
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.ts'
 import type { InstagramContent } from '../../i18n/types.ts'
 import type { InstagramPostWithPreview } from '../../types/instagram.ts'
 import { Button } from '../ui/Button.tsx'
@@ -16,6 +19,19 @@ interface InstagramPostTileProps {
   content: InstagramContent
   post: InstagramPostWithPreview
   layoutClassName?: string
+  hasFinePointer: boolean
+  prefersReducedMotion: boolean
+  onPreviewRequest: (id: string) => void
+  onPreviewEnd: (id: string) => void
+  onPreviewRegister: (registration: VideoPreviewRegistration) => void
+  onPreviewUnregister: (id: string) => void
+}
+
+interface VideoPreviewRegistration {
+  id: string
+  element: HTMLElement
+  start: () => void
+  stop: () => void
 }
 
 const desktopLayoutClasses = [
@@ -90,13 +106,29 @@ function InstagramPostTile({
   content,
   post,
   layoutClassName = '',
+  hasFinePointer,
+  prefersReducedMotion,
+  onPreviewRequest,
+  onPreviewEnd,
+  onPreviewRegister,
+  onPreviewUnregister,
 }: InstagramPostTileProps) {
+  const instanceId = useId()
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const previewRequestedRef = useRef(false)
+  const playbackRequestIdRef = useRef(0)
+  const [hasRequestedVideoSource, setHasRequestedVideoSource] = useState(false)
+  const [isVideoVisible, setIsVideoVisible] = useState(false)
+  const [videoFailed, setVideoFailed] = useState(false)
+  const [playbackRequestId, setPlaybackRequestId] = useState<number | null>(null)
   const caption = post.caption
   const accessibleLabel =
     caption !== null && caption.length > 0 && caption.length <= 160
       ? caption
       : content.postAlt
   const isInteractive = isValidPermalink(post.permalink)
+  const videoUrl = post.videoUrl
+  const hasPlayableVideo = videoUrl !== null
   const imagePositionClassName = post.permalink.includes('/DaalzXSkXZH')
     ? 'object-[50%_60%]'
     : ''
@@ -107,6 +139,141 @@ function InstagramPostTile({
       : post.mediaType === 'CAROUSEL_ALBUM'
         ? <MediaIndicator label={content.carouselLabel} mediaType="CAROUSEL_ALBUM" />
         : null
+  const pauseAndResetVideo = useCallback(() => {
+    const video = videoRef.current
+
+    if (video !== null) {
+      video.pause()
+
+      if (video.readyState > 0) {
+        try {
+          video.currentTime = 0
+        } catch {
+          // Ignore a transient seek error while a media source is being released.
+        }
+      }
+    }
+  }, [])
+  const stopPreview = useCallback(() => {
+    previewRequestedRef.current = false
+    playbackRequestIdRef.current += 1
+    pauseAndResetVideo()
+
+    setIsVideoVisible(false)
+    onPreviewEnd(instanceId)
+  }, [instanceId, onPreviewEnd, pauseAndResetVideo])
+  const startPreview = useCallback(() => {
+    if (
+      !hasPlayableVideo ||
+      prefersReducedMotion ||
+      videoFailed ||
+      previewRequestedRef.current
+    ) {
+      return
+    }
+
+    previewRequestedRef.current = true
+    onPreviewRequest(instanceId)
+    setHasRequestedVideoSource(true)
+
+    const nextPlaybackRequestId = playbackRequestIdRef.current + 1
+
+    playbackRequestIdRef.current = nextPlaybackRequestId
+    setPlaybackRequestId(nextPlaybackRequestId)
+  }, [hasPlayableVideo, instanceId, onPreviewRequest, prefersReducedMotion, videoFailed])
+  const handlePointerEnter = useCallback(() => {
+    if (hasFinePointer) {
+      startPreview()
+    }
+  }, [hasFinePointer, startPreview])
+  const handleVideoError = useCallback(() => {
+    setVideoFailed(true)
+    stopPreview()
+  }, [stopPreview])
+  const setTileElement = useCallback(
+    (element: HTMLAnchorElement | HTMLDivElement | null) => {
+      if (element === null) {
+        onPreviewUnregister(instanceId)
+        return
+      }
+
+      onPreviewRegister({
+        id: instanceId,
+        element,
+        start: startPreview,
+        stop: stopPreview,
+      })
+    },
+    [instanceId, onPreviewRegister, onPreviewUnregister, startPreview, stopPreview],
+  )
+
+  useEffect(() => {
+    if (
+      playbackRequestId === null ||
+      !hasRequestedVideoSource ||
+      videoFailed
+    ) {
+      return
+    }
+
+    const video = videoRef.current
+
+    if (video === null) {
+      return
+    }
+
+    const requestId = playbackRequestId
+
+    void video.play().then(
+      () => {
+        if (
+          previewRequestedRef.current &&
+          playbackRequestIdRef.current === requestId
+        ) {
+          setIsVideoVisible(true)
+        }
+      },
+      () => {
+        if (
+          previewRequestedRef.current &&
+          playbackRequestIdRef.current === requestId
+        ) {
+          setVideoFailed(true)
+          stopPreview()
+        }
+      },
+    )
+  }, [hasRequestedVideoSource, playbackRequestId, stopPreview, videoFailed])
+
+  useEffect(() => {
+    if (!hasPlayableVideo || !prefersReducedMotion) {
+      return undefined
+    }
+
+    previewRequestedRef.current = false
+    playbackRequestIdRef.current += 1
+    pauseAndResetVideo()
+    onPreviewEnd(instanceId)
+
+    const frame = window.requestAnimationFrame(() => {
+      setIsVideoVisible(false)
+    })
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+    }
+  }, [hasPlayableVideo, instanceId, onPreviewEnd, pauseAndResetVideo, prefersReducedMotion])
+
+  useEffect(() => {
+    if (!hasPlayableVideo) {
+      return
+    }
+
+    return () => {
+      stopPreview()
+    }
+  }, [hasPlayableVideo, stopPreview])
+
   const tileContent = (
     <>
       <ImageWithFallback
@@ -118,6 +285,23 @@ function InstagramPostTile({
         decoding="async"
         draggable={false}
       />
+      {hasPlayableVideo ? (
+        <video
+          ref={videoRef}
+          className={`pointer-events-none absolute inset-0 size-full object-cover transition-[opacity,transform] duration-500 ease-out group-hover:scale-[1.02] group-focus-visible:scale-[1.02] motion-reduce:transition-none ${imagePositionClassName} ${isVideoVisible && !prefersReducedMotion ? 'opacity-100' : 'opacity-0'}`}
+          {...(hasRequestedVideoSource ? { src: videoUrl } : {})}
+          poster={post.previewUrl}
+          muted
+          playsInline
+          loop
+          preload="metadata"
+          disablePictureInPicture
+          disableRemotePlayback
+          aria-hidden="true"
+          tabIndex={-1}
+          onError={handleVideoError}
+        />
+      ) : null}
       {caption ? (
         <span className="line-clamp-3 absolute inset-x-0 bottom-0 bg-linear-to-t from-ink/75 to-transparent px-4 pb-4 pt-12 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-paper lg:opacity-0 lg:transition-opacity lg:duration-300 lg:group-hover:opacity-100 lg:group-focus-visible:opacity-100 motion-reduce:transition-none">
           {caption}
@@ -138,18 +322,30 @@ function InstagramPostTile({
   if (isInteractive) {
     return (
       <a
+        ref={hasPlayableVideo ? setTileElement : undefined}
         className={`${className} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold`}
         href={post.permalink}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={content.openPost(accessibleLabel)}
+        onPointerEnter={hasPlayableVideo ? handlePointerEnter : undefined}
+        onPointerLeave={hasPlayableVideo ? stopPreview : undefined}
       >
         {tileContent}
       </a>
     )
   }
 
-  return <div className={className}>{tileContent}</div>
+  return (
+    <div
+      ref={hasPlayableVideo ? setTileElement : undefined}
+      className={className}
+      onPointerEnter={hasPlayableVideo ? handlePointerEnter : undefined}
+      onPointerLeave={hasPlayableVideo ? stopPreview : undefined}
+    >
+      {tileContent}
+    </div>
+  )
 }
 
 function InstagramGallerySkeleton({ content }: Pick<InstagramSectionProps, 'content'>) {
@@ -176,6 +372,115 @@ function InstagramGallery({
 }: Pick<InstagramSectionProps, 'content'> & {
   posts: readonly InstagramPostWithPreview[]
 }) {
+  const hasFinePointer = useFinePointer()
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const previewRegistrationsRef = useRef(new Map<string, VideoPreviewRegistration>())
+  const activePreviewIdRef = useRef<string | null>(null)
+  const stopActivePreview = useCallback(() => {
+    const activePreviewId = activePreviewIdRef.current
+
+    if (activePreviewId === null) {
+      return
+    }
+
+    activePreviewIdRef.current = null
+    previewRegistrationsRef.current.get(activePreviewId)?.stop()
+  }, [])
+  const requestPreview = useCallback(
+    (id: string) => {
+      if (activePreviewIdRef.current === id) {
+        return
+      }
+
+      stopActivePreview()
+
+      if (previewRegistrationsRef.current.has(id)) {
+        activePreviewIdRef.current = id
+      }
+    },
+    [stopActivePreview],
+  )
+  const endPreview = useCallback((id: string) => {
+    if (activePreviewIdRef.current === id) {
+      activePreviewIdRef.current = null
+    }
+  }, [])
+  const registerPreview = useCallback((registration: VideoPreviewRegistration) => {
+    previewRegistrationsRef.current.set(registration.id, registration)
+  }, [])
+  const unregisterPreview = useCallback(
+    (id: string) => {
+      if (activePreviewIdRef.current === id) {
+        stopActivePreview()
+      }
+
+      previewRegistrationsRef.current.delete(id)
+    },
+    [stopActivePreview],
+  )
+
+  useEffect(() => {
+    if (prefersReducedMotion || hasFinePointer || !('IntersectionObserver' in window)) {
+      stopActivePreview()
+      return
+    }
+
+    const registrations = [...previewRegistrationsRef.current.values()]
+
+    if (registrations.length === 0) {
+      return
+    }
+
+    const visibilityById = new Map<string, number>()
+    const idsByElement = new Map<Element, string>(
+      registrations.map((registration) => [registration.element, registration.id]),
+    )
+    const selectActivePreview = () => {
+      let candidate: VideoPreviewRegistration | null = null
+      let candidateRatio = 0
+
+      for (const registration of registrations) {
+        const ratio = visibilityById.get(registration.id) ?? 0
+
+        if (ratio >= 0.65 && (candidate === null || ratio > candidateRatio)) {
+          candidate = registration
+          candidateRatio = ratio
+        }
+      }
+
+      if (candidate === null) {
+        stopActivePreview()
+      } else {
+        candidate.start()
+      }
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const id = idsByElement.get(entry.target)
+
+          if (id !== undefined) {
+            visibilityById.set(id, entry.isIntersecting ? entry.intersectionRatio : 0)
+          }
+        }
+
+        selectActivePreview()
+      },
+      { threshold: [0, 0.65, 1] },
+    )
+
+    for (const registration of registrations) {
+      observer.observe(registration.element)
+    }
+
+    return () => {
+      observer.disconnect()
+      stopActivePreview()
+    }
+  }, [hasFinePointer, posts, prefersReducedMotion, stopActivePreview])
+
+  useEffect(() => stopActivePreview, [stopActivePreview])
+
   return (
     <>
       <div
@@ -188,7 +493,16 @@ function InstagramGallery({
             key={post.id}
             className="w-[80vw] max-w-[32rem] shrink-0 snap-start aspect-[4/5]"
           >
-            <InstagramPostTile content={content} post={post} />
+            <InstagramPostTile
+              content={content}
+              post={post}
+              hasFinePointer={hasFinePointer}
+              prefersReducedMotion={prefersReducedMotion}
+              onPreviewRequest={requestPreview}
+              onPreviewEnd={endPreview}
+              onPreviewRegister={registerPreview}
+              onPreviewUnregister={unregisterPreview}
+            />
           </div>
         ))}
       </div>
@@ -196,7 +510,16 @@ function InstagramGallery({
       <div className="mt-16 hidden grid-cols-2 gap-4 md:grid lg:hidden">
         {posts.map((post) => (
           <div key={post.id} className="aspect-[4/5]">
-            <InstagramPostTile content={content} post={post} />
+            <InstagramPostTile
+              content={content}
+              post={post}
+              hasFinePointer={hasFinePointer}
+              prefersReducedMotion={prefersReducedMotion}
+              onPreviewRequest={requestPreview}
+              onPreviewEnd={endPreview}
+              onPreviewRegister={registerPreview}
+              onPreviewUnregister={unregisterPreview}
+            />
           </div>
         ))}
       </div>
@@ -208,6 +531,12 @@ function InstagramGallery({
             content={content}
             post={post}
             layoutClassName={desktopLayoutClasses[index] ?? 'lg:col-span-4 lg:row-span-4'}
+            hasFinePointer={hasFinePointer}
+            prefersReducedMotion={prefersReducedMotion}
+            onPreviewRequest={requestPreview}
+            onPreviewEnd={endPreview}
+            onPreviewRegister={registerPreview}
+            onPreviewUnregister={unregisterPreview}
           />
         ))}
       </div>
