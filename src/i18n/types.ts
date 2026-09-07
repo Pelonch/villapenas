@@ -33,6 +33,7 @@ export interface ContactPageContent {
   description: string
   contactInformationEyebrow: string
   whatsappLabel: string
+  alternatePhoneLabel: string
   whatsappCta: string
   whatsappNewTab: string
   whatsappMessage: string
@@ -244,6 +245,7 @@ export interface TranslationCatalog {
     location: string
     amenities: string
     packages: string
+    more: string
     quote: string
     openMenu: string
     closeMenu: string

@@ -42,13 +42,20 @@ export function SiteHeader({
 }: SiteHeaderProps) {
   const translations = getTranslations(route.locale)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const mobileMenuTriggerRef = useRef<HTMLButtonElement>(null)
+  const moreMenuRef = useRef<HTMLLIElement>(null)
+  const moreMenuTriggerRef = useRef<HTMLButtonElement>(null)
   const homePath = getLocalizedPath(route.locale, 'home')
   const navigationItems: Array<{ id: HomeAnchorId; label: string }> = [
     { id: 'ubicacion', label: translations.navigation.location },
     { id: 'amenidades', label: translations.navigation.amenities },
     { id: 'paquetes', label: translations.navigation.packages },
+  ]
+  const secondaryNavigationItems = [
+    { page: 'contact' as const, label: translations.navigation.contact },
+    { page: 'policies' as const, label: translations.navigation.policies },
   ]
 
   function closeMobileMenu(restoreFocus = false) {
@@ -57,6 +64,16 @@ export function SiteHeader({
     if (restoreFocus) {
       window.requestAnimationFrame(() => {
         mobileMenuTriggerRef.current?.focus()
+      })
+    }
+  }
+
+  function closeMoreMenu(restoreFocus = false) {
+    setIsMoreMenuOpen(false)
+
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => {
+        moreMenuTriggerRef.current?.focus()
       })
     }
   }
@@ -73,6 +90,35 @@ export function SiteHeader({
       document.body.style.overflow = originalOverflow
     }
   }, [isMobileMenuOpen])
+
+  useEffect(() => {
+    if (!isMoreMenuOpen) {
+      return
+    }
+
+    function handlePointerDown(event: PointerEvent) {
+      const menu = moreMenuRef.current
+
+      if (menu === null || !(event.target instanceof Node) || !menu.contains(event.target)) {
+        closeMoreMenu()
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        closeMoreMenu(true)
+      }
+    }
+
+    window.addEventListener('pointerdown', handlePointerDown)
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.removeEventListener('pointerdown', handlePointerDown)
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMoreMenuOpen])
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
@@ -169,16 +215,18 @@ export function SiteHeader({
   useEffect(() => {
     const desktopBreakpoint = window.matchMedia('(min-width: 1024px)')
 
-    function closeOnDesktop(): void {
+    function handleDesktopBreakpointChange(): void {
       if (desktopBreakpoint.matches) {
         closeMobileMenu()
+      } else {
+        closeMoreMenu()
       }
     }
 
-    desktopBreakpoint.addEventListener('change', closeOnDesktop)
+    desktopBreakpoint.addEventListener('change', handleDesktopBreakpointChange)
 
     return () => {
-      desktopBreakpoint.removeEventListener('change', closeOnDesktop)
+      desktopBreakpoint.removeEventListener('change', handleDesktopBreakpointChange)
     }
   }, [])
 
@@ -229,6 +277,47 @@ export function SiteHeader({
                 </a>
               </li>
             ))}
+            <li ref={moreMenuRef} className="relative">
+              <button
+                ref={moreMenuTriggerRef}
+                className="inline-flex items-center gap-1 rounded-sm py-2 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70 transition-colors hover:text-gold-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold"
+                type="button"
+                aria-controls="desktop-more-navigation"
+                aria-expanded={isMoreMenuOpen}
+                aria-haspopup="true"
+                onClick={() => setIsMoreMenuOpen((current) => !current)}
+              >
+                {translations.navigation.more}
+                <svg
+                  className={`size-3 transition-transform ${isMoreMenuOpen ? 'rotate-180' : ''}`}
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="m2.5 4.5 3.5 3 3.5-3" stroke="currentColor" strokeWidth="1.3" />
+                </svg>
+              </button>
+              <div
+                id="desktop-more-navigation"
+                className="absolute left-0 top-full z-10 mt-2 min-w-36 border border-ink/15 bg-paper p-1.5 shadow-sm"
+                hidden={!isMoreMenuOpen}
+              >
+                <ul>
+                  {secondaryNavigationItems.map((item) => (
+                    <li key={item.page}>
+                      <a
+                        className="flex min-h-10 items-center rounded-sm px-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/75 transition-colors hover:bg-cream hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                        href={getLocalizedPath(route.locale, item.page)}
+                        aria-current={route.page === item.page ? 'page' : undefined}
+                        onClick={() => closeMoreMenu()}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
           </ul>
           <Button
             href={getHomeAnchorHref(route.locale, 'cotizador')}
@@ -292,6 +381,21 @@ export function SiteHeader({
                   <a
                     className="flex min-h-14 items-center justify-between py-3 font-display text-2xl tracking-[-0.035em] text-ink"
                     href={getHomeAnchorHref(route.locale, item.id)}
+                    onClick={() => closeMobileMenu()}
+                  >
+                    {item.label}
+                    <span aria-hidden="true" className="font-sans text-gold">
+                      -&gt;
+                    </span>
+                  </a>
+                </li>
+              ))}
+              {secondaryNavigationItems.map((item) => (
+                <li key={item.page} className="border-b border-ink/15">
+                  <a
+                    className="flex min-h-14 items-center justify-between py-3 font-display text-2xl tracking-[-0.035em] text-ink"
+                    href={getLocalizedPath(route.locale, item.page)}
+                    aria-current={route.page === item.page ? 'page' : undefined}
                     onClick={() => closeMobileMenu()}
                   >
                     {item.label}

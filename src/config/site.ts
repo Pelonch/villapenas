@@ -3,6 +3,7 @@ import { supportedLocales, type Locale } from '../i18n/types.ts'
 interface SiteConfig {
   businessName: string
   whatsappNumber: string
+  alternatePhoneNumber: string
   googleMapsUrl: string
   defaultLocale: Locale
   supportedLocales: readonly Locale[]
@@ -28,6 +29,7 @@ function getProductionUrl(): string | null {
 export const siteConfig = {
   businessName: 'Villa Peñas',
   whatsappNumber: '+506 8850-7712',
+  alternatePhoneNumber: '+506 8537 3750',
   googleMapsUrl: 'https://maps.app.goo.gl/HP9MBJkZyfovstMv9',
   defaultLocale: 'es',
   supportedLocales,

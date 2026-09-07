@@ -70,6 +70,15 @@ export function ContactPage({ content, locale }: ContactPageProps) {
                 >
                   {siteConfig.whatsappNumber}
                 </a>
+                <p className="mt-9 font-sans text-xs font-semibold uppercase tracking-[0.16em] text-ink/60">
+                  {content.alternatePhoneLabel}
+                </p>
+                <a
+                  className="mt-3 inline-flex font-display text-2xl tracking-[-0.04em] text-ink underline decoration-gold/70 decoration-1 underline-offset-6 transition-colors hover:text-clay focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold sm:text-3xl"
+                  href={`tel:${siteConfig.alternatePhoneNumber.replace(/\s/g, '')}`}
+                >
+                  {siteConfig.alternatePhoneNumber}
+                </a>
               </div>
               <Button
                 href={createWhatsAppUrl(content.whatsappMessage)}
