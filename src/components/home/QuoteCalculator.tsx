@@ -251,12 +251,12 @@ function EventDetailsFields({
         {content.eventLegend}
       </legend>
       <div className="mt-6 grid gap-5">
-        <div className="grid gap-5 sm:grid-cols-[minmax(0,1.25fr)_minmax(12.5rem,0.75fr)]">
+        <div className="grid min-w-0 gap-5 sm:grid-cols-[minmax(0,1.25fr)_minmax(12.5rem,0.75fr)]">
           <label className="block min-w-0" htmlFor="quote-event-date">
             <span className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70">
               {content.eventDateLabel}
             </span>
-            <span className="relative mt-3 block">
+            <span className="relative mt-3 block min-w-0">
               <input
                 id="quote-event-date"
                 className={`vp-quote-date-input text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none ${event.eventDate ? '' : 'vp-quote-date-input--empty'}`}
@@ -358,7 +358,7 @@ function EventDetailsFields({
             ) : null}
           </div>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2">
+        <div className="grid min-w-0 gap-5 sm:grid-cols-2">
           <label className="block min-w-0" htmlFor="quote-start-time">
             <span className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70">
               {content.startTimeLabel}

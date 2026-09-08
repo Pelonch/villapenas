@@ -228,12 +228,30 @@ select {
 }
 
 .vp-quote-date-input::-webkit-date-and-time-value,
+.vp-quote-time-input::-webkit-date-and-time-value {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.vp-quote-date-input::-webkit-date-and-time-value,
 .vp-quote-time-input::-webkit-date-and-time-value,
 .vp-quote-date-input::-webkit-datetime-edit,
 .vp-quote-time-input::-webkit-datetime-edit {
   min-height: 1.5rem;
   line-height: 1.5rem;
   text-align: left;
+}
+
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 39.999rem) {
+    .vp-quote-date-input,
+    .vp-quote-time-input {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
 }
 
 .vp-quote-date-input--empty:not(:focus)::-webkit-datetime-edit,
