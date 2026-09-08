@@ -252,7 +252,7 @@ function EventDetailsFields({
       </legend>
       <div className="mt-6 grid gap-5">
         <div className="grid gap-5 sm:grid-cols-[minmax(0,1.25fr)_minmax(12.5rem,0.75fr)]">
-          <label className="block" htmlFor="quote-event-date">
+          <label className="block min-w-0" htmlFor="quote-event-date">
             <span className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70">
               {content.eventDateLabel}
             </span>
@@ -359,7 +359,7 @@ function EventDetailsFields({
           </div>
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
-          <label className="block" htmlFor="quote-start-time">
+          <label className="block min-w-0" htmlFor="quote-start-time">
             <span className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70">
               {content.startTimeLabel}
             </span>
