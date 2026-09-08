@@ -29,7 +29,7 @@ function getProductionUrl(): string | null {
 export const siteConfig = {
   businessName: 'Villa Peñas',
   whatsappNumber: '+506 8850-7712',
-  alternatePhoneNumber: '+506 8537 3750',
+  alternatePhoneNumber: '+506 8537-3750',
   googleMapsUrl: 'https://maps.app.goo.gl/HP9MBJkZyfovstMv9',
   defaultLocale: 'es',
   supportedLocales,

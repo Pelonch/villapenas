@@ -259,7 +259,7 @@ function EventDetailsFields({
             <span className="relative mt-3 block">
               <input
                 id="quote-event-date"
-                className={`vp-quote-date-input min-h-12 w-full border border-ink/20 bg-paper px-3 font-sans text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none ${event.eventDate ? '' : 'vp-quote-date-input--empty'}`}
+                className={`vp-quote-date-input text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none ${event.eventDate ? '' : 'vp-quote-date-input--empty'}`}
                 type="date"
                 min={minDate}
                 value={event.eventDate}
@@ -286,9 +286,9 @@ function EventDetailsFields({
             >
               {content.guestCountLabel}
             </label>
-            <div className="mt-3 flex min-h-12 items-center border border-ink/20 bg-paper">
+            <div className="mt-3 flex h-12 items-center border border-ink/20 bg-paper">
               <button
-                className="inline-flex min-h-11 w-11 shrink-0 items-center justify-center border-r border-ink/15 text-lg text-ink/70 transition-colors hover:bg-cream hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold disabled:cursor-not-allowed disabled:text-ink/25 motion-reduce:transition-none"
+                className="inline-flex h-full w-11 shrink-0 items-center justify-center border-r border-ink/15 text-lg text-ink/70 transition-colors hover:bg-cream hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold disabled:cursor-not-allowed disabled:text-ink/25 motion-reduce:transition-none"
                 type="button"
                 aria-label={content.decreaseGuestCount}
                 disabled={event.guestCount === null || event.guestCount <= 1}
@@ -300,7 +300,7 @@ function EventDetailsFields({
               </button>
               <input
                 id="quote-guest-count"
-                className="vp-quote-guest-count-input min-h-11 w-12 appearance-none bg-transparent text-center text-base text-ink outline-none sm:text-right"
+                className="vp-quote-guest-count-input h-full w-12 appearance-none bg-transparent text-center text-base text-ink outline-none sm:text-right"
                 type="number"
                 inputMode="numeric"
                 min="1"
@@ -329,7 +329,7 @@ function EventDetailsFields({
                   : content.guestCountUnit(event.guestCount)}
               </span>
               <button
-                className="inline-flex min-h-11 w-11 shrink-0 items-center justify-center border-l border-ink/15 text-lg text-ink/70 transition-colors hover:bg-cream hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
+                className="inline-flex h-full w-11 shrink-0 items-center justify-center border-l border-ink/15 text-lg text-ink/70 transition-colors hover:bg-cream hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
                 type="button"
                 aria-label={content.increaseGuestCount}
                 onClick={() => updateGuestCount((event.guestCount ?? 0) + 1)}
@@ -365,7 +365,7 @@ function EventDetailsFields({
             </span>
             <input
               id="quote-start-time"
-              className="mt-3 min-h-12 w-full border border-ink/20 bg-paper px-3 font-sans text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
+              className="vp-quote-time-input mt-3 text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
               type="time"
               value={event.startTime}
               required
@@ -383,7 +383,7 @@ function EventDetailsFields({
               {content.endTimeLabel}
             </span>
             <output
-              className="mt-3 flex min-h-12 w-full items-center border border-ink/15 bg-ink/[0.04] px-3 font-sans text-base text-ink/80"
+              className="mt-3 flex h-12 w-full items-center border border-ink/15 bg-ink/[0.04] px-3 font-sans text-base text-ink/80"
               aria-labelledby="quote-end-time-label"
               aria-describedby="quote-base-duration"
             >
