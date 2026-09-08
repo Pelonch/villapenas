@@ -75,7 +75,7 @@ interface MobileQuoteSummaryBarProps {
   onViewSummary: () => void
 }
 
-interface EventDetailsFieldsProps extends EventDetailsDiagnosticRefs {
+interface EventDetailsFieldsProps {
   content: QuoteContent
   event: QuoteEventDetails
   locale: Locale
@@ -88,77 +88,6 @@ interface EventDetailsFieldsProps extends EventDetailsDiagnosticRefs {
   onChange: (field: QuoteEventField, value: string) => void
   onAddCapacityExtra: () => void
   onGuestCountChange: (guestCount: number | null) => void
-}
-
-interface EventDetailsDiagnosticRefs {
-  eventDetailsRef: RefObject<HTMLFieldSetElement | null>
-  eventFieldsRef: RefObject<HTMLDivElement | null>
-  dateInputRef: RefObject<HTMLInputElement | null>
-  guestGroupRef: RefObject<HTMLDivElement | null>
-  guestCounterRef: RefObject<HTMLDivElement | null>
-  startTimeGroupRef: RefObject<HTMLLabelElement | null>
-  startTimeInputRef: RefObject<HTMLInputElement | null>
-  endTimeGroupRef: RefObject<HTMLDivElement | null>
-  endTimeOutputRef: RefObject<HTMLOutputElement | null>
-}
-
-interface QuoteDiagnosticRefs extends EventDetailsDiagnosticRefs {
-  formRef: RefObject<HTMLFormElement | null>
-  packageSectionRef: RefObject<HTMLDivElement | null>
-}
-
-interface QuoteControlDiagnostics {
-  width: number
-  height: number
-  paddingTop: string
-  paddingBottom: string
-  lineHeight: string
-  fontSize: string
-  minHeight: string
-  cssHeight: string
-}
-
-interface QuoteDiagnostics {
-  viewport: {
-    innerWidth: number
-    innerHeight: number
-    clientWidth: number
-    clientHeight: number
-    devicePixelRatio: number
-    visualViewportWidth: number | null
-    visualViewportHeight: number | null
-    visualViewportScale: number | null
-  }
-  browserText: {
-    htmlFontSize: string
-    bodyFontSize: string
-    webkitTextSizeAdjust: string
-    textSizeAdjust: string
-  }
-  panel: {
-    width: number
-    height: number
-    paddingTop: string
-    paddingBottom: string
-  } | null
-  firstSection: {
-    paddingTop: string
-    paddingBottom: string
-    rowGap: string
-    columnGap: string
-  } | null
-  controls: {
-    date: QuoteControlDiagnostics | null
-    guestCounter: QuoteControlDiagnostics | null
-    startTime: QuoteControlDiagnostics | null
-    endTime: QuoteControlDiagnostics | null
-  }
-  gaps: {
-    dateToGuest: number | null
-    guestToStartTime: number | null
-    startTimeToEndTime: number | null
-    endTimeToPackage: number | null
-  }
 }
 
 interface GuestCountGuidance {
@@ -246,262 +175,8 @@ function getEventValidationMessage(
   }
 }
 
-function getQuoteControlDiagnostics(element: Element | null): QuoteControlDiagnostics | null {
-  if (element === null) {
-    return null
-  }
-
-  const rect = element.getBoundingClientRect()
-  const style = window.getComputedStyle(element)
-
-  return {
-    width: rect.width,
-    height: rect.height,
-    paddingTop: style.paddingTop,
-    paddingBottom: style.paddingBottom,
-    lineHeight: style.lineHeight,
-    fontSize: style.fontSize,
-    minHeight: style.minHeight,
-    cssHeight: style.height,
-  }
-}
-
-function getVerticalDistance(upper: Element | null, lower: Element | null): number | null {
-  if (upper === null || lower === null) {
-    return null
-  }
-
-  return lower.getBoundingClientRect().top - upper.getBoundingClientRect().bottom
-}
-
-function getQuoteDiagnostics(refs: QuoteDiagnosticRefs): QuoteDiagnostics {
-  const htmlStyle = window.getComputedStyle(document.documentElement)
-  const bodyStyle = window.getComputedStyle(document.body)
-  const form = refs.formRef.current
-  const eventDetails = refs.eventDetailsRef.current
-  const eventFields = refs.eventFieldsRef.current
-  const visualViewport = window.visualViewport
-
-  return {
-    viewport: {
-      innerWidth: window.innerWidth,
-      innerHeight: window.innerHeight,
-      clientWidth: document.documentElement.clientWidth,
-      clientHeight: document.documentElement.clientHeight,
-      devicePixelRatio: window.devicePixelRatio,
-      visualViewportWidth: visualViewport?.width ?? null,
-      visualViewportHeight: visualViewport?.height ?? null,
-      visualViewportScale: visualViewport?.scale ?? null,
-    },
-    browserText: {
-      htmlFontSize: htmlStyle.fontSize,
-      bodyFontSize: bodyStyle.fontSize,
-      webkitTextSizeAdjust:
-        htmlStyle.getPropertyValue('-webkit-text-size-adjust').trim() || 'not reported',
-      textSizeAdjust:
-        htmlStyle.getPropertyValue('text-size-adjust').trim() || 'not reported',
-    },
-    panel:
-      form === null
-        ? null
-        : {
-            width: form.getBoundingClientRect().width,
-            height: form.getBoundingClientRect().height,
-            paddingTop: window.getComputedStyle(form).paddingTop,
-            paddingBottom: window.getComputedStyle(form).paddingBottom,
-          },
-    firstSection:
-      eventDetails === null
-        ? null
-        : {
-            paddingTop: window.getComputedStyle(eventDetails).paddingTop,
-            paddingBottom: window.getComputedStyle(eventDetails).paddingBottom,
-            rowGap: eventFields === null ? 'not reported' : window.getComputedStyle(eventFields).rowGap,
-            columnGap:
-              eventFields === null ? 'not reported' : window.getComputedStyle(eventFields).columnGap,
-          },
-    controls: {
-      date: getQuoteControlDiagnostics(refs.dateInputRef.current),
-      guestCounter: getQuoteControlDiagnostics(refs.guestCounterRef.current),
-      startTime: getQuoteControlDiagnostics(refs.startTimeInputRef.current),
-      endTime: getQuoteControlDiagnostics(refs.endTimeOutputRef.current),
-    },
-    gaps: {
-      dateToGuest: getVerticalDistance(refs.dateInputRef.current, refs.guestGroupRef.current),
-      guestToStartTime: getVerticalDistance(
-        refs.guestCounterRef.current,
-        refs.startTimeGroupRef.current,
-      ),
-      startTimeToEndTime: getVerticalDistance(
-        refs.startTimeInputRef.current,
-        refs.endTimeGroupRef.current,
-      ),
-      endTimeToPackage: getVerticalDistance(
-        refs.endTimeGroupRef.current,
-        refs.packageSectionRef.current,
-      ),
-    },
-  }
-}
-
-function formatDiagnosticNumber(value: number | null, unit = ''): string {
-  if (value === null) {
-    return 'unavailable'
-  }
-
-  return `${value.toFixed(2)}${unit}`
-}
-
-function formatControlDiagnostics(
-  label: string,
-  diagnostics: QuoteControlDiagnostics | null,
-): readonly string[] {
-  if (diagnostics === null) {
-    return [`${label}: unavailable`]
-  }
-
-  return [
-    label,
-    `  rect: ${formatDiagnosticNumber(diagnostics.width, 'px')} x ${formatDiagnosticNumber(diagnostics.height, 'px')}`,
-    `  padding: ${diagnostics.paddingTop} / ${diagnostics.paddingBottom}`,
-    `  line-height: ${diagnostics.lineHeight}; font-size: ${diagnostics.fontSize}`,
-    `  min-height: ${diagnostics.minHeight}; height: ${diagnostics.cssHeight}`,
-  ]
-}
-
-function formatQuoteDiagnostics(diagnostics: QuoteDiagnostics | null): string {
-  if (diagnostics === null) {
-    return 'Collecting measurements...'
-  }
-
-  const { browserText, controls, firstSection, gaps, panel, viewport } = diagnostics
-
-  return [
-    'VIEWPORT',
-    `window: ${viewport.innerWidth} x ${viewport.innerHeight}`,
-    `client: ${viewport.clientWidth} x ${viewport.clientHeight}`,
-    `devicePixelRatio: ${viewport.devicePixelRatio}`,
-    `visualViewport: ${formatDiagnosticNumber(viewport.visualViewportWidth)} x ${formatDiagnosticNumber(viewport.visualViewportHeight)}; scale ${formatDiagnosticNumber(viewport.visualViewportScale)}`,
-    '',
-    'BROWSER TEXT',
-    `html font-size: ${browserText.htmlFontSize}`,
-    `body font-size: ${browserText.bodyFontSize}`,
-    `-webkit-text-size-adjust: ${browserText.webkitTextSizeAdjust}`,
-    `text-size-adjust: ${browserText.textSizeAdjust}`,
-    '',
-    'QUOTE PANEL',
-    panel === null
-      ? 'unavailable'
-      : `rect: ${formatDiagnosticNumber(panel.width, 'px')} x ${formatDiagnosticNumber(panel.height, 'px')}`,
-    panel === null ? '' : `padding: ${panel.paddingTop} / ${panel.paddingBottom}`,
-    firstSection === null
-      ? 'first section: unavailable'
-      : `first section padding: ${firstSection.paddingTop} / ${firstSection.paddingBottom}`,
-    firstSection === null
-      ? ''
-      : `first section grid gap: ${firstSection.rowGap} / ${firstSection.columnGap}`,
-    '',
-    'CONTROLS',
-    ...formatControlDiagnostics('date input', controls.date),
-    ...formatControlDiagnostics('guest counter', controls.guestCounter),
-    ...formatControlDiagnostics('start-time input', controls.startTime),
-    ...formatControlDiagnostics('calculated exit-time', controls.endTime),
-    '',
-    'VERTICAL GAPS',
-    `date bottom -> guest group: ${formatDiagnosticNumber(gaps.dateToGuest, 'px')}`,
-    `guest bottom -> start-time group: ${formatDiagnosticNumber(gaps.guestToStartTime, 'px')}`,
-    `start-time bottom -> exit-time group: ${formatDiagnosticNumber(gaps.startTimeToEndTime, 'px')}`,
-    `exit-time block bottom -> package section: ${formatDiagnosticNumber(gaps.endTimeToPackage, 'px')}`,
-  ]
-    .filter((line) => line !== '')
-    .join('\n')
-}
-
-function QuoteDiagnosticsPanel({ refs }: { refs: QuoteDiagnosticRefs }) {
-  const [diagnostics, setDiagnostics] = useState<QuoteDiagnostics | null>(null)
-  const [copyStatus, setCopyStatus] = useState<string | null>(null)
-  const diagnosticText = formatQuoteDiagnostics(diagnostics)
-
-  useEffect(() => {
-    const updateDiagnostics = () => setDiagnostics(getQuoteDiagnostics(refs))
-    const frame = window.requestAnimationFrame(updateDiagnostics)
-    const visualViewport = window.visualViewport
-    const resizeObserver =
-      typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(updateDiagnostics)
-
-    Object.values(refs).forEach((ref) => {
-      if (ref.current !== null) {
-        resizeObserver?.observe(ref.current)
-      }
-    })
-    window.addEventListener('resize', updateDiagnostics)
-    window.addEventListener('orientationchange', updateDiagnostics)
-    document.addEventListener('input', updateDiagnostics, true)
-    document.addEventListener('change', updateDiagnostics, true)
-    visualViewport?.addEventListener('resize', updateDiagnostics)
-    visualViewport?.addEventListener('scroll', updateDiagnostics)
-
-    return () => {
-      window.cancelAnimationFrame(frame)
-      resizeObserver?.disconnect()
-      window.removeEventListener('resize', updateDiagnostics)
-      window.removeEventListener('orientationchange', updateDiagnostics)
-      document.removeEventListener('input', updateDiagnostics, true)
-      document.removeEventListener('change', updateDiagnostics, true)
-      visualViewport?.removeEventListener('resize', updateDiagnostics)
-      visualViewport?.removeEventListener('scroll', updateDiagnostics)
-    }
-  }, [refs])
-
-  const copyDiagnostics = async () => {
-    if (!navigator.clipboard) {
-      setCopyStatus('Clipboard unavailable')
-
-      return
-    }
-
-    try {
-      await navigator.clipboard.writeText(diagnosticText)
-      setCopyStatus('Copied')
-    } catch {
-      setCopyStatus('Copy failed')
-    }
-  }
-
-  return (
-    <aside
-      className="fixed top-3 right-3 z-[60] w-[min(22rem,calc(100vw-1.5rem))] max-h-[min(55svh,32rem)] overflow-auto border border-paper/35 bg-ink/95 p-3 font-mono text-[0.65rem] leading-4 text-paper shadow-lg"
-      aria-label="Quote diagnostics"
-    >
-      <div className="mb-2 flex items-center justify-between gap-3">
-        <strong className="text-[0.65rem] uppercase tracking-[0.12em] text-gold-light">
-          Quote diagnostics
-        </strong>
-        <button
-          className="min-h-8 border border-paper/35 px-2 text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-paper"
-          type="button"
-          onClick={copyDiagnostics}
-        >
-          Copy diagnostics
-        </button>
-      </div>
-      {copyStatus ? <p className="mb-2 text-gold-light">{copyStatus}</p> : null}
-      <pre className="whitespace-pre-wrap break-words">{diagnosticText}</pre>
-    </aside>
-  )
-}
-
 function EventDetailsFields({
   content,
-  eventDetailsRef,
-  eventFieldsRef,
-  dateInputRef,
-  guestGroupRef,
-  guestCounterRef,
-  startTimeGroupRef,
-  startTimeInputRef,
-  endTimeGroupRef,
-  endTimeOutputRef,
   event,
   locale,
   minDate,
@@ -571,11 +246,11 @@ function EventDetailsFields({
   }
 
   return (
-    <fieldset ref={eventDetailsRef} className="border-b border-ink/15 pb-10">
+    <fieldset className="border-b border-ink/15 pb-10">
       <legend className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
         {content.eventLegend}
       </legend>
-      <div ref={eventFieldsRef} className="mt-6 grid gap-5">
+      <div className="mt-6 grid gap-5">
         <div className="grid gap-5 sm:grid-cols-[minmax(0,1.25fr)_minmax(12.5rem,0.75fr)]">
           <label className="block" htmlFor="quote-event-date">
             <span className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70">
@@ -584,7 +259,6 @@ function EventDetailsFields({
             <span className="relative mt-3 block">
               <input
                 id="quote-event-date"
-                ref={dateInputRef}
                 className={`vp-quote-date-input text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none ${event.eventDate ? '' : 'vp-quote-date-input--empty'}`}
                 type="date"
                 min={minDate}
@@ -605,17 +279,14 @@ function EventDetailsFields({
               ) : null}
             </span>
           </label>
-          <div ref={guestGroupRef}>
+          <div>
             <label
               className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70"
               htmlFor="quote-guest-count"
             >
               {content.guestCountLabel}
             </label>
-            <div
-              ref={guestCounterRef}
-              className="mt-3 flex h-12 items-center border border-ink/20 bg-paper"
-            >
+            <div className="mt-3 flex h-12 items-center border border-ink/20 bg-paper">
               <button
                 className="inline-flex h-full w-11 shrink-0 items-center justify-center border-r border-ink/15 text-lg text-ink/70 transition-colors hover:bg-cream hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold disabled:cursor-not-allowed disabled:text-ink/25 motion-reduce:transition-none"
                 type="button"
@@ -688,13 +359,12 @@ function EventDetailsFields({
           </div>
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
-          <label ref={startTimeGroupRef} className="block" htmlFor="quote-start-time">
+          <label className="block" htmlFor="quote-start-time">
             <span className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70">
               {content.startTimeLabel}
             </span>
             <input
               id="quote-start-time"
-              ref={startTimeInputRef}
               className="vp-quote-time-input mt-3 text-base text-ink outline-none transition-colors focus-visible:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
               type="time"
               value={event.startTime}
@@ -705,7 +375,7 @@ function EventDetailsFields({
               }
             />
           </label>
-          <div ref={endTimeGroupRef}>
+          <div>
             <span
               id="quote-end-time-label"
               className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70"
@@ -714,7 +384,6 @@ function EventDetailsFields({
             </span>
             <output
               className="mt-3 flex h-12 w-full items-center border border-ink/15 bg-ink/[0.04] px-3 font-sans text-base text-ink/80"
-              ref={endTimeOutputRef}
               aria-labelledby="quote-end-time-label"
               aria-describedby="quote-base-duration"
             >
@@ -1410,34 +1079,9 @@ export function QuoteCalculator({
   } = useQuoteContext()
   const quoteSectionRef = useRef<HTMLElement | null>(null)
   const summaryRef = useRef<HTMLElement | null>(null)
-  const formRef = useRef<HTMLFormElement | null>(null)
-  const eventDetailsRef = useRef<HTMLFieldSetElement | null>(null)
-  const eventFieldsRef = useRef<HTMLDivElement | null>(null)
-  const dateInputRef = useRef<HTMLInputElement | null>(null)
-  const guestGroupRef = useRef<HTMLDivElement | null>(null)
-  const guestCounterRef = useRef<HTMLDivElement | null>(null)
-  const startTimeGroupRef = useRef<HTMLLabelElement | null>(null)
-  const startTimeInputRef = useRef<HTMLInputElement | null>(null)
-  const endTimeGroupRef = useRef<HTMLDivElement | null>(null)
-  const endTimeOutputRef = useRef<HTMLOutputElement | null>(null)
-  const packageSectionRef = useRef<HTMLDivElement | null>(null)
   const [expandedProductId, setExpandedProductId] = useState<number | null>(null)
   const [isQuoteVisibleOnMobile, setIsQuoteVisibleOnMobile] = useState(false)
   const [isSummaryVisible, setIsSummaryVisible] = useState(false)
-  const isQuoteDebugEnabled = new URLSearchParams(window.location.search).get('quote-debug') === '1'
-  const diagnosticRefs: QuoteDiagnosticRefs = {
-    formRef,
-    eventDetailsRef,
-    eventFieldsRef,
-    dateInputRef,
-    guestGroupRef,
-    guestCounterRef,
-    startTimeGroupRef,
-    startTimeInputRef,
-    endTimeGroupRef,
-    endTimeOutputRef,
-    packageSectionRef,
-  }
   const packages = packagesState.status === 'success' ? packagesState.packages : []
   const additionalProducts =
     additionalProductsState.status === 'success'
@@ -1578,21 +1222,11 @@ export function QuoteCalculator({
 
         <div className="mt-16 grid gap-8 lg:mt-20 lg:grid-cols-[minmax(0,1.25fr)_minmax(20rem,0.75fr)] lg:items-start lg:gap-10 xl:gap-14">
           <form
-            ref={formRef}
             className="border border-ink/15 bg-cream/50 p-6 sm:p-8 lg:p-10"
             onSubmit={(event) => event.preventDefault()}
           >
             <EventDetailsFields
               content={content}
-              eventDetailsRef={eventDetailsRef}
-              eventFieldsRef={eventFieldsRef}
-              dateInputRef={dateInputRef}
-              guestGroupRef={guestGroupRef}
-              guestCounterRef={guestCounterRef}
-              startTimeGroupRef={startTimeGroupRef}
-              startTimeInputRef={startTimeInputRef}
-              endTimeGroupRef={endTimeGroupRef}
-              endTimeOutputRef={endTimeOutputRef}
               event={quoteSelection}
               locale={locale}
               minDate={getLocalTodayValue()}
@@ -1606,7 +1240,7 @@ export function QuoteCalculator({
               onGuestCountChange={setGuestCount}
             />
 
-            <div ref={packageSectionRef} className="mt-12">
+            <div className="mt-2 sm:mt-12">
               {packagesState.status === 'loading' ? (
                 <div role="status">
                   <span className="sr-only">{content.packagesLoading}</span>
@@ -1702,7 +1336,6 @@ export function QuoteCalculator({
           onViewSummary={scrollToSummary}
         />
       ) : null}
-      {isQuoteDebugEnabled ? <QuoteDiagnosticsPanel refs={diagnosticRefs} /> : null}
     </section>
   )
 }
