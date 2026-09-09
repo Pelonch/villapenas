@@ -24,6 +24,7 @@ export const en = {
   footer: {
     navigationLabel: 'Villa Peñas information',
     copyright: (year) => `© ${year} Villa Peñas. All rights reserved.`,
+    developerCreditPrefix: 'Designed & developed by',
   },
   pages: {
     home: {

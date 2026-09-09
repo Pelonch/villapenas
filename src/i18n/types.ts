@@ -256,6 +256,7 @@ export interface TranslationCatalog {
   footer: {
     navigationLabel: string
     copyright: (year: number) => string
+    developerCreditPrefix: string
   }
   pages: {
     home: HomePageContent

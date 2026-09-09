@@ -59,6 +59,17 @@ export function SiteFooter({ location, route }: SiteFooterProps) {
         <p className="mt-12 border-t border-paper/15 pt-5 text-xs leading-6 text-paper/60">
           {translations.footer.copyright(new Date().getFullYear())}
         </p>
+        <p className="mt-3 font-sans text-[0.65rem] leading-5 tracking-[0.08em] text-paper/50">
+          {translations.footer.developerCreditPrefix}{' '}
+          <a
+            className="whitespace-nowrap text-paper/70 underline decoration-paper/30 underline-offset-4 transition-colors hover:text-gold-light hover:decoration-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold motion-reduce:transition-none"
+            href="https://gkstudio-production.up.railway.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GK Studio ↗
+          </a>
+        </p>
       </Container>
     </footer>
   )
