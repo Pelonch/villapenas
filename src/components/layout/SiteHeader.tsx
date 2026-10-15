@@ -241,7 +241,7 @@ export function SiteHeader({
       inert={visibility === 'hidden'}
     >
       <Container
-        className="relative flex min-h-20 items-center justify-between gap-6"
+        className="relative flex min-h-20 items-center justify-between gap-4 xl:gap-6"
         role={isMobileMenuOpen ? 'dialog' : undefined}
         aria-label={isMobileMenuOpen ? translations.navigation.label : undefined}
         aria-modal={isMobileMenuOpen || undefined}
@@ -258,10 +258,10 @@ export function SiteHeader({
         </a>
 
         <nav
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden min-w-0 items-center gap-4 lg:flex xl:gap-7"
           aria-label={translations.navigation.label}
         >
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-4 xl:gap-6">
             {navigationItems.map((item) => (
               <li key={item.id}>
                 <a
@@ -277,6 +277,15 @@ export function SiteHeader({
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-ink/70 transition-colors hover:text-gold-dark"
+                href={getLocalizedPath(route.locale, 'gallery')}
+                aria-current={route.page === 'gallery' ? 'page' : undefined}
+              >
+                {translations.navigation.gallery}
+              </a>
+            </li>
             <li ref={moreMenuRef} className="relative">
               <button
                 ref={moreMenuTriggerRef}
@@ -390,6 +399,19 @@ export function SiteHeader({
                   </a>
                 </li>
               ))}
+              <li className="border-b border-ink/15">
+                <a
+                  className="flex min-h-14 items-center justify-between py-3 font-display text-2xl tracking-[-0.035em] text-ink"
+                  href={getLocalizedPath(route.locale, 'gallery')}
+                  aria-current={route.page === 'gallery' ? 'page' : undefined}
+                  onClick={() => closeMobileMenu()}
+                >
+                  {translations.navigation.gallery}
+                  <span aria-hidden="true" className="font-sans text-gold">
+                    -&gt;
+                  </span>
+                </a>
+              </li>
               {secondaryNavigationItems.map((item) => (
                 <li key={item.page} className="border-b border-ink/15">
                   <a

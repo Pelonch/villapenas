@@ -42,11 +42,13 @@ const localizedHomeAnchorIds: Record<Locale, Record<HomeAnchorId, string>> = {
 const localizedPaths: Record<Locale, Record<PageId, string>> = {
   es: {
     home: '/es',
+    gallery: '/es/galeria',
     policies: '/es/politicas',
     contact: '/es/contacto',
   },
   en: {
     home: '/en',
+    gallery: '/en/gallery',
     policies: '/en/policies',
     contact: '/en/contact',
   },

@@ -1,5 +1,6 @@
 import { getTranslations } from '../i18n/translations.ts'
 import { ContactPage } from '../pages/ContactPage.tsx'
+import { GalleryPage } from '../pages/GalleryPage.tsx'
 import { HomePage } from '../pages/HomePage.tsx'
 import { NotFoundPage } from '../pages/NotFoundPage.tsx'
 import { PoliciesPage } from '../pages/PoliciesPage.tsx'
@@ -40,6 +41,8 @@ export function RouteView({
           quoteLabel={translations.navigation.quote}
         />
       )
+    case 'gallery':
+      return <GalleryPage content={pages.gallery} locale={route.locale} />
     case 'policies':
       return <PoliciesPage content={pages.policies} />
     case 'contact':

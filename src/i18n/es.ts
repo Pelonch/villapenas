@@ -8,6 +8,7 @@ export const es = {
   navigation: {
     label: 'Navegación principal',
     home: 'Inicio',
+    gallery: 'Galería',
     policies: 'Políticas',
     contact: 'Contacto',
     location: 'Ubicación',
@@ -267,6 +268,29 @@ export const es = {
         },
       },
     },
+    gallery: {
+      eyebrow: 'Galería',
+      heading: 'Un recorrido por Villa Peñas.',
+      description:
+        'Explora los espacios, rincones y vistas que hacen de Villa Peñas un lugar para reunirse y celebrar.',
+      filterLabel: 'Filtrar fotografías',
+      categories: {
+        all: 'Todas',
+        pool: 'Piscina',
+        rancho: 'Rancho',
+        bbq: 'BBQ',
+        playground: 'Playground',
+        outdoors: 'Exteriores',
+        aerial: 'Vista aérea',
+      },
+      showMore: 'Ver más fotografías',
+      openPhoto: (alt) => `Ampliar: ${alt}`,
+      dialogLabel: 'Visor de fotografías',
+      closeLightbox: 'Cerrar visor',
+      previousPhoto: 'Fotografía anterior',
+      nextPhoto: 'Fotografía siguiente',
+      photoCounter: (current, total) => `Fotografía ${current} de ${total}`,
+    },
     policies: {
       heroEyebrow: 'Políticas',
       heading: 'Políticas de reserva\ny reembolso.',
@@ -372,6 +396,15 @@ export const es = {
         title: 'Villa Peñas | Espacio para eventos en Santa Cruz, Guanacaste',
         description:
           'Villa Peñas es un espacio privado para celebraciones y eventos en Santa Cruz, Guanacaste.',
+      },
+    },
+    gallery: {
+      title: 'Galería de fotos | Villa Peñas',
+      description:
+        'Explora la galería de Villa Peñas: piscina, rancho, área BBQ, playground y espacios al aire libre en Santa Cruz, Guanacaste.',
+      openGraph: {
+        title: 'Galería de fotos | Villa Peñas',
+        description: 'Conoce los espacios y ambientes de Villa Peñas en Santa Cruz, Guanacaste.',
       },
     },
     policies: {
