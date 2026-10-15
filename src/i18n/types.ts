@@ -49,6 +49,31 @@ export interface ContactPageContent {
   quoteCta: string
 }
 
+export type GalleryCategoryId =
+  | 'pool'
+  | 'rancho'
+  | 'bbq'
+  | 'playground'
+  | 'outdoors'
+  | 'aerial'
+
+export type GalleryFilterId = 'all' | GalleryCategoryId
+
+export interface GalleryPageContent {
+  eyebrow: string
+  heading: string
+  description: string
+  filterLabel: string
+  categories: Record<GalleryFilterId, string>
+  showMore: string
+  openPhoto: (alt: string) => string
+  dialogLabel: string
+  closeLightbox: string
+  previousPhoto: string
+  nextPhoto: string
+  photoCounter: (current: number, total: number) => string
+}
+
 export interface HighlightedPolicyParagraph {
   after: string
   before: string
@@ -263,6 +288,7 @@ export interface TranslationCatalog {
   }
   pages: {
     home: HomePageContent
+    gallery: GalleryPageContent
     policies: PoliciesPageContent
     contact: ContactPageContent
     notFound: NotFoundPageContent

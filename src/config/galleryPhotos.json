@@ -1,0 +1,2527 @@
+{
+  "version": 2,
+  "photoCount": 81,
+  "categories": [
+    "pool",
+    "rancho",
+    "bbq",
+    "playground",
+    "outdoors",
+    "aerial"
+  ],
+  "photos": [
+    {
+      "id": "vp-051",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina con vista a la cabaña de dos niveles",
+        "en": "Pool and two-story cabin at Villa Peñas"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8854-HDR.JPG",
+        "width": 5888,
+        "height": 3925
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-051-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-051-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-051-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-029",
+      "category": "outdoors",
+      "alt": {
+        "es": "Vista amplia de la cabaña y el rancho desde el jardín",
+        "en": "Wide view of the cabin and rancho from the grounds"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8596-HDR-2.JPG",
+        "width": 5961,
+        "height": 3974
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-029-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-029-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-029-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-079",
+      "category": "playground",
+      "alt": {
+        "es": "Vista general del playground y vegetación",
+        "en": "Wide view of the playground and greenery"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8631-HDR.JPG",
+        "width": 5966,
+        "height": 3977
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-079-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-079-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-079-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-015",
+      "category": "aerial",
+      "alt": {
+        "es": "Panorámica aérea de la vegetación y montañas cercanas",
+        "en": "Aerial panorama of nearby forest and mountains"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924153905_0119_D.JPG",
+        "width": 6052,
+        "height": 8069
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-015-sm.webp",
+          "width": 675,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-015-md.webp",
+          "width": 1350,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-015-full.webp",
+          "width": 2160,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-014",
+      "category": "rancho",
+      "alt": {
+        "es": "Mesas y sillas bajo el rancho de Villa Peñas",
+        "en": "Tables and chairs under the Villa Peñas rancho"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8771.JPG",
+        "width": 5864,
+        "height": 3909
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-014-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-014-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-014-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-013",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina junto a las áreas de descanso",
+        "en": "Swimming pool beside the lounge areas"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8827-HDR.JPG",
+        "width": 5914,
+        "height": 3943
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-013-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-013-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-013-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-071",
+      "category": "aerial",
+      "alt": {
+        "es": "Vista elevada de la piscina y el rancho",
+        "en": "Elevated view of the pool and covered rancho"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924151203_0076_D.JPG",
+        "width": 8192,
+        "height": 6144
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-071-sm.webp",
+          "width": 900,
+          "height": 675
+        },
+        "md": {
+          "src": "/images/gallery/vp-071-md.webp",
+          "width": 1800,
+          "height": 1350
+        },
+        "full": {
+          "src": "/images/gallery/vp-071-full.webp",
+          "width": 2880,
+          "height": 2160
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-081",
+      "category": "bbq",
+      "alt": {
+        "es": "Rancho BBQ rodeado de árboles y plantas",
+        "en": "BBQ shelter surrounded by trees and plants"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8877.JPG",
+        "width": 3821,
+        "height": 5731
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-081-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-081-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-081-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-075",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina junto a los espacios con sombra",
+        "en": "Pool beside shaded outdoor gathering spaces"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_9035.JPG",
+        "width": 4000,
+        "height": 6000
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-075-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-075-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-075-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-054",
+      "category": "outdoors",
+      "alt": {
+        "es": "Camino de entrada hacia las instalaciones",
+        "en": "Entrance path leading to the venue"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8622-HDR.JPG",
+        "width": 5867,
+        "height": 3911
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-054-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-054-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-054-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-043",
+      "category": "rancho",
+      "alt": {
+        "es": "Vista general de las mesas dentro del rancho",
+        "en": "Wide view of seating inside the rancho"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8728-HDR.JPG",
+        "width": 5742,
+        "height": 3828
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-043-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-043-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-043-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-004",
+      "category": "aerial",
+      "alt": {
+        "es": "Vista aérea de la piscina y áreas sociales",
+        "en": "Aerial view of the pool and gathering spaces"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924151616_0089_D.JPG",
+        "width": 8192,
+        "height": 6144
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-004-sm.webp",
+          "width": 900,
+          "height": 675
+        },
+        "md": {
+          "src": "/images/gallery/vp-004-md.webp",
+          "width": 1800,
+          "height": 1350
+        },
+        "full": {
+          "src": "/images/gallery/vp-004-full.webp",
+          "width": 2880,
+          "height": 2160
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-059",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina rodeada de árboles y vegetación",
+        "en": "Swimming pool surrounded by trees and greenery"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8833-HDR.JPG",
+        "width": 5979,
+        "height": 3986
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-059-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-059-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-059-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-032",
+      "category": "rancho",
+      "alt": {
+        "es": "Mesas altas bajo la estructura rústica del rancho",
+        "en": "High tables beneath the rustic rancho structure"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8787.JPG",
+        "width": 3915,
+        "height": 5872
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-032-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-032-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-032-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-006",
+      "category": "playground",
+      "alt": {
+        "es": "Toboganes y juegos del área infantil",
+        "en": "Slides and play structures in the playground"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_9028-2.JPG",
+        "width": 5857,
+        "height": 3905
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-006-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-006-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-006-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-070",
+      "category": "outdoors",
+      "alt": {
+        "es": "Cabaña y sendero rodeados de naturaleza",
+        "en": "Cabin and walkway surrounded by nature"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8588-HDR.JPG",
+        "width": 5852,
+        "height": 3901
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-070-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-070-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-070-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-056",
+      "category": "pool",
+      "alt": {
+        "es": "Sillas reclinables junto a la piscina",
+        "en": "Loungers beside the swimming pool"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8529-2.JPG",
+        "width": 3649,
+        "height": 5474
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-056-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-056-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-056-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-049",
+      "category": "aerial",
+      "alt": {
+        "es": "Vista aérea del complejo entre árboles",
+        "en": "Aerial view of the venue surrounded by trees"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924150543_0059_D.JPG",
+        "width": 8192,
+        "height": 6144
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-049-sm.webp",
+          "width": 900,
+          "height": 675
+        },
+        "md": {
+          "src": "/images/gallery/vp-049-md.webp",
+          "width": 1800,
+          "height": 1350
+        },
+        "full": {
+          "src": "/images/gallery/vp-049-full.webp",
+          "width": 2880,
+          "height": 2160
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-047",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina vista de frente con zona de descanso",
+        "en": "Front view of the swimming pool and seating area"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_9011.JPG",
+        "width": 3918,
+        "height": 5877
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-047-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-047-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-047-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-039",
+      "category": "playground",
+      "alt": {
+        "es": "Vista vertical del playground entre vegetación",
+        "en": "Portrait view of the playground among greenery"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8640-HDR.JPG",
+        "width": 3982,
+        "height": 5973
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-039-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-039-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-039-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-009",
+      "category": "outdoors",
+      "alt": {
+        "es": "Fachada de la cabaña y rancho rodeados de árboles",
+        "en": "Cabin exterior and covered rancho surrounded by trees"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8710-HDR.JPG",
+        "width": 3843,
+        "height": 5765
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-009-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-009-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-009-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-065",
+      "category": "playground",
+      "alt": {
+        "es": "Mesas redondas de madera en la zona infantil",
+        "en": "Round wooden tables in the playground area"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8658.JPG",
+        "width": 3749,
+        "height": 5624
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-065-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-065-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-065-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-046",
+      "category": "bbq",
+      "alt": {
+        "es": "Vista de la parrilla y el techo del BBQ",
+        "en": "View of the grill and wooden BBQ roof"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8402-2.JPG",
+        "width": 5952,
+        "height": 3968
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-046-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-046-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-046-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-036",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina con vista a la cabaña y jardín",
+        "en": "Swimming pool with the cabin and garden behind it"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8848-HDR.JPG",
+        "width": 3783,
+        "height": 5674
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-036-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-036-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-036-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-001",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina y zona de descanso entre árboles",
+        "en": "Swimming pool and lounge area surrounded by trees"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8809-HDR.JPG",
+        "width": 5608,
+        "height": 3739
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-001-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-001-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-001-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-076",
+      "category": "playground",
+      "alt": {
+        "es": "Tobogán verde y estructura de madera",
+        "en": "Green playground slide and wooden structure"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8667.JPG",
+        "width": 3903,
+        "height": 5854
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-076-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-076-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-076-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-002",
+      "category": "playground",
+      "alt": {
+        "es": "Área infantil con tobogán entre árboles",
+        "en": "Children’s playground and slide among trees"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8671-HDR.JPG",
+        "width": 5974,
+        "height": 3983
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-002-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-002-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-002-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-042",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina frente al rancho y la cabaña",
+        "en": "Pool facing the rancho and cabin"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8842-HDR.JPG",
+        "width": 5987,
+        "height": 3991
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-042-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-042-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-042-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-005",
+      "category": "pool",
+      "alt": {
+        "es": "Detalle del agua en la cascada de la piscina",
+        "en": "Water feature cascading into the swimming pool"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8495.JPG",
+        "width": 3969,
+        "height": 5953
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-005-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-005-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-005-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-007",
+      "category": "playground",
+      "alt": {
+        "es": "Columpio de madera del playground",
+        "en": "Wooden swing in the playground"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_9020.JPG",
+        "width": 3791,
+        "height": 5687
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-007-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-007-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-007-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-008",
+      "category": "rancho",
+      "alt": {
+        "es": "Interior del rancho con mesas y techo de madera",
+        "en": "Covered rancho with tables and wooden roof"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8734-HDR.JPG",
+        "width": 3833,
+        "height": 5749
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-008-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-008-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-008-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-010",
+      "category": "outdoors",
+      "alt": {
+        "es": "Banca de madera con letrero de Villa Peñas",
+        "en": "Wooden bench with a Villa Peñas sign"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8655.JPG",
+        "width": 3965,
+        "height": 5947
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-010-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-010-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-010-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-011",
+      "category": "outdoors",
+      "alt": {
+        "es": "Árboles y jardines de la propiedad",
+        "en": "Trees and landscaped gardens on the property"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8616-HDR.JPG",
+        "width": 3964,
+        "height": 5946
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-011-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-011-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-011-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-012",
+      "category": "outdoors",
+      "alt": {
+        "es": "Letrero exterior de Villa Peñas junto al camino",
+        "en": "Villa Peñas roadside entrance sign"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8148.JPG",
+        "width": 3883,
+        "height": 5825
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-012-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-012-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-012-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-016",
+      "category": "aerial",
+      "alt": {
+        "es": "Vista aérea del rancho y la zona de piscina",
+        "en": "Aerial view of the rancho and pool area"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924152531_0102_D.JPG",
+        "width": 8192,
+        "height": 6144
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-016-sm.webp",
+          "width": 900,
+          "height": 675
+        },
+        "md": {
+          "src": "/images/gallery/vp-016-md.webp",
+          "width": 1800,
+          "height": 1350
+        },
+        "full": {
+          "src": "/images/gallery/vp-016-full.webp",
+          "width": 2880,
+          "height": 2160
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-017",
+      "category": "bbq",
+      "alt": {
+        "es": "Detalle del rótulo de Villa Peñas en el BBQ",
+        "en": "Villa Peñas wooden sign in the BBQ area"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8794.JPG",
+        "width": 3886,
+        "height": 5829
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-017-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-017-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-017-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-019",
+      "category": "aerial",
+      "alt": {
+        "es": "Toma aérea sobre la piscina y techos de Villa Peñas",
+        "en": "Aerial photograph above the pool and rooftops"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924150726_0067_D.JPG",
+        "width": 8109,
+        "height": 6082
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-019-sm.webp",
+          "width": 900,
+          "height": 675
+        },
+        "md": {
+          "src": "/images/gallery/vp-019-md.webp",
+          "width": 1800,
+          "height": 1350
+        },
+        "full": {
+          "src": "/images/gallery/vp-019-full.webp",
+          "width": 2880,
+          "height": 2160
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-021",
+      "category": "rancho",
+      "alt": {
+        "es": "Mesas del salón rústico bajo techo de teja",
+        "en": "Tables inside the rustic tiled-roof rancho"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8769.JPG",
+        "width": 3760,
+        "height": 5640
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-021-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-021-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-021-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-022",
+      "category": "rancho",
+      "alt": {
+        "es": "Rótulo de madera colgado bajo el techo del rancho",
+        "en": "Wooden Villa Peñas sign beneath the rancho roof"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8582.JPG",
+        "width": 6000,
+        "height": 4000
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-022-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-022-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-022-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-023",
+      "category": "playground",
+      "alt": {
+        "es": "Letrero con las reglas del playground",
+        "en": "Playground rules sign"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8251.JPG",
+        "width": 5629,
+        "height": 3753
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-023-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-023-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-023-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-024",
+      "category": "rancho",
+      "alt": {
+        "es": "Detalle del letrero y estructura de madera del rancho",
+        "en": "Detail of the rancho’s wooden sign and beams"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8346.JPG",
+        "width": 6000,
+        "height": 4000
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-024-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-024-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-024-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-025",
+      "category": "outdoors",
+      "alt": {
+        "es": "Portón de acceso a Villa Peñas",
+        "en": "Entrance gate to Villa Peñas"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8133.JPG",
+        "width": 5888,
+        "height": 3925
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-025-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-025-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-025-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-026",
+      "category": "aerial",
+      "alt": {
+        "es": "Vista elevada de la piscina y el área de eventos",
+        "en": "Elevated view of the pool and event grounds"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924151402_0081_D.JPG",
+        "width": 8146,
+        "height": 6110
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-026-sm.webp",
+          "width": 900,
+          "height": 675
+        },
+        "md": {
+          "src": "/images/gallery/vp-026-md.webp",
+          "width": 1800,
+          "height": 1350
+        },
+        "full": {
+          "src": "/images/gallery/vp-026-full.webp",
+          "width": 2880,
+          "height": 2160
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-027",
+      "category": "bbq",
+      "alt": {
+        "es": "Detalle de la estructura de madera del BBQ",
+        "en": "Wooden frame and sign in the BBQ shelter"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8791.JPG",
+        "width": 6000,
+        "height": 4000
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-027-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-027-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-027-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-028",
+      "category": "rancho",
+      "alt": {
+        "es": "Rincón del rancho con mesa de madera",
+        "en": "Rancho seating area with a wooden table"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_9025.JPG",
+        "width": 3843,
+        "height": 5764
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-028-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-028-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-028-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-030",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina vista desde uno de sus costados",
+        "en": "Side view of the swimming pool"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8824-HDR.JPG",
+        "width": 3709,
+        "height": 5564
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-030-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-030-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-030-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-033",
+      "category": "playground",
+      "alt": {
+        "es": "Jardín y juegos infantiles junto a los árboles",
+        "en": "Garden and children’s play area beside the trees"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8643.JPG",
+        "width": 3749,
+        "height": 5623
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-033-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-033-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-033-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-037",
+      "category": "outdoors",
+      "alt": {
+        "es": "Acceso exterior con portón y cerramiento",
+        "en": "Exterior entrance with gate and fencing"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8144-2.JPG",
+        "width": 5845,
+        "height": 3897
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-037-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-037-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-037-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-038",
+      "category": "outdoors",
+      "alt": {
+        "es": "Fachada de Villa Peñas y rancho techado",
+        "en": "Villa Peñas exterior and covered rancho"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8692-HDR.JPG",
+        "width": 5926,
+        "height": 3951
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-038-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-038-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-038-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-040",
+      "category": "rancho",
+      "alt": {
+        "es": "Mesas rústicas junto al cerramiento de madera",
+        "en": "Rustic tables alongside the wooden wall"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8775.JPG",
+        "width": 3755,
+        "height": 5633
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-040-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-040-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-040-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-041",
+      "category": "pool",
+      "alt": {
+        "es": "Piscina vista desde la entrada al área social",
+        "en": "Swimming pool viewed from the social area entrance"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8815-HDR.JPG",
+        "width": 3917,
+        "height": 5876
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-041-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-041-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-041-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-044",
+      "category": "pool",
+      "alt": {
+        "es": "Cascada y borde de la piscina rodeada de plantas",
+        "en": "Waterfall and pool edge framed by plants"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8879.JPG",
+        "width": 5956,
+        "height": 3971
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-044-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-044-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-044-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-045",
+      "category": "aerial",
+      "alt": {
+        "es": "Paisaje aéreo de árboles y montañas",
+        "en": "Aerial landscape of trees and mountains"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924153954_0125_D.JPG",
+        "width": 6144,
+        "height": 8192
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-045-sm.webp",
+          "width": 675,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-045-md.webp",
+          "width": 1350,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-045-full.webp",
+          "width": 2160,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-048",
+      "category": "rancho",
+      "alt": {
+        "es": "Mesas del rancho con paredes de madera",
+        "en": "Rancho tables with wood-panelled surroundings"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8780.JPG",
+        "width": 3828,
+        "height": 5742
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-048-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-048-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-048-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-050",
+      "category": "aerial",
+      "alt": {
+        "es": "Piscina y área exterior vistas desde el dron",
+        "en": "Pool and outdoor space viewed from above"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924150635_0064_D.JPG",
+        "width": 6144,
+        "height": 8192
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-050-sm.webp",
+          "width": 675,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-050-md.webp",
+          "width": 1350,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-050-full.webp",
+          "width": 2160,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-052",
+      "category": "playground",
+      "alt": {
+        "es": "Primer plano del tobogán verde del playground",
+        "en": "Close-up of the green playground slide"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_9002.JPG",
+        "width": 3885,
+        "height": 5827
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-052-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-052-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-052-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-053",
+      "category": "pool",
+      "alt": {
+        "es": "Escalera de piscina y sillas para descansar",
+        "en": "Pool ladder and chairs for relaxing"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8866-HDR.JPG",
+        "width": 5864,
+        "height": 3909
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-053-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-053-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-053-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-055",
+      "category": "outdoors",
+      "alt": {
+        "es": "Área abierta con árboles y espacios para sentarse",
+        "en": "Open space with trees and outdoor seating"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8598-HDR.JPG",
+        "width": 5860,
+        "height": 3907
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-055-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-055-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-055-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-057",
+      "category": "outdoors",
+      "alt": {
+        "es": "Área exterior con la cabaña al fondo",
+        "en": "Outdoor grounds with the cabin in the background"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8604-HDR.JPG",
+        "width": 3941,
+        "height": 5912
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-057-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-057-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-057-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-058",
+      "category": "rancho",
+      "alt": {
+        "es": "Detalle del corazón decorativo en madera",
+        "en": "Decorative wooden heart on the rancho wall"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8352.JPG",
+        "width": 3959,
+        "height": 5939
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-058-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-058-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-058-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-060",
+      "category": "playground",
+      "alt": {
+        "es": "Escalada y tobogán del playground",
+        "en": "Climbing wall and slide at the playground"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_9000.JPG",
+        "width": 3870,
+        "height": 5805
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-060-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-060-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-060-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-061",
+      "category": "playground",
+      "alt": {
+        "es": "Mesas infantiles y letrero de reglas",
+        "en": "Playground picnic tables and rules sign"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8262.JPG",
+        "width": 3924,
+        "height": 5886
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-061-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-061-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-061-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-062",
+      "category": "outdoors",
+      "alt": {
+        "es": "Ducha exterior entre árboles",
+        "en": "Outdoor shower among the trees"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8511-2.JPG",
+        "width": 4000,
+        "height": 6000
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-062-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-062-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-062-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-063",
+      "category": "bbq",
+      "alt": {
+        "es": "Parrilla bajo el techo de madera del BBQ",
+        "en": "Grill beneath the BBQ shelter’s wooden roof"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8686-HDR.JPG",
+        "width": 3611,
+        "height": 5417
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-063-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-063-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-063-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-064",
+      "category": "outdoors",
+      "alt": {
+        "es": "Patio abierto y fachada de las instalaciones",
+        "en": "Open courtyard and venue buildings"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8628-HDR.JPG",
+        "width": 3993,
+        "height": 5990
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-064-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-064-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-064-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-067",
+      "category": "pool",
+      "alt": {
+        "es": "Vista frontal de la piscina con cascada",
+        "en": "Front view of the swimming pool and water feature"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_9009.JPG",
+        "width": 5929,
+        "height": 3953
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-067-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-067-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-067-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-068",
+      "category": "playground",
+      "alt": {
+        "es": "Estructura de juegos y señalización en madera",
+        "en": "Wooden play structure and sign"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8240-2.JPG",
+        "width": 3965,
+        "height": 5947
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-068-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-068-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-068-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-069",
+      "category": "aerial",
+      "alt": {
+        "es": "Vista aérea de jardines, techo y piscina",
+        "en": "Aerial view of the gardens, rooftops, and pool"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924150624_0062_D.JPG",
+        "width": 8044,
+        "height": 6033
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-069-sm.webp",
+          "width": 900,
+          "height": 675
+        },
+        "md": {
+          "src": "/images/gallery/vp-069-md.webp",
+          "width": 1800,
+          "height": 1350
+        },
+        "full": {
+          "src": "/images/gallery/vp-069-full.webp",
+          "width": 2880,
+          "height": 2160
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-072",
+      "category": "outdoors",
+      "alt": {
+        "es": "Rótulo de Villa Peñas en la entrada",
+        "en": "Villa Peñas sign by the entrance"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8974.JPG",
+        "width": 3709,
+        "height": 5564
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-072-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-072-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-072-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-073",
+      "category": "outdoors",
+      "alt": {
+        "es": "Fachada de la cabaña con techo y terraza",
+        "en": "Cabin exterior with roof and terrace"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8695-HDR.JPG",
+        "width": 5923,
+        "height": 3949
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-073-sm.webp",
+          "width": 900,
+          "height": 600
+        },
+        "md": {
+          "src": "/images/gallery/vp-073-md.webp",
+          "width": 1800,
+          "height": 1200
+        },
+        "full": {
+          "src": "/images/gallery/vp-073-full.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-074",
+      "category": "aerial",
+      "alt": {
+        "es": "Toma aérea del patio y de la piscina",
+        "en": "Aerial view of the courtyard and pool"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924151545_0087_D.JPG",
+        "width": 6144,
+        "height": 8192
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-074-sm.webp",
+          "width": 675,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-074-md.webp",
+          "width": 1350,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-074-full.webp",
+          "width": 2160,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-078",
+      "category": "bbq",
+      "alt": {
+        "es": "Parlante en el área de entretenimiento",
+        "en": "Speaker in the entertainment area"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8381.JPG",
+        "width": 3906,
+        "height": 5859
+      },
+      "images": {
+        "sm": {
+          "src": "/images/gallery/vp-078-sm.webp",
+          "width": 600,
+          "height": 900
+        },
+        "md": {
+          "src": "/images/gallery/vp-078-md.webp",
+          "width": 1200,
+          "height": 1800
+        },
+        "full": {
+          "src": "/images/gallery/vp-078-full.webp",
+          "width": 1920,
+          "height": 2880
+        }
+      },
+      "usedInAmenities": false
+    },
+    {
+      "id": "vp-035",
+      "category": "aerial",
+      "alt": {
+        "es": "Vista aérea vertical de la piscina completa",
+        "en": "Top-down aerial view of the entire swimming pool"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924150834_0072_D.JPG",
+        "width": 5696,
+        "height": 7594
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity02.3-960w.webp",
+          "width": 960,
+          "height": 1280
+        },
+        "md": {
+          "src": "/images/amenity/amenity02.3-1920w.webp",
+          "width": 1920,
+          "height": 2560
+        },
+        "full": {
+          "src": "/images/amenity/amenity02.3-2880w.webp",
+          "width": 2880,
+          "height": 3840
+        }
+      },
+      "usedInAmenities": true
+    },
+    {
+      "id": "vp-003",
+      "category": "bbq",
+      "alt": {
+        "es": "Rancho BBQ con parrilla y jardín",
+        "en": "Outdoor BBQ shelter with grill and garden"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8677-HDR.JPG",
+        "width": 5886,
+        "height": 3924
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity03.2-960w.webp",
+          "width": 960,
+          "height": 640
+        },
+        "md": {
+          "src": "/images/amenity/amenity03.2-1920w.webp",
+          "width": 1920,
+          "height": 1280
+        },
+        "full": {
+          "src": "/images/amenity/amenity03.2-2880w.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": true
+    },
+    {
+      "id": "vp-031",
+      "category": "bbq",
+      "alt": {
+        "es": "Parrilla de acero inoxidable bajo el rancho BBQ",
+        "en": "Stainless steel grill under the covered BBQ shelter"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8416.JPG",
+        "width": 6000,
+        "height": 4000
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity03.1-960w.webp",
+          "width": 960,
+          "height": 640
+        },
+        "md": {
+          "src": "/images/amenity/amenity03.1-1920w.webp",
+          "width": 1920,
+          "height": 1280
+        },
+        "full": {
+          "src": "/images/amenity/amenity03.1-2880w.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": true
+    },
+    {
+      "id": "vp-066",
+      "category": "rancho",
+      "alt": {
+        "es": "Rancho con mesas redondas y piso rústico",
+        "en": "Rancho with round tables and rustic flooring"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8752-HDR.JPG",
+        "width": 5872,
+        "height": 3915
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity01.3-960w.webp",
+          "width": 960,
+          "height": 640
+        },
+        "md": {
+          "src": "/images/amenity/amenity01.3-1920w.webp",
+          "width": 1920,
+          "height": 1280
+        },
+        "full": {
+          "src": "/images/amenity/amenity01.3-2880w.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": true
+    },
+    {
+      "id": "vp-018",
+      "category": "outdoors",
+      "alt": {
+        "es": "Vista de la cabaña y área principal de eventos",
+        "en": "Exterior view of the cabin and main event space"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8701-HDR.JPG",
+        "width": 5883,
+        "height": 3922
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity01.2-960w.webp",
+          "width": 960,
+          "height": 640
+        },
+        "md": {
+          "src": "/images/amenity/amenity01.2-1920w.webp",
+          "width": 1920,
+          "height": 1280
+        },
+        "full": {
+          "src": "/images/amenity/amenity01.2-2880w.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": true
+    },
+    {
+      "id": "vp-077",
+      "category": "bbq",
+      "alt": {
+        "es": "Pantalla de televisión y parlante para eventos",
+        "en": "Television screen and speaker for events"
+      },
+      "original": {
+        "file": "Destacados/12092026-IMG_8384.JPG",
+        "width": 3947,
+        "height": 5921
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity03.3-960w.webp",
+          "width": 960,
+          "height": 1440
+        },
+        "md": {
+          "src": "/images/amenity/amenity03.3-1920w.webp",
+          "width": 1920,
+          "height": 2880
+        },
+        "full": {
+          "src": "/images/amenity/amenity03.3-2880w.webp",
+          "width": 2880,
+          "height": 4320
+        }
+      },
+      "usedInAmenities": true
+    },
+    {
+      "id": "vp-020",
+      "category": "playground",
+      "alt": {
+        "es": "Juegos infantiles junto a la zona arbolada",
+        "en": "Children’s play area beside the trees"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8646.JPG",
+        "width": 5857,
+        "height": 3905
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity02.2-960w.webp",
+          "width": 960,
+          "height": 640
+        },
+        "md": {
+          "src": "/images/amenity/amenity02.2-1920w.webp",
+          "width": 1920,
+          "height": 1280
+        },
+        "full": {
+          "src": "/images/amenity/amenity02.2-2880w.webp",
+          "width": 2880,
+          "height": 1920
+        }
+      },
+      "usedInAmenities": true
+    },
+    {
+      "id": "vp-034",
+      "category": "rancho",
+      "alt": {
+        "es": "Mesas y decoración rústica del salón",
+        "en": "Tables and rustic details inside the rancho"
+      },
+      "original": {
+        "file": "Destacados/24092026-IMG_8746-HDR.JPG",
+        "width": 3840,
+        "height": 5760
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity01.1-960w.webp",
+          "width": 960,
+          "height": 1440
+        },
+        "md": {
+          "src": "/images/amenity/amenity01.1-1920w.webp",
+          "width": 1920,
+          "height": 2880
+        },
+        "full": {
+          "src": "/images/amenity/amenity01.1-2880w.webp",
+          "width": 2880,
+          "height": 4320
+        }
+      },
+      "usedInAmenities": true
+    },
+    {
+      "id": "vp-080",
+      "category": "aerial",
+      "alt": {
+        "es": "Perspectiva elevada de la piscina y su entorno",
+        "en": "Elevated perspective of the pool and its surroundings"
+      },
+      "original": {
+        "file": "Destacados/24092026-DJI_20260924151259_0079_D.JPG",
+        "width": 6144,
+        "height": 8192
+      },
+      "images": {
+        "sm": {
+          "src": "/images/amenity/amenity02.1-960w.webp",
+          "width": 960,
+          "height": 1280
+        },
+        "md": {
+          "src": "/images/amenity/amenity02.1-1920w.webp",
+          "width": 1920,
+          "height": 2560
+        },
+        "full": {
+          "src": "/images/amenity/amenity02.1-2880w.webp",
+          "width": 2880,
+          "height": 3840
+        }
+      },
+      "usedInAmenities": true
+    }
+  ],
+  "newGalleryPhotos": 72,
+  "reusedAmenityPhotos": 9
+}

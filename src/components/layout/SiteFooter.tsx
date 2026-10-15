@@ -29,6 +29,15 @@ export function SiteFooter({ location, route }: SiteFooterProps) {
                 <li>
                   <a
                     className="inline-flex min-h-11 items-center font-sans text-xs font-semibold uppercase tracking-[0.14em] text-paper/75 transition-colors hover:text-sand sm:min-h-0"
+                    href={getLocalizedPath(route.locale, 'gallery')}
+                    aria-current={route.page === 'gallery' ? 'page' : undefined}
+                  >
+                    {translations.navigation.gallery}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="inline-flex min-h-11 items-center font-sans text-xs font-semibold uppercase tracking-[0.14em] text-paper/75 transition-colors hover:text-sand sm:min-h-0"
                     href={getLocalizedPath(route.locale, 'policies')}
                     aria-current={route.page === 'policies' ? 'page' : undefined}
                   >
