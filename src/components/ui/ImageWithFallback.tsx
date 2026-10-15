@@ -11,6 +11,7 @@ type ImageWithFallbackProps = Omit<
 export function ImageWithFallback({
   fallbackSrc,
   src,
+  srcSet,
   ...imageProps
 }: ImageWithFallbackProps) {
   const [failedSource, setFailedSource] = useState<string | null>(null)
@@ -20,6 +21,7 @@ export function ImageWithFallback({
     <img
       {...imageProps}
       src={shouldUseFallback ? fallbackSrc : src}
+      srcSet={shouldUseFallback ? undefined : srcSet}
       onError={() => {
         if (!shouldUseFallback) {
           setFailedSource(src)

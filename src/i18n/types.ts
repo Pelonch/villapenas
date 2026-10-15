@@ -79,6 +79,9 @@ export type AmenityGroupId = 'rancho' | 'pool' | 'bbq'
 
 export interface AmenityImage {
   src: string
+  srcSet: string
+  width: number
+  height: number
   alt: string
 }
 

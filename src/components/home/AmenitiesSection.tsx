@@ -42,16 +42,23 @@ const collageLayerClasses: Record<
   pool: [
     'right-0 top-4 z-10 h-[63%] w-[68%] lg:left-[1vw] lg:right-auto lg:top-[6vh] lg:h-[52vh] lg:w-[27vw] lg:!bg-transparent lg:!p-0',
     'left-[1%] top-[17%] z-30 h-[38%] w-[41%] lg:left-[20vw] lg:top-0 lg:z-20 lg:h-[38vh] lg:w-[30vw] lg:!bg-cream lg:!pb-8 lg:!pl-8 lg:!pr-0 lg:!pt-8',
-    'bottom-0 left-[8%] z-20 h-[43%] w-[54%] lg:bottom-auto lg:left-[33vw] lg:top-[41vh] lg:z-30 lg:h-[31vh] lg:w-[22vw] lg:!bg-transparent lg:!p-0',
+    'bottom-0 left-[9%] z-20 h-[54%] w-[40%] lg:bottom-auto lg:left-[36vw] lg:top-[32vh] lg:z-30 lg:h-[40vh] lg:w-[17vw] lg:!bg-transparent lg:!p-0',
   ],
   bbq: [
     'left-[8%] top-0 z-10 h-[64%] w-[65%] lg:left-[1vw] lg:top-[6vh] lg:h-[52vh] lg:w-[27vw] lg:!bg-transparent lg:!p-0',
     'right-0 top-[21%] z-30 h-[41%] w-[40%] lg:left-[20vw] lg:right-auto lg:top-0 lg:z-20 lg:h-[38vh] lg:w-[30vw] lg:!bg-cream lg:!pb-8 lg:!pl-8 lg:!pr-0 lg:!pt-8',
-    'bottom-0 left-0 z-20 h-[39%] w-[48%] lg:bottom-auto lg:left-[33vw] lg:top-[41vh] lg:z-30 lg:h-[31vh] lg:w-[22vw] lg:!bg-transparent lg:!p-0',
+    'bottom-0 left-[3%] z-20 h-[54%] w-[40%] lg:bottom-auto lg:left-[36vw] lg:top-[32vh] lg:z-30 lg:h-[40vh] lg:w-[17vw] lg:!bg-transparent lg:!p-0',
   ],
 }
 
 const layerMotionRanges = [16, 34, 52] as const
+
+// Match the visible widths of the three overlapping tiles across viewports.
+const collageImageSizes = [
+  '(min-width: 1024px) 27vw, (min-width: 640px) 66vw, 68vw',
+  '(min-width: 1024px) 30vw, (min-width: 640px) 42vw, 45vw',
+  '(min-width: 1024px) 22vw, (min-width: 640px) 40vw, 43vw',
+] as const
 
 const largeDesktopGridLayerClasses = [
   'min-[1600px]:left-[1.82%] min-[1600px]:top-[8.33%] min-[1600px]:h-[72.22%] min-[1600px]:w-[49.09%]',
@@ -84,8 +91,10 @@ function AmenityCollage({
             className="size-full object-cover"
             src={image.src}
             fallbackSrc={provisionalVenueImageSrc}
-            width="1254"
-            height="1254"
+            srcSet={image.srcSet}
+            sizes={collageImageSizes[index]}
+            width={image.width}
+            height={image.height}
             alt={image.alt}
             loading="lazy"
             decoding="async"
