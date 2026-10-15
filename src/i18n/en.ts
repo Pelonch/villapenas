@@ -71,16 +71,16 @@ export const en = {
               'A spacious and welcoming place to gather, cook and enjoy together, with an equipped kitchen so everything you need is close at hand during your event.',
             images: [
               {
-                src: amenityImageSources.rancho[0],
-                alt: 'General view of the Villa Peñas rancho',
+                ...amenityImageSources.rancho[0],
+                alt: 'Tables and gathering area under the covered Villa Peñas rancho',
               },
               {
-                src: amenityImageSources.rancho[1],
-                alt: 'Villa Peñas equipped kitchen',
+                ...amenityImageSources.rancho[1],
+                alt: 'Exterior view of the Villa Peñas rancho beside the pool',
               },
               {
-                src: amenityImageSources.rancho[2],
-                alt: 'Villa Peñas dining and gathering area',
+                ...amenityImageSources.rancho[2],
+                alt: 'Tables and chairs in the Villa Peñas rancho gathering space',
               },
             ],
           },
@@ -92,16 +92,16 @@ export const en = {
               'A pool, outdoor areas and playground so both adults and children can find their own space to enjoy.',
             images: [
               {
-                src: amenityImageSources.pool[0],
-                alt: 'Villa Peñas pool area',
+                ...amenityImageSources.pool[0],
+                alt: 'Overhead view of the Villa Peñas swimming pool and lounge seating',
               },
               {
-                src: amenityImageSources.pool[1],
-                alt: 'Villa Peñas playground',
+                ...amenityImageSources.pool[1],
+                alt: "Outdoor children's playground at Villa Peñas",
               },
               {
-                src: amenityImageSources.pool[2],
-                alt: 'Villa Peñas pool deck and outdoor area',
+                ...amenityImageSources.pool[2],
+                alt: 'Elevated view of the Villa Peñas swimming pool and green spaces',
               },
             ],
           },
@@ -113,16 +113,16 @@ export const en = {
               'BBQ area, grill, karaoke, speaker and a 75-inch screen for everything from a relaxed afternoon to a celebration with music.',
             images: [
               {
-                src: amenityImageSources.bbq[0],
-                alt: 'Villa Peñas BBQ rancho and grill',
+                ...amenityImageSources.bbq[0],
+                alt: 'Stainless steel grill under the Villa Peñas BBQ shelter',
               },
               {
-                src: amenityImageSources.bbq[1],
-                alt: 'Villa Peñas karaoke and speaker area',
+                ...amenityImageSources.bbq[1],
+                alt: 'Wide view of the Villa Peñas BBQ shelter and surrounding garden',
               },
               {
-                src: amenityImageSources.bbq[2],
-                alt: 'Villa Peñas 75-inch screen and entertainment area',
+                ...amenityImageSources.bbq[2],
+                alt: 'TV screen and speaker in the Villa Peñas entertainment area',
               },
             ],
           },
