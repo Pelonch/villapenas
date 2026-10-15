@@ -93,7 +93,7 @@ export const es = {
             images: [
               {
                 ...amenityImageSources.pool[0],
-                alt: 'Vista elevada de la piscina y áreas verdes de Villa Peñas',
+                alt: 'Vista aérea de la piscina y las sillas de descanso de Villa Peñas',
               },
               {
                 ...amenityImageSources.pool[1],
@@ -101,7 +101,7 @@ export const es = {
               },
               {
                 ...amenityImageSources.pool[2],
-                alt: 'Vista aérea de la piscina y las sillas de descanso de Villa Peñas',
+                alt: 'Vista elevada de la piscina y áreas verdes de Villa Peñas',
               },
             ],
           },

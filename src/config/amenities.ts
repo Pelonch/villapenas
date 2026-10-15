@@ -24,9 +24,9 @@ export const amenityImageSources = {
     photo('amenity01.3', 5872, 3915),
   ],
   pool: [
-    photo('amenity02.1', 6144, 8192),
-    photo('amenity02.2', 5857, 3905),
     photo('amenity02.3', 5696, 7594),
+    photo('amenity02.2', 5857, 3905),
+    photo('amenity02.1', 6144, 8192),
   ],
   bbq: [
     photo('amenity03.1', 6000, 4000),

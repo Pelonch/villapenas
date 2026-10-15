@@ -93,15 +93,15 @@ export const en = {
             images: [
               {
                 ...amenityImageSources.pool[0],
-                alt: 'Elevated view of the Villa Peñas swimming pool and green spaces',
+                alt: 'Overhead view of the Villa Peñas swimming pool and lounge seating',
               },
               {
                 ...amenityImageSources.pool[1],
-                alt: 'Outdoor children's playground at Villa Peñas',
+                alt: "Outdoor children's playground at Villa Peñas",
               },
               {
                 ...amenityImageSources.pool[2],
-                alt: 'Overhead view of the Villa Peñas swimming pool and lounge seating',
+                alt: 'Elevated view of the Villa Peñas swimming pool and green spaces',
               },
             ],
           },

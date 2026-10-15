@@ -37,17 +37,17 @@ const collageLayerClasses: Record<
   rancho: [
     'left-0 top-8 z-10 h-[60%] w-[66%] lg:left-[1vw] lg:top-[6vh] lg:h-[52vh] lg:w-[27vw] lg:!bg-transparent lg:!p-0',
     'right-0 top-0 z-20 h-[38%] w-[42%] lg:left-[20vw] lg:top-0 lg:h-[38vh] lg:w-[30vw] lg:!bg-cream lg:!pb-8 lg:!pl-8 lg:!pr-0 lg:!pt-8',
-    'bottom-2 right-[7%] z-30 h-[45%] w-[53%] lg:bottom-auto lg:left-[33vw] lg:top-[41vh] lg:h-[31vh] lg:w-[22vw] lg:!bg-transparent lg:!p-0',
+    'bottom-2 right-[7%] z-30 h-[45%] w-[53%] lg:bottom-auto lg:left-[28vw] lg:top-[38vh] lg:h-[34vh] lg:w-[24vw] lg:!bg-cream lg:!pb-8 lg:!pl-8 lg:!pr-0 lg:!pt-8',
   ],
   pool: [
     'right-0 top-4 z-10 h-[63%] w-[68%] lg:left-[1vw] lg:right-auto lg:top-[6vh] lg:h-[52vh] lg:w-[27vw] lg:!bg-transparent lg:!p-0',
     'left-[1%] top-[17%] z-30 h-[38%] w-[41%] lg:left-[20vw] lg:top-0 lg:z-20 lg:h-[38vh] lg:w-[30vw] lg:!bg-cream lg:!pb-8 lg:!pl-8 lg:!pr-0 lg:!pt-8',
-    'bottom-0 left-[9%] z-20 h-[54%] w-[40%] lg:bottom-auto lg:left-[36vw] lg:top-[32vh] lg:z-30 lg:h-[40vh] lg:w-[17vw] lg:!bg-transparent lg:!p-0',
+    'bottom-0 left-[9%] z-20 h-[54%] w-[40%] lg:bottom-auto lg:left-[31vw] lg:top-[32vh] lg:z-30 lg:h-[40vh] lg:w-[17vw] lg:!bg-cream lg:!p-8',
   ],
   bbq: [
     'left-[8%] top-0 z-10 h-[64%] w-[65%] lg:left-[1vw] lg:top-[6vh] lg:h-[52vh] lg:w-[27vw] lg:!bg-transparent lg:!p-0',
     'right-0 top-[21%] z-30 h-[41%] w-[40%] lg:left-[20vw] lg:right-auto lg:top-0 lg:z-20 lg:h-[38vh] lg:w-[30vw] lg:!bg-cream lg:!pb-8 lg:!pl-8 lg:!pr-0 lg:!pt-8',
-    'bottom-0 left-[3%] z-20 h-[54%] w-[40%] lg:bottom-auto lg:left-[36vw] lg:top-[32vh] lg:z-30 lg:h-[40vh] lg:w-[17vw] lg:!bg-transparent lg:!p-0',
+    'bottom-0 left-[3%] z-20 h-[54%] w-[40%] lg:bottom-auto lg:left-[31vw] lg:top-[32vh] lg:z-30 lg:h-[40vh] lg:w-[17vw] lg:!bg-cream lg:!p-8',
   ],
 }
 
@@ -57,13 +57,13 @@ const layerMotionRanges = [16, 34, 52] as const
 const collageImageSizes = [
   '(min-width: 1024px) 27vw, (min-width: 640px) 66vw, 68vw',
   '(min-width: 1024px) 30vw, (min-width: 640px) 42vw, 45vw',
-  '(min-width: 1024px) 22vw, (min-width: 640px) 40vw, 43vw',
+  '(min-width: 1024px) 24vw, (min-width: 640px) 40vw, 43vw',
 ] as const
 
 const largeDesktopGridLayerClasses = [
   'min-[1600px]:left-[1.82%] min-[1600px]:top-[8.33%] min-[1600px]:h-[72.22%] min-[1600px]:w-[49.09%]',
   'min-[1600px]:left-[36.36%] min-[1600px]:top-0 min-[1600px]:h-[52.78%] min-[1600px]:w-[54.55%]',
-  'min-[1600px]:left-[60%] min-[1600px]:top-[56.94%] min-[1600px]:h-[43.06%] min-[1600px]:w-[40%]',
+  'min-[1600px]:left-[53.5%] min-[1600px]:top-[55%] min-[1600px]:h-[45%] min-[1600px]:w-[42%]',
 ] as const
 
 function AmenityCollage({
@@ -81,27 +81,38 @@ function AmenityCollage({
       ref={onCollageRef}
       className={`relative isolate mx-auto h-[22rem] w-full max-w-[36rem] sm:h-[31rem] lg:absolute lg:inset-y-0 lg:mx-0 lg:h-full lg:w-[55vw] lg:max-w-none lg:shrink-0 ${desktopPosition} ${isLargeDesktopGrid ? 'min-[1600px]:relative min-[1600px]:inset-auto min-[1600px]:left-auto min-[1600px]:h-[72vh] min-[1600px]:w-full' : ''}`}
     >
-      {group.images.map((image, index) => (
-        <div
-          key={`${group.id}-${index}`}
-          ref={(element) => onLayerRef(index, element)}
-          className={`absolute overflow-hidden bg-cream p-3 will-change-transform sm:p-4 lg:p-5 ${layerClasses[index] ?? ''} ${isLargeDesktopGrid ? (largeDesktopGridLayerClasses[index] ?? '') : ''}`}
-        >
-          <ImageWithFallback
-            className="size-full object-cover"
-            src={image.src}
-            fallbackSrc={provisionalVenueImageSrc}
-            srcSet={image.srcSet}
-            sizes={collageImageSizes[index]}
-            width={image.width}
-            height={image.height}
-            alt={image.alt}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
-        </div>
-      ))}
+      {group.images.map((image, index) => {
+        const hasLayerThreeBackdrop =
+          index === 2 && (group.id === 'pool' || group.id === 'bbq')
+
+        return (
+          <div
+            key={`${group.id}-${index}`}
+            ref={(element) => onLayerRef(index, element)}
+            className={`absolute overflow-hidden bg-cream p-3 will-change-transform sm:p-4 lg:p-5 ${layerClasses[index] ?? ''} ${hasLayerThreeBackdrop ? 'lg:overflow-visible' : ''} ${isLargeDesktopGrid ? (largeDesktopGridLayerClasses[index] ?? '') : ''}`}
+          >
+            {hasLayerThreeBackdrop ? (
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-full hidden w-[2vw] bg-cream lg:block"
+              />
+            ) : null}
+            <ImageWithFallback
+              className="size-full object-cover"
+              src={image.src}
+              fallbackSrc={provisionalVenueImageSrc}
+              srcSet={image.srcSet}
+              sizes={collageImageSizes[index]}
+              width={image.width}
+              height={image.height}
+              alt={image.alt}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
+          </div>
+        )
+      })}
     </div>
   )
 }
