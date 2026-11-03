@@ -27,12 +27,10 @@ export function Hero({
   )
   const [failedVideoSource, setFailedVideoSource] = useState<string | null>(null)
   const prefersReducedMotion = usePrefersReducedMotion()
-  const videoSource =
-    prefersReducedMotion
-      ? null
-      : isMobileViewport
-        ? homeExperienceConfig.media.hero.mobileVideo
-        : homeExperienceConfig.media.hero.desktopVideo
+  const media = isMobileViewport
+    ? homeExperienceConfig.media.hero.mobile
+    : homeExperienceConfig.media.hero.desktop
+  const videoSource = prefersReducedMotion ? null : media.video
   const isVideoUnavailable =
     videoSource !== null && failedVideoSource === videoSource
 
@@ -117,7 +115,7 @@ export function Hero({
           key={videoSource}
           className="absolute inset-0 size-full object-cover"
           src={videoSource}
-          poster={homeExperienceConfig.media.hero.poster}
+          poster={media.poster}
           autoPlay
           loop
           muted
@@ -128,7 +126,14 @@ export function Hero({
           onCanPlay={handleMediaReady}
           onError={handleMediaFailure}
         />
-      ) : null}
+      ) : (
+        <img
+          className="absolute inset-0 size-full object-cover"
+          src={media.poster}
+          alt=""
+          aria-hidden="true"
+        />
+      )}
       <div
         className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/45 via-transparent to-ink/20"
         aria-hidden="true"
