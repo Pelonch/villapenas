@@ -92,7 +92,7 @@ export function AerialPreview({
       <button
         ref={triggerRef}
         className={`group absolute bottom-[5.25rem] right-4 z-20 overflow-hidden border border-paper/30 bg-ink text-left text-paper shadow-2xl shadow-ink/25 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold disabled:pointer-events-none disabled:opacity-0 sm:bottom-24 sm:right-6 lg:bottom-28 ${
-          isMobileViewport ? 'w-28' : 'w-48 lg:w-56'
+          isMobileViewport ? 'w-24' : 'w-48 lg:w-56'
         }`}
         type="button"
         aria-haspopup="dialog"
@@ -128,8 +128,8 @@ export function AerialPreview({
               aria-hidden="true"
             />
           ) : null}
-          <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-ink/90 via-ink/35 to-transparent px-3 pb-2.5 pt-7 sm:px-4 sm:pb-3.5">
-            <span className="flex items-center gap-2 font-sans text-[0.56rem] font-semibold uppercase tracking-[0.16em] text-paper sm:text-[0.65rem]">
+          <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-ink/90 via-ink/35 to-transparent px-2 pb-2 pt-6 sm:px-4 sm:pb-3.5 sm:pt-7">
+            <span className="flex items-center gap-1.5 whitespace-nowrap font-sans text-[0.5rem] font-semibold uppercase tracking-[0.12em] text-paper sm:gap-2 sm:text-[0.65rem] sm:tracking-[0.16em]">
               {content.aerialPreviewLabel}
               <svg
                 className="size-3 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
