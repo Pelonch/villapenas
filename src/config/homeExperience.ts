@@ -17,13 +17,26 @@ export const homeExperienceConfig = {
   },
   media: {
     hero: {
-      desktopVideo: '/videos/hero.mp4',
-      mobileVideo: '/videos/hero.mp4',
-      poster: undefined,
+      desktop: {
+        video: '/videos/hero/hero-desktop.mp4',
+        poster: '/images/hero/hero-poster.webp',
+      },
+      mobile: {
+        video: '/videos/hero/hero-mobile.mp4',
+        poster: '/images/hero/hero-mobile-poster.webp',
+      },
     },
     aerial: {
-      video: '/videos/air.mp4',
-      poster: undefined,
+      desktop: {
+        previewVideo: '/videos/aerial/aerial-desktop-preview.mp4',
+        fullVideo: '/videos/aerial/aerial-desktop-full.mp4',
+        poster: '/images/aerial/aerial-desktop-poster.webp',
+      },
+      mobile: {
+        previewVideo: '/videos/aerial/aerial-mobile-preview.mp4',
+        fullVideo: '/videos/aerial/aerial-mobile-full.mp4',
+        poster: '/images/aerial/aerial-mobile-poster.webp',
+      },
     },
   },
 } as const

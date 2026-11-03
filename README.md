@@ -36,12 +36,23 @@ public/
       hero-desktop.mp4
       hero-mobile.mp4
     aerial/
-      aerial.mp4
+      aerial-desktop-preview.mp4
+      aerial-mobile-preview.mp4
+      aerial-desktop-full.mp4
+      aerial-mobile-full.mp4
   images/
     hero/
       hero-poster.webp
+      hero-mobile-poster.webp
     aerial/
-      aerial-poster.webp
+      aerial-desktop-poster.webp
+      aerial-mobile-poster.webp
 ```
 
-The Hero and aerial preview render warm design-system fallback surfaces if any of these files are absent.
+The Hero and aerial preview render warm design-system fallback surfaces if media cannot be loaded. Each active viewport
+uses its own poster, while the expanded aerial video is requested only after the dialog opens.
+
+## Video Masters
+
+The original 4K production masters belong in `source-videos/`. That directory is Git-ignored and intentionally sits
+outside `public/`, so masters are available for future encodes without being copied into the production build.

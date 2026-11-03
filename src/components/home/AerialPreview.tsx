@@ -16,13 +16,38 @@ export function AerialPreview({
   const triggerRef = useRef<HTMLButtonElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [previewFailed, setPreviewFailed] = useState(false)
-  const [dialogFailed, setDialogFailed] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(() =>
+    window.matchMedia('(max-width: 767px)').matches,
+  )
+  const [failedPreviewSource, setFailedPreviewSource] = useState<string | null>(null)
+  const [failedDialogSource, setFailedDialogSource] = useState<string | null>(null)
   const prefersReducedMotion = usePrefersReducedMotion()
+  const media = isMobileViewport
+    ? homeExperienceConfig.media.aerial.mobile
+    : homeExperienceConfig.media.aerial.desktop
+  const previewVideoSource = media.previewVideo
+  const fullVideoSource = media.fullVideo
   const shouldLoadPreview =
-    isExperienceActive && !isDialogOpen && !prefersReducedMotion && !previewFailed
-  const shouldLoadDialog = isDialogOpen && !prefersReducedMotion && !dialogFailed
+    isExperienceActive &&
+    !isDialogOpen &&
+    !prefersReducedMotion &&
+    failedPreviewSource !== previewVideoSource
+  const shouldLoadDialog =
+    isDialogOpen && !prefersReducedMotion && failedDialogSource !== fullVideoSource
   const titleId = 'aerial-view-dialog-title'
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)')
+    const updateViewport = (event: MediaQueryListEvent) => {
+      setIsMobileViewport(event.matches)
+    }
+
+    mediaQuery.addEventListener('change', updateViewport)
+
+    return () => {
+      mediaQuery.removeEventListener('change', updateViewport)
+    }
+  }, [])
 
   useEffect(() => {
     const dialog = dialogRef.current
@@ -66,20 +91,26 @@ export function AerialPreview({
     <>
       <button
         ref={triggerRef}
-        className="group absolute bottom-[5.25rem] right-4 z-20 w-32 overflow-hidden border border-paper/30 bg-ink text-left text-paper shadow-2xl shadow-ink/25 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold disabled:pointer-events-none disabled:opacity-0 sm:bottom-24 sm:right-6 sm:w-48 lg:bottom-28 lg:w-56"
+        className={`group absolute bottom-[5.25rem] right-4 z-20 overflow-hidden border border-paper/30 bg-ink text-left text-paper shadow-2xl shadow-ink/25 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-gold disabled:pointer-events-none disabled:opacity-0 sm:bottom-24 sm:right-6 lg:bottom-28 ${
+          isMobileViewport ? 'w-28' : 'w-48 lg:w-56'
+        }`}
         type="button"
         aria-haspopup="dialog"
         aria-label={content.openAerialDialog}
         disabled={!isExperienceActive}
         onClick={() => setIsDialogOpen(true)}
       >
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div
+          className={`relative overflow-hidden ${
+            isMobileViewport ? 'aspect-[9/16]' : 'aspect-video'
+          }`}
+        >
           <div className="vp-aerial-fallback absolute inset-0" aria-hidden="true" />
           {shouldLoadPreview ? (
             <video
               className="absolute inset-0 size-full object-cover"
-              src={homeExperienceConfig.media.aerial.video}
-              poster={homeExperienceConfig.media.aerial.poster}
+              src={previewVideoSource}
+              poster={media.poster}
               autoPlay
               loop
               muted
@@ -87,7 +118,14 @@ export function AerialPreview({
               preload="metadata"
               tabIndex={-1}
               aria-hidden="true"
-              onError={() => setPreviewFailed(true)}
+              onError={() => setFailedPreviewSource(previewVideoSource)}
+            />
+          ) : isExperienceActive ? (
+            <img
+              className="absolute inset-0 size-full object-cover"
+              src={media.poster}
+              alt=""
+              aria-hidden="true"
             />
           ) : null}
           <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-ink/90 via-ink/35 to-transparent px-3 pb-2.5 pt-7 sm:px-4 sm:pb-3.5">
@@ -110,7 +148,9 @@ export function AerialPreview({
 
       <dialog
         ref={dialogRef}
-        className="m-auto w-[min(92vw,70rem)] border border-paper/20 bg-ink p-0 text-paper shadow-2xl shadow-black/40 backdrop:bg-ink/85"
+        className={`m-auto border border-paper/20 bg-ink p-0 text-paper shadow-2xl shadow-black/40 backdrop:bg-ink/85 ${
+          isMobileViewport ? 'w-[min(92vw,29rem)]' : 'w-[min(92vw,70rem)]'
+        }`}
         aria-labelledby={titleId}
         onClose={handleDialogClose}
         onClick={(event) => {
@@ -119,13 +159,19 @@ export function AerialPreview({
           }
         }}
       >
-        <div className="relative aspect-video min-h-[13rem] overflow-hidden bg-moss sm:min-h-[20rem]">
+        <div
+          className={`relative overflow-hidden bg-moss ${
+            isMobileViewport
+              ? 'aspect-[9/16] min-h-[20rem]'
+              : 'aspect-video min-h-[13rem] sm:min-h-[20rem]'
+          }`}
+        >
           <div className="vp-aerial-fallback absolute inset-0" aria-hidden="true" />
           {shouldLoadDialog ? (
             <video
               className="absolute inset-0 size-full object-contain"
-              src={homeExperienceConfig.media.aerial.video}
-              poster={homeExperienceConfig.media.aerial.poster}
+              src={fullVideoSource}
+              poster={media.poster}
               autoPlay
               loop
               muted
@@ -133,7 +179,14 @@ export function AerialPreview({
               preload="metadata"
               tabIndex={-1}
               aria-hidden="true"
-              onError={() => setDialogFailed(true)}
+              onError={() => setFailedDialogSource(fullVideoSource)}
+            />
+          ) : isDialogOpen ? (
+            <img
+              className="absolute inset-0 size-full object-cover"
+              src={media.poster}
+              alt=""
+              aria-hidden="true"
             />
           ) : null}
         </div>
